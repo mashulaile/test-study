@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta content="telephone=no" name="format-detection">
+        <script>
+            var fun = function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+
+                        //这里是假设在750px宽度设计稿的情况下，1rem = 75px；
+                        //可以根据实际需要修改
+                        docEl.style.fontSize = 75 * (clientWidth / 750) + 'px';
+                    };
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            }
+            fun(document, window);
+        </script>
+        <style type="text/css">
+            body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+                margin:0;
+                padding:0;
+            }
+            table {
+                border-collapse:collapse;
+                border-spacing:0;
+            }
+            fieldset,img {
+                border:0;
+            }
+            address,caption,cite,code,dfn,em,strong,th,var {
+                font-style:normal;
+                font-weight:normal;
+            }
+            ol,ul {
+                list-style:none;
+            }
+            caption,th {
+                text-align:left;
+            }
+            h1,h2,h3,h4,h5,h6 {
+                font-size:100%;
+                font-weight:normal;
+            }
+            q:before,q:after {
+                content:'';
+            }
+            abbr,acronym { 
+                border:0;
+            }
+			.app {
+                width: 9rem;
+                height: 10rem;
+                background: #999;
+            }
+			.app2 {
+                width: 90%;
+                height: 10rem;
+                background: #333;
+            }
+		</style>
+	</head>
+	<body >
+        <div class="app"></div>
+        <div class="app2"></div>
+	</body>
+</html>
