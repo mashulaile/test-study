@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>console.table(arr)</h2>
+    <p>table 方法把data 对象用表格的方式显示出来，这在显示数组或者格式一样的JSON 对象的时候非常有用。</p>
+    <hr/>
+    <h2>console.time(name)/console.timeEnd(name)</h2>
+    <p>
+        我们经常需要测试js函数的执行时间，或者一个循环要执行多久，用console.time(name)创建一个新的计时器<br/>
+        console.timeEnd(name)停止，并显示时间。这样就可以看到执行一个函数或者循环要多久了
+    </p>
+    <hr/>
+    <h2>console.dir(function)</h2>
+    <p>dir方法是把列出对象的所有方法。比如，我们显示console对象下都些什么方法：</p>
+    <hr/>
+    <p>上面的那些方法下面都有例子，还有一些方法没有列举，可参考：http://blog.csdn.net/shouhou_bingo/article/details/50556041</p>
+    <script>
+        var arr = [
+            {animal: 'Horse', name: "henry", age: 43},
+            {animal: 'Dog', name: "Fred", age: 13},
+            {animal: 'Cat', name: "Frodo", age: 18},
+        ]
+        
+        console.table(arr);
+        console.info(1,'呵呵');
+        console.debug(2,'呵呵');
+        console.warn(3,'呵呵');
+        // console.error(4,'呵呵');
+       
+        
+        console.time("test");
+        for(var i = 0; i < 1000; i++) {
+            console.log(i);
+        }
+        console.timeEnd('test');
+
+
+        console.dir(console);
+    </script>
+</body>
+</html>
