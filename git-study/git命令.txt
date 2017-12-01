@@ -1,0 +1,227 @@
+https://github.com/waylau/git-for-win  国内的git可以在这里来下载，官网上的需要翻墙，不方便下载
+
+
+
+配置身份,用来在提交代码时识别用户 
+git config --global user.name "you name"
+git config -global user.email "....."
+
+创建版本库（仓库）
+mkdir learngit 
+cd learngit
+git init 
+
+添加文件到Git仓库，分两步
+1，使用命令git add 你要添加的文件    注意，可以反复多次使用，添加多个文件  例如：git add file1.txt file2.txt
+   git add .  提交该仓库里所有的变动文件	
+2，使用命令git commit,完成
+例如：git add one.txt two.txt
+      git commit -m "你的描述"     ps：这个你的描述是本次提交的说明，你本次干了什么东西，可以用中文
+
+
+每次修改了文件，准备提交之前用git status命令看下结果，
+git status命令可以让我们时刻掌握仓库当前的状态是否被修改过，
+
+git diff 文件名   了解你对改文件作了什么修改，这样自己心里有数之后在提交到仓库就放心多了
+
+
+git log 命令显示从最近到最远的提交日志，  如果嫌输出信息太多，看的眼花缭乱，可以试试加上 --pretty=oneline
+
+
+git reset --hard HEAD^ 返回到上一个版本   上上个版本就是HEAD^^，当然往上100个版本写100个^比较容易出错，所以写成HEAD~100
+
+git reset --hard d7318e  只要上面的命令行窗口还没有关掉，就可以顺着往上找，就可以指定的回到未来的某个版本。ps:前面的d7318e这个是
+			  用git log 查看提交日志的时候，每个日志前面都会有commit id（版本号）例如：3628164fb26d48395383f8f31179f24e0882e1e0
+			  在指定回到未来的某个版本，版本号没必要写全，前几位就可以了，Git会自动去找，当然也不能只写一两位，因为Git可能会找到多个版本号，就无法确定是哪个 
+
+
+git reflog     用来记录你的每一次命令，有时候，当你回退到某个版本，关掉电脑之后，第二天后悔了，想恢复到新的版本怎么办？
+		找不到新版本的commit id 怎么办？ 使用git reflog 可以找到所以的commit id，然后就可以使用git reset --hard 版本号   回到最新的版本
+
+
+
+小总结：HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+
+穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+
+要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+
+cat 文件名  查看文件内容
+
+
+git checkout -- 文件名    把某某文件在工作区的修改全部撤销，这里有两种情况：
+				1，某文件修改后还有没有被放到暂存区，现在，撤销修改的就回到和版本库一模一样的状态；
+				2，已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态
+				总之，就是让这个文件回到最近一次git commit或git add时的状态
+
+git reset HEAD 文件名    可以把暂存区的修改撤销掉，重新放回工作区，在用git checkout -- 文件名就可以退回到没修改之前了
+
+
+小结：	场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+	场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+
+	场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+
+一般情况下，你在文件管理器中吧没用的文件删除了，这个时候，Git知道你删除了文件，因此，工作区和版本库就不一样了，git status命令会立刻告诉你那些文件本删除了
+现在你有两个选择，一是确实要把该文件从版本库中删除，那就用git rm 文件名  然后再用git commit提交下，现在文件就从版本库中被删除了，另一种情况是删错了，因为
+版本库里还有，所以可以轻松的把误删的文件恢复到最新的版本，git chechout -- 文件名   git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+
+
+
+ssh-keygen -t rsa -C "youremail@example.com"   创建密匙   双引号里放自己刚开始设置的邮箱 然后一直回车就行
+						如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，
+						id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+						登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+						点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：然后点击Add Key，就可以看到添加成功，
+登录GitHub，在右上角点击New repository新建一个仓库
+
+要把本地的仓库内容推送上去
+git remote add origin https://github.com/mashuzuishuai/demo.git    让本地的仓库和GitHub上的仓库关联起来
+
+git push -u origin master
+把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。
+由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+如果输入git remote add origin https://github.com/mashuzuishuai/demo.git
+ 提示出错信息：fatal: remote origin already exists.
+git remote 查看远程库信息
+git remote -v 查看更详细的信息   会显示抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址
+解决办法如下：
+
+    1、先输入$ git remote rm origin  //删除远程库
+
+    2、再输入$ git remote add origin https://github.com/mashuzuishuai/demo.git 就不会报错了！
+
+    3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section 'remote.origin'. 我们需要修改gitconfig文件的内容
+
+    4、找到你的github的安装路径，
+
+    5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
+
+再之后修改内容或者其它，要推送到GitHub上面的话，只需要
+git push origin master 就可以了
+如果要推送其它分支，比如dev，就改成：
+git push origin dev
+
+创建dev分支，然后切换到dev分支：git checkout -b dev 
+这个命令相当于:
+git branch dev   //创建分支
+git checkout dev //切换到dev分支
+
+用git branch命令查看当前的分支
+git branch
+会列出所有分支，当前分支前面会标一个*号
+
+git merge命令用于合并指定分支到当前分支，合并后，master和dev分支就是一样的内容了，合并dev分支之前要先切换到master之后在合并
+
+git branch -d dev  删除dev分支，不能删除当前所在的分支
+
+
+解决冲突：
+当我们新建一个新的分支（dev），修改了分支的内容并提交到了本地仓库，然后切换到master分支，又修改了master分支的内容并提交到本地仓库
+然后把新的分支（dev）合并到master上的时候就会出现冲突了！
+解决冲突：这个时候会出现四个选项，1、采用当前更改（就是master上的更改）；2、采用传入的更改（分支上的更改）；3、保留双方更改；4、比较变更。
+选择一个之后然后再提交到本地仓库就可以了
+git log --graph命令可以看到分支合并图
+
+git bash对于log的显示是逐页的，所以一旦log变多了，你输入【git log --graph】时，按下enter，只能显示log的第一页，
+命令行处只有一个冒号，这个时候，你只要再按一下空格键就行了，就会到下一页。
+直到命令行下面显示闪烁的END字样的时候，才说明你的log显示完了，此时再按q或者ctrl+c都可以直接回到正常的命令行界面了。
+
+
+分支管理策略：
+一般在合并分支的时候都是Fast forward模式，但是这种模式下，删除分支后，会丢掉分支信息。
+所以想在合并分支并删除分支之后还想看到分支信息，就要如下操作：
+git merge --no-ff -m "写下注意，如把某某分支合并到某某分支" 分支名（dev）
+这样就算删除了分支，再用git log --graph也能看到分支历史
+
+
+bug分支：
+当开发项目的时候，我们在一个dev分支上进行开发的时候，突然接到一个master分支上的bug，这个时候我们需要：
+1、在dev分支下用命令git stash 把当前工作现场储藏起来，
+2、切换到master分支上，创建一个新的bug01分支去解决这个bug问题，解决完之后master分支下合并bug01分支，然后删除bug01分支。
+3、在切换到dev分支，在dev分支下合并master分支，这样才同步了里面的bug解决方案
+4、在执行git stash pop命令来恢复之前储藏的工作现场继续工作，系统自动合并 & 提示有冲突，因为封存前dev写了东西，此时去文件里手动改冲突
+5、继续开发dev，最后add，commit
+6、在master下合并最后完成的dev，然后删除dev分支
+
+git stash list 查看储藏的工作现场
+恢复工作现场有两个办法：
+1、是用git stash apply恢复，然后用git stash drop来删除
+2、是用git stash pop，恢复的同事把stash内容也删除了
+
+有时候多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令：
+git stash apply stash@{0}
+
+开发一个新的功能，最好新建一个分支；
+如果要丢弃一个没有被合并过的分支，可以通过git branch -D 分支名字  进行强删除
+
+
+
+创建标签：
+git tag <name> 例如：git tag v1.0
+
+可以用git tag查看所有的标签
+默认的标签是打在最新提交的commit上的，
+有时候忘记打标签了，过几天才想起来，可以这样：
+执行git log --pretty=oneline找到历史提交的commit id，然后打上就可以了 例如：
+git tag v0.9 commit id(6224937) 
+
+标签不是按时间顺序列出的，而是按照字母排序的，可以用git show <tagname>查看标签信息 例如：
+git show v0.9
+
+还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字 例如：
+git tag -a v0.1 -m "这是第某某个版本" commit id（3628164）
+再用git show v0.1就可以看到说明文字了
+
+删除标签：
+git tag -d v0.1
+
+把标签推送到远程仓库：
+gitpush origin v1.0
+
+或者一次性推送全部尚未推送的本地标签：
+git push origin --tags
+
+如果标签已经推送到远程，要删除远程标签：
+首先从本地开始删除：
+git tag -d v0.9
+然后，从远程删除，删除的命令也是push，例如：
+git push origin :refs/tags/v0.9
+
+
+关于代码的托管和多人合作等，除了用GitHub还有一个码云，
+用码云，是因为国内使用GitHub访问速度太慢了，
+在码云上关联本地仓库和GitHub的操作是一样的，只要去码云官网注册一个账号
+
+点击修改资料->SSH公钥->然后添加标题->把公钥代码贴上去点击确定就可以了
+
+我们也可以同时关联GitHub和码云
+方法：
+1、git remote -v 查看下本地关联的远程库
+2、如果有的话就使用git remote rm origin删除远程库，
+3、使用git remote add github GitHub远程库地址  &    git remote add gitee 码云远程库地址
+注意：远程库的名称一个叫github 一个叫gitee 
+     如果要推送到github，使用命令：
+      git push github master
+     如果要推送到码云，使用命令：
+      git push gitee master
+
+
+
+git 命令配置别名：
+
+比如说把status这份命令配置成st  例如：
+git config --global alias.st status 
+这样配置以后，就可以直接使用git st了，相当于git status
+其它的命令也可以配置，比如说：
+git config --global alias.co checkout
+git config --global alias.ci commit 等等，看自己的习惯和喜好来配置
+
+配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。
+
+
+
