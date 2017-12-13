@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>extend实例</title>
+	</head>
+	<body>
+		<h2>Vue.extend扩展实例构造器</h2>
+		<hr />
+		
+		<!--<author></author>-->  <!--这种一般不建议用，一般都是挂载到dom上-->
+		<!--或者这样用-->
+		<div id="author"></div>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script>
+			var authorExtend = Vue.extend({
+				template:"<a :href='authorURL' target='_blank'>{{authorName}}</a>",
+				data:function(){
+					return {
+						authorName:'mashu',
+						authorURL:'http://www.baidu.com'
+					}
+				}
+			});
+			//挂载
+//			new authorExtend().$mount('author');
+			new authorExtend().$mount('#author');
+		</script>
+	</body>
+</html>

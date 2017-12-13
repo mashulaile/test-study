@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bbb{display: none;}
+		</style>
+	</head>
+	<body>
+		<h3 class="aaa">点我点我</h3>
+		<p class="bbb">我会消失和隐藏我会消失和隐藏我会消失和隐藏</p>
+		<h3 class="aaa" >点我点我</h3>
+		<p class="bbb">我会消失和隐藏我会消失和隐藏我会消失和隐藏我会消失和隐藏我会消失和隐藏</p>
+		<h3 class="aaa" >点我点我</h3>
+		<p class="bbb">我会消失和隐藏我会消失和隐藏我会消失和隐藏我会消失和隐藏</p>
+		<h3 class="aaa" >点我点我</h3>
+		<p class="bbb">我会消失和隐藏我会消失和隐藏</p>
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript"> 
+			window.onload=function(){
+				var aaa = document.getElementsByClassName("aaa");
+//				var bbb = document.getElementsByClassName("bbb");
+				
+				for(var i=0;i<aaa.length;i++){
+					aaa[i].onclick=function(){
+//						var hq = this.getAttribute("data-type");
+//						console.log(sss);
+//						console.log(this.nextSibling.nextSibling);
+						if(this.getAttribute("data-type")==1){
+						
+							this.nextSibling.nextSibling.style.display="none";
+							this.setAttribute("data-type","0");
+						}else{
+							
+							this.nextSibling.nextSibling.style.display="block";
+							this.setAttribute("data-type","1");
+						}
+					}
+				}
+				
+			}
+			
+
+			
+//			jQuery方法
+//			for(var i=0;i<$(".aaa").length;i++){
+////				$("aaa").eq(i).data("type",1);
+//				$(".aaa").eq(i).click(function(){
+////					alert($(this).data("type"))
+//					
+//					if($(this).data("type")!=1){
+//						$(this).next().show();
+//						$(this).data("type",1);
+//					}else{
+//						$(this).next().hide();
+//						$(this).data("type",0);
+//					}
+//				})
+//			}
+			
+
+
+		</script>
+	</body>
+</html>

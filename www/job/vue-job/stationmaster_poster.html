@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>菜鸟驿站站长海报</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+    	.hide {
+    		display: none;
+    	}
+    	.bg-all {
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		margin: 0 auto;
+    		width: 100%;
+    		height: 100%;
+    		overflow: hidden;
+    		
+    	}
+    	.first-step {
+    		background: url('https://gw.alicdn.com/tfs/TB1ItIeXHYI8KJjy0FaXXbAiVXa-750-1050.jpg') no-repeat center center;
+    		background-size: 100% 100%;
+    	}
+    	.y-name {
+    		position: absolute;
+    		right: 1.7rem;
+    		top: 64%;
+    		width: 35%;
+    		height: 0.84rem;
+    		border: none;
+    		background: #e8f6e3;
+    		font-size: 0.578rem;
+    		border: 2px solid #0065ff;
+    	}
+    	.quan {
+    		position: absolute;
+    		
+    		bottom: 22.6%;
+    		width: 0.65rem;
+    		height: 0.65rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1UAOUifxNTKJjy0FjXXX6yVXa-60-60.png') no-repeat center center;
+    		background-size: 0.65rem 0.65rem;
+    	}
+    	.male {
+    		left: 46.8%;
+    	}
+    	.female {
+    		right: 29.2%;
+    	}
+    	.male-x,.female-y {
+    		background: url('https://gw.alicdn.com/tfs/TB16pnjm3MPMeJjy1XdXXasrXXa-60-60.png') no-repeat center center;
+    		background-size: 0.65rem 0.65rem;
+    	}
+    	.btn-w {
+    		position: absolute;
+    		left: 0;
+    		bottom: 12%;
+    		width: 100%;
+    		text-align: center;
+    	}
+    	.first-step_next {
+    		width: 3.25rem;
+    		height: 1.017rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1CaGjiWmgSKJjSsplXXaICpXa-387-121.png') no-repeat center center;
+    		background-size: 100%;
+    		border: none;
+    	}
+    	.prompt {
+    		position: absolute;
+    		left: 50%;
+    		top: 50%;
+    		width: 4.622rem;
+    		height: 1.286rem;
+    		margin: -0.643rem 0 0 -2.311rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1YAyWi6ihSKJjy0FfXXbGzFXa-550-153.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	
+    	
+    	.anniu {
+    		position: absolute;
+    		left: 0;
+    		bottom: 8%;
+    		width: 100%;
+    		text-align: center;
+    		z-index: 5;
+    	}
+    	.shot {
+    		display: block;
+    		width: 3.8rem;
+    		height: 1.65333rem;
+    		margin: 0 auto;
+    		background: url('https://gw.alicdn.com/tfs/TB1h3wvXNrI8KJjy0FpXXb5hVXa-253-93.png') no-repeat center center;
+    		background-size: 100%;
+    		border: none;
+    		text-align: center;
+    		line-height: 1.25333rem;
+    		color: #0065ff;
+    		font-size: 0.5333rem;
+    		font-weight: bold;
+    	}
+    	.btn-t {
+    		width: 3.2rem;
+    		height: 1.25333rem;
+    		margin: 0.5333rem 0 0 0;
+    		border: none;
+    		z-index: 4;
+    		text-align: center;
+    		line-height: 1.25333rem;
+    		color: #0065ff;
+    		font-size: 0.46rem;
+    		font-weight: bold;
+    	}
+    	.two-step_pre {
+    		margin-right: 2.2rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1h3wvXNrI8KJjy0FpXXb5hVXa-253-93.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.two-step_next {
+    		background: url('https://gw.alicdn.com/tfs/TB1h3wvXNrI8KJjy0FpXXb5hVXa-253-93.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.ewm {
+    		position: absolute;
+    		left: 4.5%;
+    		bottom: 2%;
+    		width: 1.277rem;
+    		height: 1.277rem;
+    		z-index: 4;
+    	}
+    	.man,.woman {
+    		position: absolute;
+    		width: 100%;
+    		height: 100%;
+    		z-index: 3;
+    	}
+    	.stationmaster {
+    		position: absolute;
+    		width: 0.2917rem;
+    		padding: 0.3rem 0.15rem 0.4rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1I5uPoMoQMeJjy0FoXXcShVXa-42-144.png') no-repeat center center;
+    		background-size: cover;
+    		color: #142d03;
+    		font-size: 0.3rem;
+    		font-weight: bold;
+    		line-height: 0.35rem;
+    		z-index: 4;
+    		
+    	}
+    	.man-txt {
+    		right: 9%;
+    		bottom: 24%;
+    	}
+    	.woman-txt {
+    		right: 10%;
+    		bottom: 28%;
+    	}
+    	.stationmaster>label {
+    		display: inline-block;
+    		font-size: 0.3rem;
+    		line-height: 0.35rem;
+    		padding: 0 0 0.2rem 0;
+    	}
+    	.man-pic {
+    		position: absolute;
+    		right: 12%;
+    		top: 28%;
+    		width: 4.1rem;
+    		height: 3.7rem;
+    		z-index: 2;
+    	}
+    	.control {
+    		display: none;
+    		position: absolute;
+    		right: 12%;
+    		top: 28%;
+    		width: 3.96rem;
+    		height: 3.56rem;
+    		border: 3px solid #83b1d0;
+    		z-index: 5;
+    	}
+    	.circles {
+    		display: inline-block;
+    		position: absolute;
+    		width: 0.555rem;
+    		height: 0.555rem;
+    		border-radius: 100%;
+    		
+    	}
+    	.kuan {
+    		left: -10px;
+    		top: -10px;
+    		background: url('https://gw.alicdn.com/tfs/TB1QAddjzuhSKJjSspmXXcQDpXa-66-66.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.chang {
+    		left: -10px;
+    		bottom: -10px;
+    		background: url('https://gw.alicdn.com/tfs/TB12hRijqagSKJjy0FcXXcZeVXa-66-66.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.d-zoon {
+    		right: -10px;
+    		bottom: -10px;
+    		background: url('https://gw.alicdn.com/tfs/TB1BLTUafDH8KJjy1XcXXcpdXXa-42-42.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.reset {
+    		right: -10px;
+    		top: -10px;
+    		background: url('https://gw.alicdn.com/tfs/TB1z09DnwoQMeJjy1XaXXcSsFXa-66-66.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.slogan {
+    		position: absolute;
+    		left: 5%;
+    		bottom: 18%;
+    		z-index: 4;
+    	}
+    	.slogan li {
+    		width: 100%;
+    		height: 0.6666rem;
+    		font-size: 0.3rem;
+    		line-height: 0.6666rem;
+    		color: #000000;
+    	}
+    	.list-pic {
+    		position: absolute;
+    		left: 3%;
+    		top: 4%;
+    		z-index: 4;
+    	}
+    	.txt-img01 {
+    		width: 6.6533rem ;
+    		height: 5.3466rem;
+    		margin: 5% 0 0 5%;
+    	}
+    	.txt-img02 {
+    		width: 5.8133rem; 
+    		height: 5.4133rem;
+    		margin: 5% 0 0 5%;
+    	}
+    	.txt-img03 {
+    		width: 6.6933rem; 
+    		height: 5.2133rem;
+    		margin: 5% 0 0 5%;
+    	}
+    	.icon {
+    		position: absolute;
+    		left: 4%;
+    		bottom: 11%;
+    		width: 2.26rem;
+    		height: 4.82rem;
+    		z-index: 5;
+    	}
+    	.icon>img {
+    		width: 100%;
+    	}
+    	.preservation {
+    		width: 3.613rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1AnyNmPuhSKJjSspdXXc11XXa-256-90.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.tanbox {
+    		position: absolute;
+    		left: 0;
+    		right: 0;
+    		width: 100%;
+    		height: 100%;
+    		background: rgba(100,102,99,0.8);
+    		z-index: 10;
+    	}
+    	.tanbox-img {
+    		position: absolute;
+    		left: 50%;
+    		top: 50%;
+    		width: 7.61333rem;
+    		height: 9.9866rem;
+    		margin: -5.9933rem 0 0 -3.8066rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1_UAIXRfH8KJjy1XbXXbLdXXa-571-749.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.tanbox-img ul {
+    		margin-top: 4.34666rem;
+    	}
+    	.tanbox-img ul li {
+    		width: 6.333rem;
+    		height: 1.4rem;
+    		margin: 0 auto 0.2666rem;
+    	}
+    	.tanbox-img ul li:nth-of-type(2) {
+    		height: 1.90666rem;
+    	}
+    	.share-pic {
+    		position: absolute;
+    		right: 4%;
+    		top: 3%;
+    		width: 3.4933rem;
+    		height: 2.7733rem;
+    	}
+    	#file {
+    		position: absolute;
+    		left: 50%;
+    		top: 0;
+    		width: 3.8rem;
+    		height: 1.65333rem;
+    		margin: 0 0 0 -1.9rem;
+    		opacity: 0;
+    	}
+    	.inp-anniu {
+    	    height:1.72rem;
+    	    z-index:10;
+    	    bottom:18%;
+    	}
+    	.jiazbox {
+    		position: absolute;
+    		left: 0;
+    		top: 0;
+    		width: 100%;
+    		height: 100%;
+    		background: rgba(100,102,99,0.8);
+    		z-index:12;
+    	}
+    	.jiaz {
+    		position: absolute;
+    		left: 50%;
+    		top: 50%;
+    		width: 1.65rem;
+    		height: 1.65rem;
+    		margin: -0.82rem 0 0 -0.82rem;
+    	}
+    	.remen {
+    		position: absolute;
+    		left: 50%;
+    		top: 50%;
+    		width: 5rem;
+    		height: 1.3rem;
+    		margin: -0.65rem 0 0 -2.5rem;
+    		line-height: 1.3rem;
+    		text-align: center;
+    		font-size: 0.4rem;
+    		color: #fff;
+    		background: rgba(100,102,99,0.9);
+    		border-radius:10px;
+    		z-index: 6;
+    	}
+    </style>
+	</head>
+	<body>
+		
+		<div id="stationmaster_poster">
+			<!--第一步-->
+			<div class="first-step bg-all" v-show="first">
+				<input  type="text" v-model="name" class="y-name" maxlength="4" />
+				<span :class="{'male-x':ismale}"class="quan male" @click="sexSelection('男')"></span>
+				<span :class="{'female-y':isfemale}" class="quan female" @click="sexSelection('女')"></span>
+				<div class="btn-w">
+					<button class="first-step_next" @click="next('first')"></button>
+				</div>
+			</div>
+			
+			<div class="common" v-show="commonpel">
+				<!--男-->
+				<div v-if="this.gender=='男'">
+					<img class="man" src="https://gw.alicdn.com/tfs/TB1tsbNagnD8KJjy1XdXXaZsVXa-750-1050.png" />
+					<div class="stationmaster man-txt"><label>站长</label><span>{{this.name}}</span></div>
+				</div>
+				
+				
+				<!--女-->
+				<div v-else-if="this.gender=='女'">
+					<img class="woman" src="https://gw.alicdn.com/tfs/TB1QFPRab_I8KJjy1XaXXbsxpXa-750-1050.png" />
+					<div class="stationmaster woman-txt"><label>站长</label><span>{{this.name}}</span></div>
+				</div>
+				
+				<!--调整照片大小框-->
+				<div class="control" @touchstart='touchStar()'  @touchmove='touchMove($event,"movePic")'>
+					<span class="kuan circles" @touchstart='touchStar()' @touchmove='touchMove($event,"kuan")'></span>
+					<span class="chang circles" @touchstart='touchStar()' @touchmove='touchMove($event,"chang")'></span>
+					<span class="d-zoon circles" @touchstart='touchStar()' @touchmove='touchMove($event,"d-zoon")'></span>
+					<span class="reset circles" @touchend="close()"></span>
+				</div>
+				<div class="anniu inp-anniu">
+				    <input @change="arouse()" id="file" type="file" accept="image/*" capture="camera">
+				</div>
+				<!--用户照片-->
+				<img class="man-pic" src="" />
+				<!--没拍照提示-->
+				<div class="remen hide">记得拍照哟~</div>
+				<!--二维码-->
+				<img src="https://gw.alicdn.com/tfs/TB1PU.oX3nD8KJjy1XdXXaZsVXa-280-280.png" class="ewm" />
+			</div>
+			
+			<!--第二步-->
+			<div class="two-step-all" v-show="two">
+				<!--拍照、上一步、下一步-->
+				<div class="anniu">
+					<button class="shot" >拍摄照片</button>
+					<!--<input @change="arouse()" id="file" type="file" accept="image/*" capture="camera">-->
+					<button class="two-step_pre btn-t" @click="previous('two')">上一步</button>
+					<button class="two-step_next btn-t" @click="next('two')">下一步</button>
+				</div>
+				
+			</div>
+			
+			<!--第三步-->
+			<div class="three-step-all" v-show="three">
+				<!--上一步、下一步-->
+				<div class="anniu">
+					<button class="shot">重拍</button>
+					<!--<input @change="arouse()" id="file" type="file" accept="image/*" capture="camera">-->
+					<button class="two-step_pre btn-t" @click="previous('three')">上一步</button>
+					<button class="two-step_next btn-t" @click="next('three')">下一步</button>
+				</div>
+			</div>
+			
+			<!--第四步-->
+			<div class="three-step-all" v-show="four">
+				<!--文本选择-->
+				<ul class="list-pic">
+					<li v-for="item in items" v-show="item.isDisplay"><img :class="item.picClass" :src="item.txtImg" /></li>
+				</ul>
+				<!--文本弹窗选择-->
+				<div class="tanbox" @click="shareClose()">
+					<div class="tanbox-img">
+						<ul class="tanbox-ul">
+							<li v-for='(item,index) in items' @click="changTxt(index)">{{item.txt}}</li>
+						</ul>
+					</div>
+					<!--点击分享之后弹窗-->
+					<img class="share-pic hide" src="https://gw.alicdn.com/tfs/TB1eykWXS_I8KJjy0FoXXaFnVXa-262-208.png" />
+				</div>
+				<!--点击分享加载中-->
+				<!--<div class='jiazbox hide'>-->
+				<!--    <img class="jiaz" src="https://gw.alicdn.com/tfs/TB10OMXX0fJ8KJjy0FeXXXKEXXa-128-128.gif" />-->
+				<!--</div>-->
+				<!--上一步、下一步-->
+				<div class="anniu anniu-four hide">
+					<button class="two-step_pre btn-t" @click="previous('four')">上一步</button>                                                                                                                                    
+					<button class="two-step_next btn-t share-btn" @click="sharePic()" >分享</button>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+		
+		
+		
+		
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script src="https://g.alicdn.com/mcn/app-wechat-share/3.0.0/wechatShare.js"></script>
+	    <script>
+	    	var vueOption  = {
+	    		el:'#stationmaster_poster',
+	    		data:{
+	    			first:true,//控制第一步显示
+	    			commonpel:false,//公共部分
+	    			two:false,//控制第二步显示
+	    			three:false,//控制第三步显示
+	    			four:false,//控制第四步显示
+	    			name:'',//获取用户输入的姓名
+    				gender:'男',//获取用户输入的性别
+    				ismale:true,
+    				isfemale:false,
+    				startX:0,//触摸X位置
+    				startY:0,//触摸Y位置
+    				fingerX:0,//手指离调整框的X坐标
+    				fingerY:0,//手指离调整框的Y坐标
+    				moveX:0,//滑动时的X位置
+    				moveY:0,//滑动时的Y位置
+    				disX:0,//X移动距离
+    				disY:0,//Y移动距离
+    				items:[
+    					{txt:'',txtImg:'https://gw.alicdn.com/tfs/TB1HbENXL6H8KJjy0FjXXaXepXa-499-401.png',isDisplay:false,picClass:'txt-img01'},
+    					{txt:'',txtImg:'https://gw.alicdn.com/tfs/TB1I13PXH_I8KJjy1XaXXbsxpXa-436-406.png',isDisplay:false,picClass:'txt-img02'},
+    					{txt:'',txtImg:'https://gw.alicdn.com/tfs/TB1gwwOXRfH8KJjy1XbXXbLdXXa-502-391.png',isDisplay:false,picClass:'txt-img03'}
+    				]
+	    		},
+	    		methods:{
+	    			sexSelection:function(xib){
+	    				if(xib == '男'){
+	    					this.gender='男';
+	    					this.ismale = true;
+	    					this.isfemale = false;
+	    				}else if(xib == '女') {
+	    					this.gender='女';
+	    					this.ismale = false;
+	    					this.isfemale = true;
+	    				}
+	    			},
+	    			next:function(type){ //下一步
+	    				var name = this.name;
+	    				var reg = /^[\u4E00-\u9FA5]{1,4}$/; //判断1-4个汉字
+//	    				console.log(reg.test(name));
+	    				if(type == 'first') {
+	    					if(reg.test(name)){
+		    					//成功到下一步
+		    					this.first=false;
+		    					this.two=true;
+		    					this.commonpel=true;
+		    				}else {
+		    					//其它的任何情况都不行
+		    					var prompt = '<div class="prompt"></div>'
+		    					$('.first-step').append(prompt);
+		    					setTimeout(function(){
+		    						$('.prompt').remove();
+		    					},1200)
+		    				}
+	    				}else if(type == 'two' ) {
+	    					var userPic = $('.man-pic').attr('src');
+	    					if(userPic) {
+	    						this.two = false;
+	    						this.three = true;
+	    					}else{
+	    						$('.remen').show();
+	    						setTimeout(function(){
+	    							$('.remen').hide();
+	    						},2000)
+	    					}
+	    				}else if(type == 'three') {
+	    				    var userPic = $('.man-pic').attr('src');
+	    					if(userPic) {
+	    						this.three = false;
+        						this.four = true;
+        						$('.control').hide();
+        						$('.tanbox').show();
+        						$('.inp-anniu').hide();
+	    					}else{
+	    						$('.remen').show();
+	    						setTimeout(function(){
+	    							$('.remen').hide();
+	    						},2000)
+	    					}
+	    					
+	    				}
+	    				
+	    			},
+	    			previous:function(type){ //上一步
+	    				if(type == 'two') {
+	    					this.first=true;
+	    					this.two=false;
+	    					this.commonpel = false;
+	    				}else if(type == 'three') {
+	    					this.two = true;
+	    					this.three = false;
+	    				}else if(type == 'four') {
+	    					this.three = true;
+	    					this.four = false;
+	    					$('.control').show();
+	    					$('.inp-anniu').show();
+	    				}
+	    			},
+	    			arouse:function(){ //H5唤起相机
+	    				var fs=document.getElementById('file').files[0];
+					    if(fs){
+					        var reader=new FileReader();
+					        reader.readAsDataURL(fs);
+					        reader.onload=function(e){
+					            var pic = this.result;
+					            $('.man-pic').attr('src',pic);
+					            $('.control').show();
+					        }
+					    }
+	    			},
+	    			touchStar:function(ev,type) {
+	    				ev = ev || event
+	    				ev.preventDefault();
+	    				//tounches类数组，等于1时表示此时有只有一只手指在触摸屏幕
+	    				if(ev.touches.length == 1) {
+	    					//纪录开始位置
+	    					this.startX = ev.touches[0].clientX;
+    						this.startY = ev.touches[0].clientY;
+    						var marginLeft = $('.control').offset().left;
+							var marginTop = $('.control').offset().top;
+							this.fingerX = this.startX - marginLeft;
+							this.fingerY = this.startY- marginTop;
+    						console.log(this.startY)
+	    				}
+	    			},
+	    			touchMove:function(ev,type) {
+	    				ev = ev || event;
+	    				ev.preventDefault();
+	    				var controlW = $('.control').width();
+	    				var controlH = $('.control').height();
+	    				var picW = $('.man-pic').width();
+	    				var picH = $('.man-pic').height();
+	    				var marginLeft = $('.control').offset().left;
+    					var marginTop = $('.control').offset().top;
+    					var bodyW = $('body').width();
+    					var bodyH = $(window).height();
+	    				if(ev.touches.length == 1) {
+	    					this.moveX = ev.touches[0].clientX
+	    					this.moveY = ev.touches[0].clientY
+	    					this.disX = this.moveX-this.startX;
+	    					this.disY = this.moveY-this.startY;
+	    					if(type=='kuan') {
+	    						ev.stopPropagation();
+								if(this.disX>0){
+									$('.control,.man-pic').css('width',controlW-this.disX/50);
+		    						$('.control,.man-pic').css('left',marginLeft+this.disX/100);
+		    						console.log(controlW);
+		    						console.log(marginLeft);
+		    						if(marginLeft>=controlW*3 ) {
+		    							$('.control,.man-pic').css('width',controlW);
+		    							$('.control,.man-pic').css('left',marginLeft);
+		    						}
+		    						
+				    			}else if(this.disX<0) {
+				    				console.log(controlW);
+		    						console.log(marginLeft);
+		    						$('.control,.man-pic').css('width',controlW-this.disX/50);
+		    						$('.control,.man-pic').css('left',marginLeft+this.disX/100);
+				    				if(controlW+marginLeft>=bodyW-15) {
+		    							$('.control,.man-pic').css('width',controlW);
+		    							$('.control,.man-pic').css('left',marginLeft);
+		    						}		
+		    					}
+				    			return true;
+							}else if(type=='chang') {
+								ev.stopPropagation();
+								if(this.disY>0) {
+									$('.control,.man-pic').css('height',controlH+this.disY/50);
+		    						$('.control,.man-pic').css('top',marginTop-this.disY/100);
+		    						if(controlH>=marginTop*3) {
+		    							$('.control,.man-pic').css('height',controlH);
+		    						$('.control,.man-pic').css('top',marginTop);
+		    						}
+		    						
+		    						
+								}else if(this.disY<0) {
+		    						$('.control,.man-pic').css('height',controlH+this.disY/50);
+		    						$('.control,.man-pic').css('top',marginTop-this.disY/100);
+		    						if(marginTop>=controlH*3) {
+		    							$('.control,.man-pic').css('height',controlH);
+		    							$('.control,.man-pic').css('top',marginTop);
+		    						}
+								}
+								return true;
+							}else if (type == 'd-zoon') {
+								ev.stopPropagation();
+								if(this.disY>0 || this.disX>0) {
+//									console.log('wai')
+		    						$('.control,.man-pic').css({
+		    							'width':controlW+1,
+		    							'height':controlH+1,
+		    							'left':marginLeft-0.5,
+		    							'top':marginTop-0.5,
+		    						})
+		    						if(controlW>=marginLeft+marginLeft/2){
+		    							$('.control,.man-pic').css({
+			    							'width':controlW,
+			    							'height':controlH,
+			    							'left':marginLeft,
+			    							'top':marginTop,
+			    						})
+		    						}
+								}else if (this.disY<0 || this.disX<0){
+//									console.log('nei')
+		    						$('.control,.man-pic').css({
+		    							'width':controlW-1,
+		    							'height':controlH-1,
+		    							'left':marginLeft+0.5,
+		    							'top':marginTop+0.5,
+		    						})
+		    						if(marginLeft>=3*controlW) {
+		    							$('.control,.man-pic').css({
+			    							'width':controlW,
+			    							'height':controlH,
+			    							'left':marginLeft,
+			    							'top':marginTop,
+			    						})
+		    						}
+								}
+								return true;
+							}else if (type == 'movePic') {
+								ev.stopPropagation();
+								$('.control,.man-pic').css({
+									'left':this.moveX-this.fingerX,
+									'top':this.moveY-this.fingerY
+								})
+								return true;
+							}
+						
+	    					
+	    					
+	    				}
+	    			},
+	    			close:function(){
+	    				$('.man-pic').attr('src','');
+	    				$('.control').hide();
+	    			},
+	    			changTxt:function(index){
+	    				for(var i = 0; i < this.items.length;i++){
+	    					this.items[i].isDisplay=false;
+	    				}
+	    				this.items[index].isDisplay=true;
+	    				$('.tanbox').hide();
+	    				$('.anniu-four').show();
+	    			},
+	    			sharePic:function(){ //分享 
+	    			     $('.anniu-four').hide();
+	    			    //  $('.jiazbox').show();
+            	            if (cnact.browser.isGUOGUO) {
+            	                setTimeout(function(){
+                					var params = {
+                    	                "textContent": "",  //截图左下方要添加的文案
+                                        "imageUrl":"", //截图右下方要添加的图片的url
+                                        "isUseDiskUrl":true //是否将图片保存到本地，默认值true，默认存本地
+                    	            };
+                    	            window.WindVane.call('CNHybridCaptureView', 'captureView', params, function(e) {
+                                        // 	alert('success: ' + JSON.stringify(e));
+                                        // $('.jiazbox').hide();
+                                            var picUrl = e.data.captureViewUrl;
+                                            // alert(picUrl);
+                                            
+                                            var shareParam = {
+                				                type: 'image',  //纯图、纯文字、多媒体消息
+                				                text: '',
+                				                imageURL: picUrl,//纯图片分享的url
+                				                multimedia: {
+                				                   title: '',
+                				                   subTitle: '',
+                				                   thumbnail: '',  // 注意！需要传png格式链接（android）！！！多媒体分享的缩略图链接
+                				                   url: ''
+                				                }
+                				              };
+                				            
+                				              // 调用分享组件
+                				              lib.windvane.call('CNHybridGGShareBoard', 'share', {
+                				                shareData: [
+                				                   {
+                				                      name: 'QQ',
+                				                      param: shareParam
+                				                   },
+                				                   {
+                				                      name: 'Qzone',   //qq空间分享，param数据结构跟QQ一样
+                				                      param: shareParam
+                				                   },
+                				                   {
+                				                      name: 'Weixin',    //微信好友，param数据结构跟QQ一样, 括号中为专用参数
+                				                      param: shareParam //默认false，微信分享好友的时候，如果缩略图太长，会被替换成微信图标，这时候我们把缩略图压缩成方的
+                				                   },
+                				                   {
+                				                      name: 'WeixinMoments',    //param微信朋友圈，数据结构跟QQ一样
+                				                      param: shareParam
+                				                   }, 
+                				                   {
+                				                      name: 'DingTalk',    //param钉钉，数据结构跟QQ一样
+                				                      param: shareParam
+                				                   },
+                				                   {
+                				                      name: 'Weibo',
+                				                      param: shareParam //param微博，数据结构跟QQ一样,括号中为专用参数
+                				                   }
+                				                ]
+                				              }, function onSuccess(res) {
+                				              		
+                				              }, function onError(err) {
+                				                
+                				              });
+                                        	
+                                        }, function(e) {
+                                        	alert('failure: ' + JSON.stringify(e));
+                                        });
+                				},500)
+            	            }else {
+            	                $('.anniu-four').hide();
+                				$('.tanbox').show();
+                				$('.tanbox-img').hide();
+                				$('.share-pic').show();
+            	            }
+	    			},
+	    			shareClose:function() {
+	    				if($('.share-pic').hasClass() == 'hide') {
+	    					
+	    				}else {
+	    					$('.tanbox').hide();
+	    				}
+	    			}
+	    		},
+	    		mounted(){
+	    		    lib.mtop.config.prefix = 'apim';
+                    lib.mtop.config.subDomain = '';
+                    lib.mtop.config.mainDomain = 'cainiao.com';
+	    			$('body').on('touchmove',function(e){
+	    				e.preventDefault()
+	    			})
+	    			WechatApp({
+                      share : true,
+                      // debug : true,
+                      title: '标题啊啊啊啊啊啊啊啊啊',
+                      desc: '描述啊啊啊啊啊啊啊啊啊啊啊',
+                      link: "https://newconnection.cainiao.com/act/stationmaster_poster.html",
+                      img: 'https://gw.alicdn.com/tfs/TB15oZyRVXXXXaxXXXXXXXXXXXX-315-361.png',
+                      onSuccess: function () {
+                
+                      },
+                      onCancel: function () {
+                
+                      }
+                
+                    });
+	    		}
+	    	}
+	    	$(function(){
+				var vm = new Vue(vueOption)
+			})
+	    </script>
+	   
+	</body>
+</html>

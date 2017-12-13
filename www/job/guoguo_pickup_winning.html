@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟裹裹取件活动中奖</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 800 && (a = 800 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        img {
+          display: block;
+        }
+        a {
+          display: block;
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: none;
+        }
+        html {
+          width: 100%;
+          background: #2AD4F7;
+          margin: 0 auto;
+          position: relative;
+          font-family: "微软雅黑";
+        }
+        html body {
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        html body header img {
+          width: 100%;
+        }
+        html body .ticket {
+        	/*position: absolute;
+        	left: 0;
+        	top: 10.5333rem;
+        	right: 0;
+        	bottom: 1.6rem;*/
+          width: 100%;
+          margin: 0 auto;
+          overflow: hidden;
+          background: url('https://gw.alicdn.com/tfs/TB13CkyXjihSKJjy0FlXXadEXXa-750-405.png') no-repeat center center;
+          background-size: 100% 100%;
+        }
+        html body .ticket .t1{
+            display:none;
+            width:100%;
+            height:4rem;
+            line-height:4rem;
+            font-size:0.5rem;
+            color: #333;
+            text-align:center;
+            
+        }
+        html body .ticket .t_item {
+          width: 8.6667rem;
+          height: 2.69333rem;
+          margin: 0.4rem auto;
+          background: url('https://gw.alicdn.com/tfs/TB1x4MKXjihSKJjy0FeXXbJtpXa-650-202.png') no-repeat top center;
+          background-size: 100% auto;
+        }
+        .ticket li:first-child {
+        	margin-top: 0;
+        }
+        html body .ticket .t_item a {
+          font-size: 0;
+          vertical-align: top;
+          position: relative;
+          padding-right:0.266666rem;
+        }
+        html body .ticket .t_item a span {
+          display: inline-block;
+        }
+        html body .ticket .t_item a .t_name {
+          height: 1.33333333rem;
+          /*width: 5.8rem;*/
+          font-size: 0.48rem;
+          color: #fff;
+          line-height: 1.33333333rem;
+          vertical-align: top;
+          margin-left: 1.4rem;
+        }
+        html body .ticket .t_item a .t_value {
+            float:right;
+          height: 1.33333333rem;
+          /*width: 1.8rem;*/
+          /*margin-right:2rem;*/
+          font-size: 0.37333333rem;
+          color: #fff;
+          line-height: 1.33333333rem;
+          
+        }
+        html body .ticket .t_item a .t_value span {
+          font-size: 0.72rem;
+        }
+        html body .ticket .t_item a .t_value .v_icon {
+          display: block;
+          width: 0.66666667rem;
+          height: 0.82666667rem;
+          margin-top: 0.2rem;
+        }
+        html body .ticket .t_item a .t_comment_1 {
+          height: 0.66666667rem;
+          width: 6.09333333rem;
+          font-size: 0.32rem;
+          color: #be4500;
+          line-height: 0.93333333rem;
+          position: absolute;
+          top: 1.33333333rem;
+          left: 0.26666667rem;
+        }
+        html body .ticket .t_item a .t_comment_2 {
+          vertical-align: top;
+          height: 0.66666667rem;
+          width: 6.09333333rem;
+          font-size: 0.26666667rem;
+          color: #be4500;
+          line-height: 0.53333333rem;
+          position: absolute;
+          top: 2rem;
+          left: 0.26666667rem;
+        }
+        html body .ticket .t_item a ._btn {
+          display: inline-block;
+          width: 2.58666667rem;
+          height: 0.57333333rem;
+          position: absolute;
+          top: 1.73333333rem;
+          right: 0.2666rem;
+        }
+        .win_head img, .win_foot img {
+        	width: 100%;
+        	height: 1.6rem;
+        }
+		
+    </style>	
+</head>
+
+<body>
+    <header>
+    	<img src="https://gw.alicdn.com/tfs/TB1HgQkXaagSKJjy0FhXXcrbFXa-750-800.jpg"/>
+    </header>
+    <div class="win_head">
+    	<img src="https://gw.alicdn.com/tfs/TB1lFMvXjihSKJjy0FlXXadEXXa-750-120.png"/>
+    </div>
+    <ul class="ticket">
+    	<li class="t1">亲，您还没有中奖哦，快去取件吧！</li>
+    </ul>
+    <div class="win_foot">
+    	<img src="https://gw.alicdn.com/tfs/TB1egFTdwMPMeJjy1XbXXcwxVXa-750-120.png"/>
+    </div>
+    <script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+    <script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.0.10/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+    <script>
+        (function () {
+            // lib.mtop.config.prefix = 'apim';
+            // lib.mtop.config.subDomain = '';
+            // lib.mtop.config.mainDomain = 'cainiao.com';
+            
+            // 创建一个打点器实例, 此时库函数会自动发送一个名为showpage的action来记录页面的pv, uv
+            var logger = new cnact.logger({
+            
+                // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+                business: 'guoguo_pickup_winning_20170912',
+            
+                // 页面名, 使用拼音/英文进行命名
+                page: 'guoguo_pickup_winning'
+            });
+
+            // 设置右上角按钮  导航右上角规则文案
+            lib.windvane.call('CNHybridNavigationBar', 'setRightBarButton', {
+                showButton: false,
+                buttonText: ""
+            });
+            
+			lib.mtop.loginRequest({
+	            api: 'mtop.nbmarketcenter.lotteryservice.queryWinnerRecord',
+	            v: '1.0',
+	            data: {
+	            	activityKey:"activityKey_1504670849460,activityKey_1504670968944,activityKey_1504670989418,activityKey_1504684475227,activityKey_1504694844469,activtyKey_1504698069797,activityKey_1504698455508,activityKey_1504699006039,activityKey_1504699866386"
+	            },
+	            ecode: 1
+		        },function(res){
+					console.log(res.data.result,res.data.result.length);
+					var _rt = res.data.result;
+					var t_1 = $('.t1');
+					if( _rt.length === 0){
+    				     t_1.css('display','block');
+    			    }else{
+    			        t_1.css('display','none');
+    			    };
+					var tickets = [
+        				{'t_name':'驿站寄件优惠券','t_value':'7','t_comment_1':'仅限于驿站寄件使用','t_comment_2':'有效期至2017-08-21','t_link':'#'},
+        				{'t_name':'天猫超市日用百货券','t_value':'100','t_comment_1':'满 199 元减 100 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市日用百货券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市个护家清券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市休闲美味券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市休闲美味券','t_value':'100','t_comment_1':'满 199 元减 100 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市酒水饮料券','t_value':'100','t_comment_1':'满 199 元减 100 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市母婴用品券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市进口食品券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市大牌纸品个护券','t_value':'30','t_comment_1':'满 99 元减 30 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市乳品冲饮券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'天猫超市粮油调味券','t_value':'50','t_comment_1':'满 99 元减 50 元','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#'},
+        				{'t_name':'淘宝现金红包','t_value':'','t_comment_1':'无门槛现金，下单自动抵扣','t_comment_2':'打开淘宝-我的淘宝-卡券包查看','t_link':'#1'}
+    			    ];
+					for(var i = 0 ; i < _rt.length ; i++ ){
+					    
+					   // console.log(_rt[i].awardName);
+					   //console.log(_rt.length,"_rt.length");
+					    for(var j = 0 ; j < tickets.length ; j++ ){
+					       // console.log(tickets[j].t_name);
+					        if( _rt[i].awardName !== "淘宝现金红包"){
+					            if(_rt[i].awardName === tickets[j].t_name && _rt[i].awardValue === tickets[j].t_value){
+    					           //console.log(tickets[j],11);
+    					           //console.log(_rt[i],i,j);
+    					            var t_ul = document.getElementsByClassName('ticket')[0];
+    					            
+    					            var t_li = document.createElement("li");
+    					            t_li.setAttribute("class", "t_item");
+    					            t_ul.appendChild(t_li);
+    					            
+    					            var t_a = document.createElement("a");
+    					            t_a.setAttribute("href", _rt[i].guideUrl);
+    					            t_li.appendChild(t_a);
+    					            
+    					            var t_span_n = document.createElement("span");
+    					            t_span_n.setAttribute("class","t_name");
+    					            t_span_n.innerHTML = _rt[i].awardName ;
+    					            t_a.appendChild(t_span_n);
+    					            
+    					            var t_span_v = document.createElement("span");
+    					            t_span_v.setAttribute("class","t_value");
+    					            t_span_v.innerHTML = "￥";
+    					            t_a.appendChild(t_span_v);
+    					            
+    					            var _s = document.createElement("span");
+    					            _s.innerHTML = _rt[i].awardValue;
+    					            t_span_v.appendChild(_s);
+    					       
+    					            var t_span_c1 = document.createElement("span");
+    					            t_span_c1.setAttribute("class","t_comment_1");
+    					            t_span_c1.innerHTML = tickets[j].t_comment_1;
+    					            t_a.appendChild(t_span_c1);
+    					            
+    					            var t_span_c2 = document.createElement("span");
+    					            t_span_c2.setAttribute("class","t_comment_2");
+    					            t_span_c2.innerHTML = tickets[j].t_comment_2;
+    					            t_a.appendChild(t_span_c2);
+    					            
+    					            var _i = document.createElement("img");
+    					            _i.setAttribute("src","https://gw.alicdn.com/tfs/TB19LWiSFXXXXXTaXXXXXXXXXXX-194-43.png");
+    					            _i.setAttribute("class","_btn");
+    					            t_a.appendChild(_i);
+    					        } ;
+					        } else if( _rt[i].awardName === "淘宝现金红包") {
+					            if(_rt[i].awardName === tickets[j].t_name){
+					                // console.log(1);
+					                // console.log(i,"i",j,"j");
+					                var t_ul = document.getElementsByClassName('ticket')[0];
+    					            
+    					            var t_li = document.createElement("li");
+    					            t_li.setAttribute("class", "t_item");
+    					            t_ul.appendChild(t_li);
+    					            
+    					            var t_a = document.createElement("a");
+    					            t_a.setAttribute("href", _rt[i].guideUrl);
+    					            t_li.appendChild(t_a);
+    					            
+    					            var t_span_n = document.createElement("span");
+    					            t_span_n.setAttribute("class","t_name");
+    					            t_span_n.innerHTML = _rt[i].awardName ;
+    					            t_a.appendChild(t_span_n);
+    					            
+    					            var t_span_v = document.createElement("span");
+    					            t_span_v.setAttribute("class","t_value");
+    					            t_span_v.innerHTML = "<img class=\"v_icon\" src=\"https://gw.alicdn.com/tfs/TB1PLmdSFXXXXXyapXXXXXXXXXX-50-62.png\"/>";
+    					            t_a.appendChild(t_span_v);
+    					            
+    					            var t_span_c1 = document.createElement("span");
+    					            t_span_c1.setAttribute("class","t_comment_1");
+    					            t_span_c1.innerHTML = "无门槛现金，下单自动抵扣";
+    					            t_a.appendChild(t_span_c1);
+    					            
+    					            var t_span_c2 = document.createElement("span");
+    					            t_span_c2.setAttribute("class","t_comment_2");
+    					            t_span_c2.innerHTML = "打开淘宝-我的淘宝-卡券包查看";
+    					            t_a.appendChild(t_span_c2);
+    					            
+    					            var _i = document.createElement("img");
+    					            _i.setAttribute("src","https://gw.alicdn.com/tfs/TB19LWiSFXXXXXTaXXXXXXXXXXX-194-43.png");
+    					            _i.setAttribute("class","_btn");
+    					            t_a.appendChild(_i);
+    			
+					            }
+					           
+					        };
+					        
+					    }
+					}
+					
+		        },function(err){
+		          //  alert(JSON.stringify(err));
+		    });
+			
+			$('.ticket').on('click','a',function(e){
+			    logger.log('guoguo_pickup_winning_clk');
+                // e.preventDefault();
+                var _url = $(e.target).parent([a]).attr('href');
+                lib.windvane.call('CNHybridNavigator', 'openURL', {
+                    "url": "http://www.baidu.com"
+                }, function () {});
+                
+            });
+			
+			
+			
+			
+			
+		})();
+    </script>
+</body>
+
+</html>

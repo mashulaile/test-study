@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			.tabs {margin: 10px;}
+			.tabs-nav:before, .tabs-nav:after{ display:table; content:' ';}
+			.tabs-nav:after{ width:100%; clear:both; border-bottom:1px solid #47a3da;}
+			.tabs-nav li{ position:relative; float:left; margin-right:5px; border:1px solid #becbd2; border-bottom:none;}
+			.tabs-nav li.active:after{ position:absolute; bottom:-1px; width:100%; display:block; content:' '; border-bottom:1px solid #fff;}
+			.tabs-nav a{ display:block; padding:0 20px; line-height:30px; text-decoration:none; color:#000; font-size:14px;}
+			
+			.tabs-cnt{ padding:10px;}
+			.tabs-content{ display:none;}
+			.tabs-content:first-child{ display:block;}
+		</style>
+	</head>
+	<body>
+		<div class="tabs" id="tabs1">
+			<ul class="tabs-nav">
+				<li class="active"><a href="javascript:;">折扣</a></li>
+				<li><a href="javascript:;">活动</a></li>
+				<li><a href="javascript:;">优惠</a></li>
+				<li><a href="javascript:;">其他</a></li>
+			</ul>
+			<div class="tabs-cnt">
+				<div class="tabs-content">
+					11111
+				</div>
+				<div class="tabs-content">
+					2222
+				</div>
+				<div class="tabs-content">
+					3333
+				</div>
+				<div class="tabs-content">
+					4444
+				</div>
+			</div>
+		</div>
+		<script>
+			//面向过程的写法
+//			window.onload = function(){
+//				var oTabs = document.getElementById('tabs1');
+//				var aTabsNav = oTabs.querySelectorAll('.tabs-nav li');
+//				var aTabsCnt = oTabs.querySelectorAll('.tabs-content');
+//				
+//				for(var i = 0; i < aTabsNav.length; i++) {
+//					aTabsNav[i].index = i;
+//					aTabsNav[i].onclick = function() {
+//						for(var i = 0; i < aTabsNav.length; i++) {
+//							aTabsNav[i].className = '';
+//							aTabsCnt[i].style.display = 'none';
+//							
+//						}
+//						this.className = 'active';
+//						aTabsCnt[this.index].style.display = 'block'
+//					}
+//				}
+//			}
+			
+			//面向对象的写法 
+			function tabSwitch(id) {
+				var _this = this;
+				this.oTabs = document.getElementById(id);
+				this.aTabsNav = this.oTabs.querySelectorAll('.tabs-nav li');
+				this.aTabsCnt = this.oTabs.querySelectorAll('.tabs-content');
+				
+				for(var i = 0; i < this.aTabsNav.length; i++) {
+					this.aTabsNav[i].index = i;
+					this.aTabsNav[i].onclick = function() {
+						_this.tab(this);
+					}
+					
+				}
+			}
+			tabSwitch.prototype.tab = function(aTabsNav) {
+				for(var i = 0; i < this.aTabsNav.length; i++) {
+					this.aTabsNav[i].className='';
+					this.aTabsCnt[i].style.display='none';
+				}
+				aTabsNav.className='active';
+				this.aTabsCnt[aTabsNav.index].style.display='block';
+			}
+			new tabSwitch('tabs1');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Component-全局和局部组件</title>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+	</head>
+	<body>
+		<h2>Component-全局和局部组件</h2>
+		<hr />
+		<div id="app">
+			<mashu></mashu>
+			<haha></haha>
+		</div>
+		
+		
+		
+		<script>
+			Vue.component('mashu',{
+				template:'<div style="color:red">我是全局的mashu组件</div>'
+			})
+			var app = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				components:{
+					'haha':{
+						template:'<div style="color:green">我是局部的haha组件</div>'
+					}
+				}
+			
+			});
+			
+			
+		</script>
+	</body>
+</html>

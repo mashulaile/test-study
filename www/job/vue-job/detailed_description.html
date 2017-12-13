@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>详细说明</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+    	.txt {
+    		width: 85.4%;
+    		height: auto;
+    		padding: 4% 7.3% 0;
+    		margin: 0 auto;
+    		text-align: left;
+    		font-size: 0.34667rem;
+    		color: #666;
+    		line-height: 0.56rem;
+    	}
+    	.txt p {
+    		margin-bottom: 0.8rem;
+    	}
+    </style>
+	</head>
+	<body>
+		<div id="detailed">
+			<div class="txt">
+				<h3>裹裹“取件通知升级”功能说明：</h3>
+				<p>尊敬的用户，为防止短信骚扰及诈骗风险，提升您的用户体验，我们为您推出取件通知升级服务。</p>
+				<p>“取件通知升级”服务是指，当您的包裹进入菜鸟驿站，您不会再以短信通知形式获得取件码。您点击“取件通知升级”按钮后，如您需要获取菜鸟驿站包裹的取件码，您只能通过登录<span v-text=""></span>获取您的取件码。</p>
+				<p> 您勾选“取件通知升级”功能说明下方的“□”，即表示您已充分理解并仔细阅读本功能说明。你点击“确认”，即视为您同意进行取件通知升级，我们将为您取消取取件码短信通知，您将自本页面跳转进入升级成功页面。您点击“取消”，即视为您不同意进行取件通知升级，我们将为您保留取件码短信通知，本页面关闭。</p>
+				<p>如您因取件通知升级而取消取件码短信通知后，又需要重新恢复取件码短信通知，请至我的-设置-取件通知重新设置。</p>
+			</div>
+		</div>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+		<script>
+			var vueOption = {
+				el:'#detailed',
+				data:{
+					entrance:''
+				},
+				mounted:function(){
+					if (cnact.browser.isGUOGUO) {
+					    this.entrance = '菜鸟裹裹APP';
+					}else {
+						this.entrance = '淘宝APP'
+					}
+				}
+			};
+			$(function(){
+				var vm = new Vue(vueOption);
+			})
+		</script>
+	</body>
+</html>

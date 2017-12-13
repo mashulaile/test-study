@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>客户第一</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		 <script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+    		html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+    	html,body,fieldset,img,iframe,abbr{border:0;}
+    	img{display: block;width: 100%;}
+    	.box {
+    		width: 100%;
+    		height: 100%;
+    		overflow: hidden;
+    		text-align: center;
+    	}
+    	.box .modl {
+       		list-style: none;
+       		font-size: 0;
+       	}
+       	.box .modl li {
+       		position: relative;
+       		display: inline-block;
+       		width: 100%;
+       	}
+    	.pic {
+    		position: absolute;
+    		width: 100%;
+    		height: 100%;
+    	}
+    	/*.first {
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		margin: 0 auto;
+    		width: 10rem;
+    		height: 100%;
+    		overflow: hidden;
+    		background: url('https://gw.alicdn.com/tfs/TB1BrSgcGagSKJjy0FaXXb0dpXa-750-1190.jpg') no-repeat center center;
+    		background-size: 100% 100%;
+    		text-align: center;
+    	}*/
+    	.first>.btn {
+    		position: absolute;
+    		left: 50%;
+    		top: 7.42666rem;
+    		width: 8.38666rem;
+    		height: 1.21333rem;
+    		margin-left: -4.19333rem;
+    		border: none;
+    		background: url('https://gw.alicdn.com/tfs/TB1A8WncGagSKJjy0FgXXcRqFXa-629-91.png') no-repeat center center;
+    		background-size: 8.38666rem 1.21333rem;
+    	}
+    	.first>.btn>.btn_img {
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		width: 1.6rem;
+    		height: 1.21333rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1oRYUgMoQMeJjy0FpXXcTxpXa-120-91.png') no-repeat center center;
+    		background-size:1.6rem 1.21333rem ;
+    	}
+    </style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="modl">
+				<li class="first">
+					<img class="pic" src="https://gw.alicdn.com/tfs/TB1BrSgcGagSKJjy0FaXXb0dpXa-750-1190.jpg" />
+					<div class="btn">
+						<span class="btn_img"></span>
+					</div>
+				</li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB1CkzEcqagSKJjy0FhXXcrbFXa-1063-1890.jpg" /></li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB14fdXb2BNTKJjy0FdXXcPpVXa-1063-1890.jpg" /></li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB1QtbDczihSKJjy0FiXXcuiFXa-1063-1890.jpg" /></li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB1Iz3RgwMPMeJjy1XdXXasrXXa-1063-1890.jpg" /></li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB158YCczihSKJjy0FeXXbJtpXa-1063-1890.jpg" /></li>
+				<li class="action"><img class="pic" src="https://gw.alicdn.com/tfs/TB1ZdDKcqagSKJjy0FhXXcrbFXa-1063-1890.jpg" /></li>
+			</ul>
+			
+		</div>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+	    <script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script>
+	    	var btnWidth = $('.btn').width();
+			var btnImgWd = $('.btn_img').width();
+			var firstLi = document.querySelector('.first');
+			console.log(btnWidth)
+			
+			var lik = $(window).width();
+			var lih = $(window).height();
+	    	var i=0;
+	    	var li = $('.box .modl li');
+			var lic = li.length;
+			var ulk = lic*lik;
+			li.width(lik);
+			li.height(lih);
+			$('.box .modl').width(ulk);
+	    	$('.btn_img').on('touchstart',function(e){
+				e.preventDefault();
+				startX01 = e.originalEvent.targetTouches[0].pageX;
+//				console.log(startX);
+//				startY = e.originalEvent.changedTouches[0].pageY;
+			});
+			$('.btn_img').on('touchmove',function(e){
+				e.preventDefault();
+				moveEndX01 = e.originalEvent.targetTouches[0].pageX;
+//				$('.btn_img').css('left',moveEndX);
+// 				moveEndY = e.originalEvent.changedTouches[0].pageY,
+ 				X01 = moveEndX01-startX01;
+ 				if(X01<0) {
+ 					$('.btn_img').css('left',0);
+ 				}else if(X01>0 && X01+btnImgWd<btnWidth) {
+ 					$('.btn_img').css('left',X01);
+ 				}else if(X01+btnImgWd>=btnWidth-100) {
+ 					$('.btn_img').css('left',btnWidth-btnImgWd);
+ 				}
+ 				
+ 				
+   				
+			});
+			$('.btn_img').on('touchend',function(e){
+				e.preventDefault();
+				console.log(X01+btnImgWd)
+				console.log(btnWidth-100)
+				if(X01+btnImgWd<btnWidth-100) {
+ 					$('.btn_img').css('left',0);
+ 				}else if(X01+btnImgWd>=btnWidth-100) {
+ 					i++;
+ 					$('.btn_img').css('left',btnWidth-btnImgWd);
+ 					$('.box .modl li').animate({
+ 						left:-lik,
+ 					})
+ 					$('.btn_img').css('left',0);
+ 				}
+			})
+	    	
+	    	firstLi.ontouchstart=function(){
+        		return false;
+        	}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+			
+			$(".action").on("touchstart", function(e) {
+				 e.preventDefault();
+				 startX = e.originalEvent.targetTouches[0].pageX;
+//				 startY = e.originalEvent.changedTouches[0].pageY;
+//				console.log(startX,1);
+			});
+//			$('body').on("touchmove",function(e){
+//				 e.preventDefault();
+//				 startX = e.originalEvent.targetTouches[0].pageX;
+//				 li.css("left",startX);
+//			})
+			$(".action").on("touchend", function(e) {
+				
+				
+				 e.preventDefault();
+				 moveEndX = e.originalEvent.changedTouches[0].pageX;
+//				 moveEndY = e.originalEvent.changedTouches[0].pageY;
+//				 console.log(moveEndX,2);
+				 X = moveEndX - startX;
+//				 Y = moveEndY - startY;
+				  
+				 if ( X > 0 ) {
+				 	if(i>0){
+				 		i--;				 	
+	//				  console.log('往右走');
+//						console.log(i,'f');
+						move();
+				 	}
+				}
+				 else if ( X < 0 ) {
+				 	if(i<lic-1){
+				 		i++;
+			 			move();
+				 	}
+				 }
+			});
+			function move() {
+				li.animate({
+		   			left:-lik*i,
+		  		})
+			}
+	    </script>
+	</body>
+</html>

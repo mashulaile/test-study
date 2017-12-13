@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串的扩展</title>
+	</head>
+	<body>
+            es6<br/>
+            includes()：返回布尔值，表示是否找到了参数字符串。<br/>
+            startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。<br/>
+            endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。<br/>
+            这三个方法都支持第二个参数，表示开始搜索的位置。<br/>
+            使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。
+            <hr/>
+            <h2>repeat()</h2>
+            <p>repeat方法返回一个新字符串，表示将原字符串重复n次。</p>
+            <p>参数如果是小数，会被取整。</p>
+            <p>如果repeat的参数是负数或者Infinity，会报错。</p>
+            <p>但是，如果参数是 0 到-1 之间的小数，则等同于 0，这是因为会先进行取整运算。0 到-1 之间的小数，取整以后等于-0，repeat视同为 0。</p>
+            <p>参数NaN等同于 0。</p>
+            <p>如果repeat的参数是字符串，则会先转换成数字。</p>
+            <hr>
+            <h2>padStart()，padEnd()</h2>
+            <p>padStart和padEnd一共接受两个参数，第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。</p>
+            <hr/>
+            <h2>模板字符串</h2>
+            <div id="result"></div>
+            <div id="result2"></div>
+            <div id="result3"></div>
+            <div id="list"></div>
+        <script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+        <script>
+            var s = {
+                name:'mashu',
+                age:18,
+                ares:'chibi'
+            }
+			for (let i in s) {
+                console.log(s[i]);//输出mashu,18,chibi
+            }
+
+            for (let i of 'foo') {
+                console.log(i) //输出f,o,o
+            }
+            for (let i of [1,2,3,4]) {
+                console.log(i) //输出1,2,3,4
+            }
+
+            // at()
+            console.log('abc'.charAt(0)); //输出的是a
+            // console.log('马'.charAT(0));//报错
+
+            let str = 'hello world!';
+            console.log(str.indexOf('l'));//返回的是下标，有相同的就返回从左往右最近的下标，没有就返回-1
+
+            
+            console.log(str.startsWith('h')); //返回true
+            console.log(str.startsWith('e'));//返回false
+            console.log(str.startsWith('hello'));//返回true
+
+            console.log(str.includes('w'));//返回true
+            console.log(str.endsWith('!'));//返回true
+
+            console.log(str.startsWith('world',6)) //返回true
+            console.log(str.endsWith('hello',5));//返回true
+            console.log(str.includes('hello',6));//返回false
+
+
+            console.log('x'.repeat(3));//输出xxx
+            console.log('mashu'.repeat(2));//输出mashumashu
+            console.log('na'.repeat(0));//输出“ ”
+            console.log('na'.repeat(2.9));//输出nana
+            // console.log（'na'.repeat(-1);//报错
+
+            console.log('x'.padStart(5,'ab'));//输出ababx
+            console.log('x'.padEnd(5,'ab'));//输出xabab
+            // 如果原字符串的长度，等于或大于指定的最小长度，则返回原字符串。
+            console.log('xxx'.padStart(2,'ab'));//输出'xxx'
+            console.log('xxx'.padEnd(2,'ab'));//输出xxx
+            // 如果用来补全的字符串与原字符串，两者的长度之和超过了指定的最小长度，则会截去超出位数的补全字符串
+            console.log('abc'.padStart(10,'0123456789'));//输出0123456abc
+            // 如果省略第二个参数，默认使用空格补全长度。
+            console.log('x'.padStart(4));//输出“    x”
+
+
+            // 模板字符串
+            // 传统的写法
+            var basket = {
+                name:'马叔',
+                age:20
+            };
+            $('#result').append(
+                '这是常规的写法'+
+                '他的名字叫 <b>'+basket.name+'</b>'+
+                '他的年龄是<em>'+basket.age+'</em>'
+            )
+            // es6的写法
+            $('#result2').append(`
+                这是es6的写法，
+                他的名字叫<b>${basket.name}</b>,
+                他的年龄是<em>${basket.age}</em>
+            `)
+
+            let mingzi = 'bob', time = 'today';
+            $('#result3').append(`
+                Hello ${mingzi},how are you ${time}?
+            `)
+
+            $('#list').html(`
+                <ul>
+                    <li>first</li>
+                    <li>second</li>
+                </ul>
+            `.trim())
+
+            let x = 1, y = 2;
+            let add = `${x} + ${y} = ${x+y}`
+            console.log(add);    
+
+            function fn() {
+                return 'Hello World';
+            }    
+            let abc = `foo ${fn()} bar`;
+            console.log(abc);
+		</script>
+	</body>
+</html>

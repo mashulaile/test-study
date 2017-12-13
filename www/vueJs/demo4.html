@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script>
+			var data = {a:1}
+			var vm = new Vue({
+				el:'#app',
+				data:data,
+				created:function(){
+					console.log("a is=" + this.a);
+				}
+			});
+			
+			
+			
+			
+			vm.$data === data;
+			vm.$watch('a',function(newVal,oldVal){
+				//这个回调函数将在vm.a改变后调用
+				console.log("newVal=",newVal);
+				console.log("oldVal=",oldVal);
+			});
+		</script>
+	</body>
+</html>

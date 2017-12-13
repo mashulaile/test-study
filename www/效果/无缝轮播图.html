@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul li{list-style: none;}
+			.banner{
+				position: absolute;top:20px;left: 50%;margin-left:-240px;width: 480px;height: 300px;overflow: hidden;
+			}
+			.list_img_ul{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 300px;
+			}
+			.list_img_ul li{
+				float: left;
+				width: 480px;
+				height: 300px;
+			}
+			.list_dian{
+				position: absolute;bottom: 10px;left: 0;width: 100%;overflow: hidden;z-index: 10;text-align: center;
+			}
+			.list_dian li{
+				display: inline-block;width: 15px;height: 15px;border-radius: 50%;background: #000000;margin-right: 10px;overflow: hidden;
+			}
+			a{display: inline-block;width: 30px;height: 50px;font-size: 40px;font-weight: bold;position: absolute;top: 50%;margin-top: -25px;line-height: 50px;text-align: center;color: #fff;cursor: pointer;}
+			.prev{left: 0;}
+			.next{right: 0;}
+			.on{background: red!important;}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="list_dian">
+					<li class="on"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+			</ul>
+			<div class="list_img">
+				<ul class="list_img_ul">
+					<li><img src="img/1.jpg"/></li>
+					<li><img src="img/2.jpg"/></li>
+					<li><img src="img/3.jpg"/></li>
+					<li><img src="img/4.jpg"/></li>
+					<li><img src="img/5.jpg"/></li>
+				</ul>
+			</div>
+			<a class="prev"><</a>
+			<a class="next">></a>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+			var index = 0,
+				timer = null;
+			var pic_width = $(".banner").width();//获取焦点图的宽度
+			var len = $(".list_img_ul li").length
+//			alert(pic_width);
+
+			//所以这里需要计算出外围ul元素的宽度
+			$(".list_img_ul").css("width",pic_width * (len +1));
+			//开启定时器
+			timer=setInterval(play,1500);
+			//定时器函数
+			 function play (){
+			 	index=index+1;
+			 	if(index==len){
+			 		changes()
+			 		index=0;
+			 	}else{
+			 		change(index);
+			 	}
+			 }
+			 //显示图片函数，根据接收的index值显示相应的内容
+			 function change(x_index){
+			 	console.log(1);
+			 	var ll = -pic_width*x_index+"px";
+			 	$(".list_img_ul").stop().animate({left:ll},1000)
+			 	$(".list_dian li").removeClass("on").eq(x_index).addClass("on");
+			 }
+			 
+			 //最后一张图自动切换到第一张图时专用
+			 function changes(){
+			 	console.log(2);
+			 	$(".banner .list_img_ul").append($(".banner .list_img_ul li:first").clone());
+			 	var now_left = -len*pic_width;
+			 	$(".list_img_ul").stop().animate({"left":now_left},1000,function(){
+			 		$(".list_img_ul").css("left","0");
+			 		$(".list_img_ul li:last").remove();
+			 	});
+			 	$(".list_dian li").removeClass("on").eq(0).addClass("on");
+			 }
+			 //滑动到原点出现对应的图片
+			 for(var i=0;i<$(".list_dian li").length;i++){
+			 	$(".list_dian li").eq(i).click(function(){
+					index = $(".list_dian li").index(this);
+					change(index);
+			 	})
+			 }
+			 //左点击换图片
+			 $(".prev").click(function(){
+			 	index=index-1;
+			 	if(index<0){
+			 		index=$(".list_img_ul li").length-1
+			 		
+			 	}
+			 	change(index);
+			 })
+			 //右点击换图片
+			 $(".next").click(function(){
+			 	clearInterval(timer);
+			 	index = index+1;
+			 	if(index==$(".list_img_ul li").length){
+			 		changes();
+			 		index=0;
+			 	}else{
+			 		
+			 		change(index);
+			 	}
+			 	
+			 	
+			 })
+			 //鼠标悬浮在banner上定时器停止，移开时播放
+			 $(".banner").hover(function(){
+			 	clearInterval(timer);
+			 },function(){
+			 	timer=setInterval(play,1500);	
+			 })
+		</script>
+	</body>
+</html>

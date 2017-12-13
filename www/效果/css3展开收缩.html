@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				display: block;
+				position: relative;
+				width: 200px;
+				height: 200px;
+				background: red;
+				
+			}
+			@-webkit-keyframes name1{
+				from{height: 200px;}
+				to{height: 0;}
+			}
+			@-webkit-keyframes name2{
+				from{height: 0;}
+				to{height: 200px;}
+			}
+			.off{
+				animation: name1 1s forwards;
+			}
+			.on{
+				animation: name2 1s forwards;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn">收起</button>
+		<button class="btn2">展开</button>
+		<div class="box"></div>
+		
+	</body>
+	<script type="text/javascript" src="js/jquery.js" ></script>
+	<script>
+		$('.btn').click(function(){
+			$('.box').addClass('off').removeClass('on');
+			
+		})
+		$('.btn2').click(function(){
+			
+			$('.box').addClass('on').removeClass('off');
+			
+		})
+	</script>
+</html>

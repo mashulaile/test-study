@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>let 和 const 命令</title>
+	</head>
+	<body>
+		<script>
+//			{
+//				let a = 10;
+//				var b = 1;
+//			}
+//			console.log(b);
+//			console.log(a);//报错
+			
+//			var a = [];
+//			for (var i = 0; i < 10; i++) {
+//				a[i] = function(){
+//					console.log(i);
+//				};
+//				
+//			}
+//			a[6]();//输出的是10
+			
+//			var a = [];
+//			for (let i = 0; i < 10; i++) {
+//				a[i] = function () {
+//					console.log(i);
+//				};
+//			}
+//			a[6]();//输出的是6
+
+//			es6中基本上强制规定了,在没有声明一个变量之前是不能用这个变量的,
+//			console.log(foo); // 输出undefined
+//			var foo = 2;
+//			console.log(bar); // 报错ReferenceError
+//			let bar = 2;
+//			function bar(x = y, y = 2) {
+//				return [x,y];
+//			}
+//			bar();//报错
+			
+//			function bar(x = 2, y = x) {
+//				return [x,y];
+//			}
+//			bar();
+			
+//			function demo() {
+//				console.log('I am outside!');
+//			}
+//			(function(){
+//				if(true) {
+//					function f() {
+//						console.log('I am inside!');
+//					};
+//				}
+//				demo()
+//			}());
+			
+			const PI = 3.1415; //常量，声明之后就不能更改了
+			console.log(PI);
+			PI = 3;
+			console.log(PI);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

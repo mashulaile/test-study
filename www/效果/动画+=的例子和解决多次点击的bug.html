@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			
+			
+		}
+	</style>
+	<body>
+		<div id="box">
+			
+		</div>
+		<button class="aa" style="margin-top: 150px;">前进</button>
+		<button class="bb" style="margin: 150px 0 0 150px;">后退</button>
+		
+		
+		<script src="js/jquery.js"></script>
+		<script>
+//			第一种方法
+			var timer = true;
+			$(".aa").click(function(){
+				if(timer){
+					timer = false;
+					$("#box").stop(true,false).animate({left:"+=100"},1000,function(){
+						timer = true;
+					});
+				}
+					
+				
+				
+//			第二种方法	
+			})
+			$(".bb").click(function(){
+				if(!$("#box").is(":animated")){
+					$("#box").stop().animate({left:"-=100"},1000);
+				}
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    	<meta name="format-detection" content="telephone=no" >
+		<title>手机端滑动</title>
+	</head>
+	<style>
+		*{ margin:0px; padding:0px; }
+		.box {
+			/*width: 90%;*/
+			overflow: hidden;
+			
+		}
+       	.box .modl {
+       		width: 1500px;
+       		list-style: none;
+       		font-size: 0;
+       	}
+       	.box .modl li {
+       		position: relative;
+       		display: inline-block;
+       		width: 100%;
+       		height: 300px;
+       		/*margin-right: 10px;
+       		border:1px solid red;*/
+       		line-height: 300px;
+       		text-align: center;
+       		color: red;
+       		font-size: 40px;
+       	}
+       	.box .list {
+       		position: absolute;
+       		top: 10px;
+       		left: 40%;
+       		list-style: none;
+       		font-size: 0;
+       		overflow: hidden;
+       	}
+       	.box .list li {
+       		/*position: absolute;
+       		top: 10px;
+       		left: 100px;*/
+       		display: inline-block;
+       		width: 15px;
+       		height: 15px;
+       		margin-right: 10px;
+       		border-radius: 100%;
+       		background: #333;
+       	}
+       	.on {
+       		background: #fff!important;
+       	}
+	</style>
+	<body>
+		
+		<div class="box">
+			<ul class="modl">
+				<li style="background: #ddd;">1</li>
+				<li style="background: #000;">2</li>
+				<li style="background: #666;">3</li>
+				<li style="background: #999;">4</li>
+			</ul>
+			<ul class="list">
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		
+		
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script>
+			var li = $('.box .modl li');
+			var lik = $(window).width();
+			var lic = li.length;
+			var i=0;
+			var ulk = lic*lik;
+			li.width(lik);
+			$('.box .modl').width(ulk);
+			$("body").on("touchstart", function(e) {
+				 e.preventDefault();
+				 startX = e.originalEvent.targetTouches[0].pageX;
+//				 startY = e.originalEvent.changedTouches[0].pageY;
+				console.log(startX,1);
+			});
+//			$('body').on("touchmove",function(e){
+//				 e.preventDefault();
+//				 startX = e.originalEvent.targetTouches[0].pageX;
+//				 li.css("left",startX);
+//			})
+			$("body").on("touchend", function(e) {
+				
+				
+				 e.preventDefault();
+				 moveEndX = e.originalEvent.changedTouches[0].pageX;
+//				 moveEndY = e.originalEvent.changedTouches[0].pageY;
+				 console.log(moveEndX,2);
+				 X = moveEndX - startX;
+//				 Y = moveEndY - startY;
+				  console.log(X,3);
+				 if ( X > 0 ) {
+				 	if(i>0){
+				 		i--;				 	
+	//				  console.log('往右走');
+//						console.log(i,'f');
+						move();
+				 	}
+				}
+				 else if ( X < 0 ) {
+				 	if(i<lic-1){
+				 		i++;
+//				 		console.log(i,"z");
+				 		move();
+				 	}
+				 }
+			});
+			function move() {
+				$('.box .list li').removeClass('on').eq(i).addClass('on');
+				 		li.animate({
+				   			left:-lik*i,
+				  		})
+			}
+		</script>
+	</body>
+</html>

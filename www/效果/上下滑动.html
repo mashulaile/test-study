@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale = 1,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+		<title>移动端一屏一滑效果</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			
+			.wrap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.wrap img {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.wrap .containerbox {
+				position: relative;
+			}
+			
+			.wrap .containerbox .page {
+				display: inline-block;
+				position: relative;
+				float: left;
+				width: 100%;
+				height: 667px;
+				/*top: 0;*/
+				/*position: absolute;*/
+				/*bottom: 0;
+	left: 0;*/
+			}
+			
+			.wrap .containerbox .page .pagecode {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				z-index: 101;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<ul class="containerbox">
+				<li class="page page1" style="background: url(img/page1.jpg) no-repeat center center;background-size: 100% 100%">
+
+				</li>
+				<li class="page page2" style="background: url(img/page2.jpg) no-repeat center center;background-size: 100% 100%">
+
+				</li>
+				<li class="page page3" style="background: url(img/page3.jpg) no-repeat center center;background-size: 100% 100%">
+
+				</li>
+				<li class="page page4" style="background: url(img/page4.jpg) no-repeat center center;background-size: 100% 100%">
+
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script>
+			var i = 0;
+			var windowHeight = $(window).height();
+			var length = $(".containerbox li").length
+			console.log(length * windowHeight);
+			$(".containerbox").css("height", windowHeight * length + 'px')
+			$body = $(".pagebox");
+			console.log($(window).height() / 2); //627
+			// console.log($('body').height()); //0
+			$body.css("height", windowHeight); //重要代码
+			$(".containerbox li").on("touchstart", function(e) {
+				e.preventDefault();
+				startX = e.originalEvent.changedTouches[0].pageX,
+					startY = e.originalEvent.changedTouches[0].pageY;
+			});
+			$(".containerbox li").on("touchmove", function(e) {
+				e.preventDefault();
+				moveEndX = e.originalEvent.changedTouches[0].pageX,
+					moveEndY = e.originalEvent.changedTouches[0].pageY,
+					X = moveEndX - startX,
+					Y = moveEndY - startY;
+				console.log(Y, "y");
+				//			   var index = $(this).index();
+				//			    	$(".containerbox li").eq(index).css("top",Y);
+
+			});
+
+			$(".containerbox li").on("touchend", function(e) {
+
+				e.preventDefault();
+				moveEndX = e.originalEvent.changedTouches[0].pageX,
+					moveEndY = e.originalEvent.changedTouches[0].pageY,
+					X = moveEndX - startX,
+					Y = moveEndY - startY;
+				//			    var index = $(this).index();
+
+				if(Y < -windowHeight / 2) {
+					i++;
+					console.log("上移123");
+					//				        console.log(i,"i");
+					$(".containerbox li").animate({
+						top: -windowHeight * (i)
+					})
+
+					//				       
+				} else if(Y > windowHeight / 2) {
+					i--;
+					console.log("下移");
+					$(".containerbox li").animate({
+						top: -windowHeight * (i)
+					})
+
+				} else {
+
+					//				    	$(".containerbox li").eq(index).animate({
+					//				        	top:''
+					//				        })
+				}
+
+			})
+
+			function move(index) {
+
+				var aaa = $(window).width();
+				console.log(aaa);;
+				$(".containerbox").eq(index).animate({
+					left: -aaa + "px"
+				})
+
+			}
+		</script>
+	</body>
+
+</html>

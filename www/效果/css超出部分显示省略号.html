@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				width: 100px;
+				height: 32px;
+				line-height: 16px;
+			}
+			/*单行文本的溢出显示省略号*/
+			.p1{
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			/*多行文本溢出显示省略号*/
+			.p2{
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;  /*控制行数的*/
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="p1">发热哦官话套话怪哦认同 对不符合牛铁汉味儿管他</p>
+		<p class="p2">efr个热敷 顾问费 gregarious通过发额额第二发热过热热狗热高热恶妇二分法ew</p>
+		
+		
+		
+	</body>
+</html>

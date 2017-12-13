@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			.video{
+				position: relative;
+				width: 500px;
+				height: 300px;
+			}
+			.shipin{
+				width: 500px;
+				height: 300px;
+			}
+			.btn{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -25px 0 0 -25px;
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="video" data-index=0>
+			<video class="shipin" src="img/2.mp4" ></video>
+			<div class="btn">
+				<img src="https://gw.alicdn.com/tfs/TB1e2xIQpXXXXaiXpXXXXXXXXXX-49-49.png" />
+			</div>
+		</div>
+		<div class="video" data-index=1>
+			<video class="shipin" src="img/2.mp4" ></video>
+			<div class="btn">
+				<img src="https://gw.alicdn.com/tfs/TB1e2xIQpXXXXaiXpXXXXXXXXXX-49-49.png" />
+			</div>
+		</div>
+		
+	</body>
+	<script src="js/jquery.js"></script>
+	<script>
+		setTimeout(function(){
+			var aaa = document.getElementById("cli_dialog_div");
+		if(aaa){
+			$(aaa).remove();
+		}
+		},3000);
+		
+//		多个点击
+		$(".video").click(function(e){
+			var index = parseInt($(e.currentTarget).attr("data-index"));
+//			var target_index = $(e.currentTarget).attr("data-targetid");
+			console.log(1,index);
+//			console.log(2,target_index);
+			var len = $('video').length;
+//			console.log(len);
+			for(var i=0;i<len;i++){
+				var aaa = $(".video").eq(i).data("index")
+				console.log(2,aaa);
+				if(index == aaa){
+					if(document.getElementsByTagName('video')[i].paused){
+						for(var j=0;j<len;j++){
+							document.getElementsByTagName('video')[j].pause();
+						}
+						document.getElementsByTagName('video')[i].play();
+						$(".btn").eq(i).hide();
+						$(".btn").eq(i).parent().siblings().find(".btn").show();
+					}else{
+						document.getElementsByTagName('video')[i].pause();
+						$(".btn").eq(i).show()
+					}
+					break;
+				}
+			}
+		});
+		
+//		单个点击
+//		$(".video").click(function(){
+//			if($(".video").data("index") == 1){
+//				
+//				document.getElementsByTagName('video')[0].pause();
+//				$(".btn").show();
+//				$(this).data("index",0);
+//			}else{
+//				document.getElementsByTagName('video')[0].play();
+//				$(".btn").hide();
+//				$(this).data("index",1);
+//			}
+//		})
+		
+		
+		
+		
+		
+	</script>
+</html>

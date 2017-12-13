@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件处理器</title>
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<!--监听事件-->
+		<div id="app1">
+			<button v-on:click="counter += 1">增加1</button>
+			<p>这个按钮被点击了{{counter}}次</p>
+		</div>
+		
+		<!--方法事件处理器-->
+		<div id="app2">
+			<!-- `greet` 是在下面定义的方法名 -->
+			<button v-on:click="greet">Greet</button>
+		</div>
+		
+		<!--内联处理器方法-->
+		<div id="app3">
+			<button v-on:click="say('hi')">Say hi</button>
+			<button v-on:click="say('what')">Say what</button>
+		</div>
+		
+		<!--事件修饰符-->
+		<div id="app4">
+			<!-- 阻止默认事件 -->
+			<!--<a href="http://www.baidu.com" v-on:click.prevent="dothis">阻止单击事件冒泡</a>-->
+			<!-- 阻止单击事件冒泡 -->
+			<!--<a v-on:click.stop="doThis"></a>-->
+			<!-- 提交事件不再重载页面 -->
+			<!--<form v-on:submit.prevent="onSubmit"></form>-->
+			<!-- 修饰符可以串联  -->
+			<!--<a v-on:click.stop.prevent="doThat"></a>-->
+			<!-- 只有修饰符 -->
+			<!--<form v-on:submit.prevent></form>-->
+			<!-- 添加事件侦听器时使用事件捕获模式 -->
+			<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+			<!--<div v-on:click.capture="doThis">...</div>-->
+			<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+			<div v-on:click.self="doThat">{{message}}</div>
+		</div>
+		
+		
+		
+		<script>
+			     
+			var app = new Vue({
+				el:'#app1',
+				data:{
+					counter:0
+				}
+			});
+			
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					name:'mashu'
+				},
+				methods:{
+					greet:function(){
+						// `this` 在方法里指当前 Vue 实例
+						alert('Hell'+this.name+'!');
+					}
+				}
+			});
+			// 也可以用 JavaScript 直接调用方法
+//			app2.greet();
+
+			var app3 = new Vue({
+				el:'#app3',
+				methods:{
+					say:function(message) {
+						alert(message);
+					}
+				}
+			});
+			var app4 = new Vue({
+				el:'#app4',
+				data:{
+					message:'马叔'
+				},
+				methods:{
+					doThat:function(){
+						alert('文本改变了');
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

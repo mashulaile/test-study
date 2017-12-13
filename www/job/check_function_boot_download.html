@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>菜鸟裹裹APP-阿里巴巴菜鸟网络官方物流APP</title>
+	<meta name="aplus-terminal" content="1">
+	<meta name="spm-id" content="a2d0d">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<style>
+		*{margin:0}
+		html{max-width:100%;margin:auto;position:relative;background:#e8f4ff}
+		.imgcontain{margin:auto;display:block;width:100%}
+		a{text-decoration:none}
+		
+		.footer{position:fixed;bottom:0;width:100%;height:95px;background:#4c7cde;z-index:200;display:none;opacity:1;transition:300ms all;transform:translate3d(0,30px,0)}
+		.footer.in{opacity:1;transform:translate3d(0,0,0)}
+		.footer .downLnk-btn{display:block;width:94%;height:40px;line-height:40px;margin:12.5px auto;text-align:center;border-radius:4px;background-color:#fdb738;color:#fff;font-size:16px}
+		
+		.footer .info{font-size:12px;color:#fff;text-align:center}
+	</style>
+</head>
+<body data-spm="8415786">
+	<div class="container">
+		<div class="">
+			<img src="https://gw.alicdn.com/tfs/TB1hZ2Zd3oQMeJjy0FnXXb8gFXa-750-1205.jpg" class="imgcontain"/>
+			<img src="https://gw.alicdn.com/tfs/TB1sZvYd3MPMeJjy1XbXXcwxVXa-750-1206.jpg" class="imgcontain"/>
+			<img src="https://gw.alicdn.com/tfs/TB1G224d3oQMeJjy0FoXXcShVXa-750-1207.jpg" class="imgcontain"/>
+			<img src="https://gw.alicdn.com/tfs/TB1qsvYd3MPMeJjy1XbXXcwxVXa-750-1396.jpg" class="imgcontain"/>
+			
+		</div>
+		<div id="J_footer" class="footer">
+			<a href="javascript:;" id="J-downLnk" class="downLnk-btn">
+				<span>马上体验更多功能</span>
+			</a>
+			<div class="info">菜鸟网络官方出品</div>
+		</div>
+		
+	</div>
+	<script src="//g.alicdn.com/ccc/m-lib/1.0.2/zepto.js"></script>
+	<script src="//g.alicdn.com/mcn/cnact/1.0.2/cnact.js"></script>
+	<script charset="utf-8" src="//g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-mtop/2.0.10/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.0/login.js,mtb/lib-mtop/2.3.16/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+
+	<script>
+	    
+        
+        // 创建一个打点器实例, 此时库函数会自动发送一个名为showpage的action来记录页面的pv, uv
+        var logger = new cnact.logger({
+        
+            // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+            business: 'check_function_boot_download_20170915',
+        
+            // 页面名, 使用拼音/英文进行命名
+            page: 'check_function_boot_download'
+        });
+        
+		(function () {
+		    var i = cnact.utils.parseUrlQuery();
+			var j = i.source || "";
+			var g = function () {
+				var a = document.getElementById("J_footer");
+				var b = $(a);
+				b.on("click", function () {
+				    
+				    logger.log('check_function_boot_download_btn');
+				    cnact.downloader.downloadGuoguo(j)
+				    // cnact.guoguo.download(j)
+				});
+				b.show();
+				a.offsetWidth;
+				b.addClass("in");
+			};
+            if(!i.notshow){
+			    g()
+			}
+			
+			
+			
+			
+			
+      
+      
+      
+      
+      
+      
+		})();
+	</script>
+</body>
+</html>

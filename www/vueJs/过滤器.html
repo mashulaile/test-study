@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>VueJs过滤器</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message | capitalize | reverse}}
+		</div>
+		
+		
+		
+		<script>
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'mashu'
+				},
+				filters:{
+					capitalize:function(value) {
+						if(!value) return ''
+						value = value.toString()
+						return value.charAt(0).toUpperCase() + value.slice(1)
+					},
+					reverse:function(value){
+						return value.split('').reverse().join('');
+					}
+				}
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

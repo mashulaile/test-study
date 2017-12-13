@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>增加数据</title>
+		<script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+		<style>
+			*{padding: 0;margin: 0;}
+			body {}
+			input {outline: none;}
+			ul li {list-style: none;display: inline-block;}
+			#app {
+				margin: 50px auto;
+				max-width: 640px;
+			}
+			.fieldset {
+				padding: 15px;
+				border: 1px solid #BCBCBC;
+			}
+			.form-group {
+				margin: 10px;
+			}
+			.form-group>label {
+				display: inline-block;
+				width: 150px;
+				text-align: right;
+				
+			}
+			.form-group > input {
+				display: inline-block;
+				height: 20px;
+				line-height: 20px;
+			}
+			input[type=text] {
+				border: 1px solid #ccc;
+				padding: .5rem .3rem;
+			}
+			button {
+				outline: none;
+				padding: 5px 8px;
+				color: #FFFFFF;
+				border: 1px solid #BCBCBC;
+				border-radius: 3px;
+				background-color: #009A61;
+				cursor: pointer;
+			}
+			.list,.head {width: 100%;font-size: 0;}
+			ul:nth-of-type(odd) {
+				background: #eee;
+			}
+			.list ul li {
+				width: 19.751%;
+				height: 30px;
+				border: .5px dashed #BCBCBC;
+				text-align: center;
+				line-height: 30px;
+				font-size: 16px;
+			}
+			.head>ul>li {
+				
+				font-weight: bold;
+				background: #42B983;
+				color: #FFFFFF;
+			}
+			.list_item>.txt {
+				width: 100%;
+				padding: 30px 0;
+				font-size: 18px;
+				text-align: center;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="fieldset">
+				<div class="form-group">
+					<label>姓名：</label>
+					<input type="text" v-model="newPerson.name" />
+				</div>
+				<div class="form-group">
+					<label>电话：</label>
+					<input type="text" v-model="newPerson.tell" />
+				</div>
+				<div class="form-group">
+					<label>还款日期：</label>
+					<input type="text" v-model="newPerson.day" />
+				</div>
+				<div class="form-group">
+					<label></label>
+					<button @click="createPerson">保存</button>
+				</div>
+				<div class="form-group">
+					<label>搜索：</label>
+					<input type="text" v-model="souName" placeholder="请输入姓名搜索"/>
+				</div>
+			</div>
+			<div class="list">
+				<div class="head">
+					<ul>
+						<li>姓名</li>
+						<li>电话</li>
+						<li>还款日期</li>
+						<li>还剩多久</li>
+						<li>删除</li>
+					</ul>
+				</div>
+				<div class="list_item">
+					<p class="txt" v-show="people.length==0">此时数据为空哦，可以先去保存你要的数据</p>
+					<ul v-for="(person,index) in souNameDate">
+						<li>{{person.name}}</li>
+						<li>{{person.tell}}</li>
+						<li>{{person.day}}</li>
+						<li>{{person.overtime}}</li>
+						<li :class="'text-center'"><button @click="deletePerson(index)">删除</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery.js"></script>
+		<script>
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					souName:'',
+					newPerson:{
+						name:'',
+						tell:'',
+						day:'',
+						overtime:''
+					},
+					people:[
+						{name:'马叔',tell:18727832200,day:'2017/09/26'},
+						{name:'骚凯',tell:15922222222,day:'2017/10/24'},
+						{name:'大哈哈',tell:18744411441,day:'2017/11/24'}
+					]
+				},
+				computed:{
+					souNameDate:function() {
+						var self = this;
+						return this.people.filter(function(item) {
+							return item.name.toLowerCase().indexOf(self.souName.toLowerCase()) !== -1;
+						})
+					}
+				},
+				methods:{
+					createPerson:function() {
+						var dayTime = this.newPerson.day;
+//						var overtime = this.newPerson.overtime;
+						var starttime = new Date(dayTime);
+						var nowtime = new Date();
+						var time = starttime - nowtime;
+						var day = parseInt(time / 1000 / 60 / 60 / 24);
+					    var hour = parseInt(time / 1000 / 60 / 60 % 24);
+					    var minute = parseInt(time / 1000 / 60 % 60);
+					    var seconds = parseInt(time / 1000 % 60);
+					    this.newPerson.overtime = day+'天'+hour + '小时';
+					    console.log(this.newPerson.overtime);
+					    
+					    this.people.push(this.newPerson);
+					    //添加完newPerson对象后，重置newPerson对象
+						this.newPerson = {name:'',tell:'',day:'',overtime:''};
+					},
+					deletePerson:function(index) {
+						//删除数组元素
+						this.people.splice(index,1);
+					},
+					daoTime:function() {
+						var _this = this;
+						this.people.map(function(item){
+							_this.$set(item,'overtime',overtime1); //在内部函数中，this没有按预想的绑定到外层函数对象上，而是绑定到了全局对象。这里普遍被认为是JavaScript语言的设计错误，因为没有人想让内部函数中的this指向全局对象。一般的处理方式是将this作为变量保存下来，一般约定为that或者self：
+						})
+					}
+				},
+				mounted() {
+					//先循环给每个对象
+					var _this = this;
+					this.people.map(function(item){
+						_this.$set(item,'overtime',''); //在内部函数中，this没有按预想的绑定到外层函数对象上，而是绑定到了全局对象。这里普遍被认为是JavaScript语言的设计错误，因为没有人想让内部函数中的this指向全局对象。一般的处理方式是将this作为变量保存下来，一般约定为that或者self：
+					})
+					for(var i=0;i<this.people.length;i++) {
+						var day = this.people[i].day;
+//						var overtime = this.people[i].overtime;
+						
+						var starttime = new Date(day);
+						var nowtime = new Date();
+						var time = starttime - nowtime;
+						var day = parseInt(time / 1000 / 60 / 60 / 24);
+					    var hour = parseInt(time / 1000 / 60 / 60 % 24);
+					    var minute = parseInt(time / 1000 / 60 % 60);
+					    var seconds = parseInt(time / 1000 % 60);
+					    this.people[i].overtime = day+'天'+hour + "小时";
+					    
+					    
+					}
+				},
+				
+				
+			})
+		</script>
+	</body>
+</html>

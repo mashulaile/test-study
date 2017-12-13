@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+//		var myDate = new Date();
+////		获取特定格式的时间:
+//		
+//		myDate.getFullYear(); //获取完整的年份
+//		console.log(myDate.getFullYear()); //2017
+//		
+//		myDate.getMonth()+1;//获取当前月份     +1是因为获取的月份是从0开始算起的，所以要加1
+//		console.log(myDate.getMonth()+1);//6
+//		
+//		myDate.getDate();//获取当前日（1-31）
+//		console.log(myDate.getDate());//26
+//		
+//		myDate.getDay();//获取当前星期X (0-6,0代表星期天)
+//		console.log(myDate.getDay());
+//		
+//		myDate.getTime();////获取当前时间(从1970.1.1开始的毫秒数)
+//		console.log(myDate.getTime(),1);
+//		
+//		myDate.getHours();//获取当前小时数(0-23)
+//		console.log(myDate.getHours());
+//		
+//		myDate.getMinutes();//获取当前分钟数(0-59)
+//		console.log(myDate.getMinutes());
+//		
+//		myDate.getSeconds();//获取当前秒数(0-59)
+//		console.log(myDate.getSeconds());
+//		
+//		myDate.getMilliseconds();//获取当前毫秒数(0-999)
+//		console.log(myDate.getMilliseconds());
+//		
+//		myDate.toLocaleDateString();//获取当前日期
+//		console.log(myDate.toLocaleDateString());//2017/6/26
+//		
+//		var mytime=myDate.toLocaleTimeString(); //获取当前时间
+//		console.log(mytime);//下午2:53:04
+//		
+//		myDate.toLocaleString( ); //获取日期与时间
+//		console.log(myDate.toLocaleString());//2017/6/26 下午2:53:57
+		
+		
+		//将日期格式转换成时间戳
+		
+		var strtime = '2017-6-26 15:05:36';
+//		var shijc = new Date(strtime);////传入一个时间格式，如果不传入就是获取现在的时间了，这样做不兼容火狐。
+		//可以这样做
+		var shijc = new Date(strtime.replace(/-/g, '/'));
+		var time1 = shijc.getTime();
+		var time2 = shijc.valueOf();
+		var time3 = Date.parse(shijc);
+		console.log(time1,time2,time3);
+	</script>
+</html>

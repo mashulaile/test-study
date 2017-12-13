@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过渡&动画</title>
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+			.mashu-enter-active, .mashu-leave-active {
+				transition: opacity .5s
+			}
+			.mashu-enter, .mashu-leave-to {
+				opacity: 0;
+			}
+			
+			
+			
+			.haha-enter-active {
+				transition:all .3s;
+			}
+			.haha-leave-active {
+				transition: all .8s ;
+			}
+			.haha-enter, .haha-leave-to {
+				transform: translateX(10px);
+				opacity: 0;
+			}
+			
+			
+			
+			.ma-enter-active {
+				animation: ma-in .5s;
+			}
+			.ma-leave-active {
+				animation: ma-in .5s reverse;
+			}
+			@keyframes ma-in {
+				0% {
+					transform: scale(0);
+				}
+				50% {
+					transform: scale(1.5);
+				}			
+				100% {
+					transform: scale(1);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button v-on:click="show = !show">Toggle</button>
+			<transition :duration="{enter:1000,leave:2000}" name="mashu">
+				<p v-if="show">hello</p>
+			</transition>
+		</div>
+		
+		<div id="app2">
+			<button v-on:click="show =!show">点我</button>
+			<transition name="haha">
+				<p v-if="show">hello</p>
+			</transition>
+		</div>
+		
+		<div id="app3">
+			<button v-on:click="show = !show">Toggle</button>
+			<transition name='ma'>
+				<p v-if="show">Look at me</p>
+			</transition>
+		</div>
+		
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					show:true
+				}
+			});
+			
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					show:true
+				}
+			});
+			
+			var app3 = new Vue({
+				el:'#app3',
+				data:{
+					show:true
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+			
+		</style>
+	</head>
+	
+	<body>
+		<div id="app">
+			<input type="text" v-model="parentMsg" />
+			<br />
+			<mashu :msg="parentMsg"></mashu>
+		</div>
+		
+		<script>
+			Vue.component('mashu',{
+				props:{
+					msg:{
+						type:[String, Number],
+						
+					}
+				},
+				template:'<h1>{{msg}}</h1>'
+			});
+			var app = new Vue({
+				el:'#app',
+				data:{
+					parentMsg:'123'
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

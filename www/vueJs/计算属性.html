@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<p>{{site}}</p>
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '马叔',
+					age: 18
+				},
+				computed: {
+					site: {
+						get: function() {
+							return this.name + ' ' + this.age
+						},
+						set: function(newValue) {
+							var names = newValue.split(' ');
+							console.log(names);
+							this.name = names[0]
+							this.age = names[names.length - 1]
+						}
+					}
+				}
+			})
+			// 调用 setter， vm.name 和 vm.url 也会被对应更新
+			app.site = '大哈哈 20';
+			document.write('name: ' + app.name);
+			document.write('<br>');
+			document.write('age: ' + app.age);
+		</script>
+
+	</body>
+
+</html>

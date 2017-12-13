@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue.set全局操作</title>
+	</head>
+	<body>
+		<h2>Vue.set全局操作</h2>
+		<hr />
+		<div id="app">
+			{{count}}
+			<ul>
+				<li v-for="item in arr">{{item}}</li>
+			</ul>
+			
+		</div>
+		<p><button onclick="add()">add</button></p>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script>
+			var outData={
+				count:1,
+				goods:'car',
+				arr:['aaa','bbb','ccc']
+			};
+			function add(){
+//				Vue.set(outData,'count',2)
+//				app.count++;
+//				outData.count++;
+				app.arr[1] = 'mashu' //直接这样点击是没有反应的
+				Vue.set(app.arr,1,'mashu');//只有这种方法才能改变
+			}
+			var app = new Vue({
+				el:"#app",
+				data:outData
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>裹裹取件领现金红包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script>
+			! function() {
+				var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+					d = document.createElement("style");
+				if(document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+					d.styleSheet.disabled || (d.styleSheet.cssText = e)
+				} else {
+					try {
+						d.innerHTML = e
+					} catch(f) {
+						d.innerText = e
+					}
+				}
+			}();
+
+			! function(N, M) {
+				function L() {
+					var a = I.getBoundingClientRect().width;
+					a / F > 800 && (a = 800 * F);
+					var d = a / 10;
+					I.style.fontSize = d + "px", D.rem = N.rem = d
+				}
+				var K, J = N.document,
+					I = J.documentElement,
+					H = J.querySelector('meta[name="viewport"]'),
+					G = J.querySelector('meta[name="flexible"]'),
+					F = 0,
+					E = 0,
+					D = M.flexible || (M.flexible = {});
+				if(H) {
+					console.warn("将根据已有的meta标签来设置缩放比例");
+					var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+					C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+				} else {
+					if(G) {
+						var B = G.getAttribute("content");
+						if(B) {
+							var A = B.match(/initial\-dpr=([\d\.]+)/),
+								z = B.match(/maximum\-dpr=([\d\.]+)/);
+							A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+						}
+					}
+				}
+				if(!F && !E) {
+					var y = N.navigator.userAgent,
+						x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+						w = x && !!y.match(/OS 9_3/),
+						v = N.devicePixelRatio;
+					F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+				}
+				if(I.setAttribute("data-dpr", F), !H) {
+					if(H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+						I.firstElementChild.appendChild(H)
+					} else {
+						var u = J.createElement("div");
+						u.appendChild(H), J.write(u.innerHTML)
+					}
+				}
+				N.addEventListener("resize", function() {
+					clearTimeout(K), K = setTimeout(L, 300)
+				}, !1), N.addEventListener("pageshow", function(b) {
+					b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+				}, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function() {
+					J.body.style.fontSize = 12 * F + "px"
+				}, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function(d) {
+					var c = parseFloat(d) * this.rem;
+					return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+				}, D.px2rem = function(d) {
+					var c = parseFloat(d) / this.rem;
+					return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+				}
+			}(window, window.lib || (window.lib = {}));
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			img {
+				display: block;
+			}
+			
+			ul li {
+				display: inline-block;
+				list-style: none;
+			}
+			
+			a {
+				display: inline-block;
+				text-decoration: none;
+			}
+			
+			.head {
+				position: relative;
+				width: 100%;
+				height: 10.6533rem;
+				background: url('https://gw.alicdn.com/tfs/TB1XwnjcgMPMeJjy1XcXXXpppXa-750-799.jpg') no-repeat center center;
+				background-size: 10rem 10.6533rem;
+			}
+			
+			.head .activity_rules {
+				position: absolute;
+				left: 2.5866rem;
+				top: 3.5733rem;
+				width: 2.16rem;
+				height: 0.56rem;
+			}
+			
+			.head .activity_rules img {
+				width: 2.16rem;
+				height: 0.56rem;
+			}
+			
+			.head .winning_record {
+				position: absolute;
+				right: 2.1866rem;
+				top: 3.5733rem;
+				width: 2.7733rem;
+				height: 0.56rem;
+			}
+			
+			.head .winning_record img {
+				width: 2.7733rem;
+				height: 0.56rem;
+			}
+			
+			.head .pickup {
+				position: absolute;
+				bottom: 1.1333rem;
+				left: 50%;
+				width: 4.1066rem;
+				height: 0.84rem;
+				margin-left: -2.0533rem;
+			}
+			
+			.head .pickup img {
+				width: 4.1066rem;
+				height: 0.84rem;
+			}
+			
+			.run_box {
+				position: absolute;
+				bottom: 0.2666rem;
+				left: 0;
+				width: 100%;
+				height: 0.5933rem;
+				background: rgba(119, 155, 220, 0.5);
+			}
+			
+			.run_box #run {
+				position: relative;
+				width: 90%;
+				height: 0.5933rem;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.run_box #run .run_list {
+				text-align: center;
+				line-height: 0.5933rem;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.run_box #run .run_list .run_item {
+				width: 7rem;
+				height: 0.5933rem;
+				color: #fff;
+				font-size: 0.32rem;
+				float: left;
+			}
+			
+			.center {
+				width: 100%;
+				height: 12.3866rem;
+				background: url("https://gw.alicdn.com/tfs/TB14q25cogQMeJjy0FjXXaExFXa-750-929.png") no-repeat center center;
+				background-size: 10rem 12.3866rem;
+			}
+			
+			.center ul {
+				padding: 1.4133rem 0.68rem 0 0.68rem;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			
+			.center ul li {
+				margin: 0 0.3733rem 0.4rem 0;
+			}
+			
+			.center ul li:nth-of-type(3n) {
+				margin: 0 0 0.4rem 0;
+			}
+			
+			.center ul li img {
+				width: 2.6266rem;
+				height: 3.0933rem;
+			}
+			
+			.explain {
+				width: 100%;
+				height: 13.52rem;
+				margin-top: -1px;
+				background: url('https://gw.alicdn.com/tfs/TB1TIAfcgoQMeJjy0FnXXb8gFXa-750-969.png') no-repeat center center;
+				background-size: 10rem 13.52rem;
+			}
+			
+			.explain ul {
+				padding: 0 0.68rem 0 0.68rem;
+			}
+			
+			.explain ul li {
+				position: relative;
+				padding-top: .5744rem;
+				margin-top: 0.2933rem;
+			}
+			
+			.explain ul li:first-child {
+				margin-top: 1.7866rem;
+			}
+			
+			.explain ul li .title {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 2.4266rem;
+				height: 0.6533rem;
+				text-align: center;
+				line-height: 0.5733rem;
+				color: #fff;
+				font-size: 0.32rem;
+				z-index: 1;
+			}
+			
+			.explain ul li .time {
+				background: url('https://gw.alicdn.com/tfs/TB1LzUgcgoQMeJjy1XaXXcSsFXa-182-49.png') no-repeat center center;
+				background-size: 2.4266rem 0.6533rem;
+			}
+			
+			.explain ul li .obj {
+				background: url('https://gw.alicdn.com/tfs/TB1bTwqcnZRMeJjSspkXXXGpXXa-182-49.png') no-repeat center center;
+				background-size: 2.4266rem 0.6533rem;
+			}
+			
+			.explain ul li .xize {
+				background: url('https://gw.alicdn.com/tfs/TB1SIhmclxRMKJjy0FdXXaifFXa-182-49.png') no-repeat center center;
+				background-size: 2.4266rem 0.6533rem;
+			}
+			
+			.explain ul li .fanwei {
+				background: url('https://gw.alicdn.com/tfs/TB1lHoAcgoQMeJjy0FoXXcShVXa-182-49.png') no-repeat center center;
+				background-size: 2.4266rem 0.6533rem;
+			}
+			
+			.explain ul li .shengm {
+				background: url('https://gw.alicdn.com/tfs/TB1KElgcmFRMKJjy0FhXXX.xpXa-182-49.png') no-repeat center center;
+				background-size: 2.4266rem 0.6533rem;
+			}
+			
+			.explain ul li .title h2 {
+				padding-left: .7rem;
+			}
+			
+			.explain ul li p {
+				position: relative;
+				width: 8.44rem;
+				/*height: 0.7333rem;*/
+				padding: 0.2rem 0.2rem;
+				/*line-height: 0.7333rem;*/
+				background: #e2eeff;
+				color: #161719;
+				font-size: 0.28rem;
+				text-indent: 0.42rem;
+				z-index: 2;
+			}
+			
+			.explain ul li .arrow {
+				position: absolute;
+				left: 1.1rem;
+				top: 0.5553rem;
+				width: 0.16rem;
+				height: 0.0666rem;
+				z-index: 3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<a class="activity_rules" href="#explain">
+				<img src="https://gw.alicdn.com/tfs/TB1DErecogQMeJjy0FfXXbddXXa-162-42.png" />
+			</a>
+			<a class="winning_record" href="#">
+				<img src="https://gw.alicdn.com/tfs/TB1AXbdcogQMeJjy0FjXXaExFXa-208-42.png" />
+			</a>
+			<a class="pickup" href="#">
+				<img src="https://gw.alicdn.com/tfs/TB1PLfkcgoQMeJjy0FoXXcShVXa-308-63.png" />
+			</a>
+			<!--跑马灯-->
+			<div class="run_box">
+				<div id="run">
+					<ul class="run_list">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="center">
+			<ul>
+				<li><img src="https://gw.alicdn.com/tfs/TB1S9f0cgMPMeJjy1XdXXasrXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1S9f0cgMPMeJjy1XdXXasrXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1S9f0cgMPMeJjy1XdXXasrXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1j.r2ciERMeJjSspjXXcpOXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1j.r2ciERMeJjSspjXXcpOXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1j.r2ciERMeJjSspjXXcpOXXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1Rkf_cogQMeJjy0FjXXaExFXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1Rkf_cogQMeJjy0FjXXaExFXa-197-232.png" /></li>
+				<li><img src="https://gw.alicdn.com/tfs/TB1Rkf_cogQMeJjy0FjXXaExFXa-197-232.png" /></li>
+			</ul>
+		</div>
+
+		<div id="explain" class="explain">
+			<ul>
+				<li>
+					<div class="title time">
+						<h2>活动时间：</h2></div>
+					<img class="arrow" src="https://gw.alicdn.com/tfs/TB1piQgcgMPMeJjy1XdXXasrXXa-12-5.png" />
+					<p>8 月 10 日 0 点 - 8 月 31 日 23 点 59 分 59 秒；</p>
+				</li>
+				<li>
+					<div class="title obj">
+						<h2>活动对象：</h2></div>
+					<img class="arrow" src="https://gw.alicdn.com/tfs/TB1piQgcgMPMeJjy1XdXXasrXXa-12-5.png" />
+					<p>使用菜鸟裹裹 app 驿站取件的所有用户。新用户是指:第一次使用菜鸟裹裹 app 的用户，单设备/单账号为同一用户；</p>
+				</li>
+				<li>
+					<div class="title xize">
+						<h2>活动细则：</h2></div>
+					<img class="arrow" src="https://gw.alicdn.com/tfs/TB1piQgcgMPMeJjy1XdXXasrXXa-12-5.png" />
+					<p style="padding-bottom: 0;">用户使用菜鸟裹裹 app 在驿站取件后将会随机获得以下奖励：7元驿站寄件券、50-100元天猫超市红包,淘宝随机无门槛红包； </p>
+					<p style="padding-top: 0;">30元天猫超市红包，淘宝随机无门槛红包</p>
+				</li>
+				<li>
+					<div class="title fanwei">
+						<h2>使用范围：</h2></div>
+					<img class="arrow" src="https://gw.alicdn.com/tfs/TB1piQgcgMPMeJjy1XdXXasrXXa-12-5.png" />
+					<p>寄件券仅支持用户至菜鸟驿站寄件；使用规则、有效期等以券内规则为准；</p>
+				</li>
+				<li>
+					<div class="title shengm">
+						<h2>免责声明：</h2></div>
+					<img class="arrow" src="https://gw.alicdn.com/tfs/TB1piQgcgMPMeJjy1XdXXasrXXa-12-5.png" />
+					<p>您理解并同意本活动由菜鸟裹裹负责解释。菜鸟裹裹根据实际情况对本规则进行修改并包括提前终止本活动，修改后的规则或活动终止的通知将通过菜鸟裹裹进行公示。</p>
+				</li>
+			</ul>
+		</div>
+
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+		<script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.0.10/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+		<script>
+			(function() {
+				// 创建一个打点器实例, 此时库函数会自动发送一个名为showpage的action来记录页面的pv, uv
+				var logger = new cnact.logger({
+
+					// 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+					business: 'guoguo_take_part_two_20170907',
+
+					// 页面名, 使用拼音/英文进行命名
+					page: 'guoguo_take_part_two'
+				});
+
+				var receive = $('.center ul li');
+				receive.click(function() {
+					cnact.guoguo.download();
+				})
+
+				lib.mtop.request({
+					api: 'mtop.nbmarketcenter.lotteryservice.queryrecentwinneruser',
+					v: '1.0',
+					data: {
+						activityKeys: "activityKey_1502077089861,activityKey_1502077047223,activityKey_1502076982315"
+					},
+					ecode: 0
+				}, function(res) {
+					var items = res.data.result;
+					var list = [];
+					var rUl = document.getElementsByClassName('run_list')[0];
+					for(var i = 0; i < items.length; i++) {
+						list.push(items[i].userNick + ' ' + '获得' + ' ' + items[i].winValue);
+					}
+					for(var j = 0; j < list.length; j++) {
+						var nli = document.createElement("li");
+						nli.setAttribute("class", "run_item");
+						nli.innerHTML = list[j];
+						rUl.appendChild(nli);
+					};
+
+					var lis = rUl.getElementsByClassName('run_item');
+					rUl.innerHTML += rUl.innerHTML;
+					rUl.style.width = lis.length * lis[0].offsetWidth + 'px';
+					var left = null;
+					var timer = setInterval(function() {
+						left -= 1;
+						if(left < -rUl.offsetWidth / 2) {
+							left = 0;
+						}
+						rUl.style.left = left + 'px'
+					}, 20);
+
+				}, function(err) {
+
+				});
+
+				// 设置右上角按钮  导航右上角规则文案
+				lib.windvane.call('CNHybridNavigationBar', 'setRightBarButton', {
+					showButton: true,
+					buttonText: "分享"
+				})
+				// 监听右上角按钮点击事件
+				document.addEventListener('cnOptionMenuPressed', function(evt) {
+					logger.log('share_click');
+
+					var shareParam = {
+						type: 'multimedia', //纯图、纯文字、多媒体消息
+						text: '拿快递就送红包？剁手党福利！',
+						imageURL: '', //纯图片分享的url
+						multimedia: {
+							title: '拿快递就送红包？剁手党福利！',
+							subTitle: '用菜鸟裹裹取件，赢激爽好礼，炎炎夏日的一股清流啊~',
+							thumbnail: 'https://gw.alicdn.com/tfs/TB1ba.mSFXXXXXaXpXXXXXXXXXX-100-100.png', // 注意！需要传png格式链接（android）！！！多媒体分享的缩略图链接
+							url: 'https://newconnection.cainiao.com/act/qlyx-share.html'
+						}
+					};
+
+					// 调用分享组件
+					lib.windvane.call('CNHybridGGShareBoard', 'share', {
+						shareData: [{
+								name: 'QQ',
+								param: shareParam
+							},
+							{
+								name: 'Qzone', //qq空间分享，param数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'Weixin', //微信好友，param数据结构跟QQ一样, 括号中为专用参数
+								param: shareParam //默认false，微信分享好友的时候，如果缩略图太长，会被替换成微信图标，这时候我们把缩略图压缩成方的
+
+							},
+							{
+								name: 'WeixinMoments', //param微信朋友圈，数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'DingTalk', //param钉钉，数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'Weibo',
+								param: shareParam //param微博，数据结构跟QQ一样,括号中为专用参数
+							}
+						]
+					}, function onSuccess(res) {
+
+					}, function onError(err) {
+
+					});
+				})
+
+			})();
+		</script>
+	</body>
+
+</html>

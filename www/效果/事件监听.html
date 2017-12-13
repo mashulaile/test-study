@@ -1,0 +1,58 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width,initial-scale=1 user-scalable=0"/>  
+    <title>2014-5-4</title>  
+    <style>  
+    
+    </style>  
+   
+</head>  
+<body>  
+  	<input id="btn1" type="button" value="点我" / >
+	<a id="btn2" href="http://www.baidu.com" target="_blank">点我</a>
+     
+  
+    <script>  
+        function aaa(e){
+        	alert(1);
+        	e.preventDefault();
+        }
+        function bbb(){
+        	alert(2);
+        }
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");	
+//      btn1.addEventListener("click",aaa);
+//      btn1.addEventListener("click",bbb);
+//      btn1.removeEventListener("click",bbb);
+//      btn2.addEventListener("click",aaa);
+        
+//      封装事件监听
+
+//		封装绑定事件监听
+        function addEventListener(targer,type,fn){
+//      	判断是否是IE,IE9以下不支持addEventListener
+        	if(targer.addEventListener){
+        		targer.addEventListener(type,fn)
+        	}else{
+        		targer.attachEvent("on"+type,fn)
+        	}
+        }
+        addEventListener(btn1,"click",aaa);
+        addEventListener(btn1,"click",bbb);
+        
+//      封装移除事件监听
+		function removeEventListener(targer,type,fn){
+			if(targer.removeEventListener){
+				targer.removeEventListener(type,fn);
+			}else{
+				targer.detachEvent("on"+type,fn);
+			}
+		}
+		removeEventListener(btn1,"click",bbb);
+    </script>  
+</body>  
+  
+</html>  

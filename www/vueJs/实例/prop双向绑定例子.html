@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>prop双向绑定</title>
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+			.app {
+				margin: 100px auto;
+				max-width: 600px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			<table>
+				<tr>
+					<th colspan="3">父组件数据</th>
+				</tr>
+				<tr>
+					<td>name</td>
+					<td>{{name}}</td>
+					<td><input type="text" v-model="name" /></td>
+				</tr>
+				<tr>
+					<td>age</td>
+					<td>{{age}}</td>
+					<td><input type="text" v-model="age" /></td>
+				</tr>
+			</table>
+			<my-component :my-name.sync = 'name' :my-age.sync='age'></my-component>
+		</div>
+		
+		<template id="myComponent">
+			<table>
+				<tr>
+					<th colspan="3">子组件数据</th>
+				</tr>
+				<tr>
+					<td>my-name</td>
+					<td>{{myName}}</td>
+					<td><input type="text" v-model="myName" /></td>
+				</tr>
+				<tr>
+					<td>my-age</td>
+					<td>{{myAge}}</td>
+					<td><input type="text" v-model="myAge" /></td>
+				</tr>
+			</table>
+		</template>
+		<script>
+			Vue.component('my-component',{
+				template:'#myComponent',
+				
+			})
+			new Vue({
+				el:'.app',
+				data:{
+					name:'mashu',
+					age:18
+				},
+				components:{
+					'my-component':{
+						template:'#myComponent',
+						props:['myName','myAge']
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+    	.clearfix {
+				zoom: 1;
+			}
+			
+		.clearfix:after {
+			clear: both;
+		}
+			
+		.clearfix:after {
+			content: '.';
+			display: block;
+			overflow: hidden;
+			visibility: hidden;
+			font-size: 0;
+			line-height: 0;
+			width: 0;
+			height: 0;
+		}
+    	h2 {
+    		font-weight: 800;
+    	}
+    	.hide {
+    		display: none;
+    	}
+    	#package {
+    		background: #fe4c65;
+    		text-align: center;
+    	}
+    	.head {
+    		width: 100%;
+    		height: 100%;
+    	}
+    	.gg-coupon {
+    		width: 100%;
+    		height: auto;
+    		margin-top: -4.13333rem;
+    		padding-bottom: 1rem;
+    	}
+    	.gg-coupon ul li a {
+    		display: inline-block;
+    		width: 8.84rem;
+    		height: 2.6rem;
+    		
+    	}
+    	.gg-coupon ul li a .coupon-img {
+    		width: 100%;
+    	}
+    	.tb-coupon{
+    		position: relative;
+    		padding-bottom: 3.04rem;
+    		margin-top: -4.13333rem;
+    	}
+    	.tb-coupon ul li {
+    		width: 8.84rem;
+    		height: 2.6rem;
+    		margin: 0 auto 0.1rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1bfTqmPihSKJjy0FeXXbJtpXa-663-195.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.tb-coupon ul .free-single {
+    		background: url('https://gw.alicdn.com/tfs/TB1sO6JmPihSKJjy0FiXXcuiFXa-663-195.png') no-repeat center center;
+    		background-size: 100%;
+    	}
+    	.txt {
+    		float: right;
+    		width: 3.81333rem;
+    		height: 2.6rem;
+    		padding-right: 0.08rem;
+    		font-size: 0.5107rem;
+    		color: #c10000;
+    		font-weight: bold;
+    	}
+    	.txt h2 {
+    		padding-top: 0.6rem;
+    	}
+    	.price {
+    		float: left;
+    		width: 2.333rem;
+    		height: 2.6rem;
+    		padding-left: 0.7rem;
+    		font-size: 1.10666rem;
+    		color: #fe7301;
+    		font-weight: bold;
+    		line-height: 2.6rem;
+    	}
+    	.txt-p {
+    		padding: 0.1rem 0 0 0;
+    		font-size: 0.3466rem;
+    		font-weight: 500;
+    	}
+    	.txt-p2 {
+    		/*padding: 0.1rem 0 0 0;*/
+    		font-size: 0.3466rem;
+    		font-weight: 500;
+    	}
+    	.txt-h1 {
+    	    padding-top:0.8rem!important;
+    		font-size: 0.4266rem;
+    		font-weight: bold;
+    	}
+    	.txt-h2 {
+    	    
+    		font-size: 0.6666rem;
+    		font-weight: bold;
+    	}
+    	.txt-h3 {
+    	    padding-top:0.8rem!important;
+    		font-size: 0.37333rem;
+    		font-weight: bold;
+    	}
+    	.txt-h4 {
+    		font-size: 0.45333rem;
+    		font-weight: bold;
+    	}
+    	.txt-h5 {
+    		padding: 0 0.4rem;
+    		font-size: 0.4rem;
+    		font-weight: bold;
+    	}
+    	.footer{
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 3.04rem;
+			text-align: center;
+			background: #fe4c65;
+		}
+		.download-btn {
+			width: 7.56rem;
+			height: 1.2266rem;
+			margin: 0.6666rem 0 0.3733rem 0;
+			background: url('https://gw.alicdn.com/tfs/TB1uIXemfxNTKJjy0FjXXX6yVXa-567-92.png') no-repeat center center;
+			background-size: 100%;
+			border: none;
+			font-size: 0.5866rem;
+			color: #f01255;
+			line-height: 1.2266rem;
+		}
+		.footer-txt {
+			color: #fccfdd;
+			font-size: 0.2666rem;
+		}
+		.footer-tb {
+			width: 100%;
+			color: #fff;
+			font-size: 0.36666rem;
+			text-align: center;
+			padding: 0.4rem 0;
+		}
+		.box {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(97,97,97,0.8);
+		}
+		.box-txt {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 5.333rem;
+			height: 4.333rem;
+			margin: -2.165rem 0 0 -2.665rem ;
+			background: #fff;
+			border-radius: 20px;
+		}
+		.box-txt>h2 {
+			padding: 0.3rem 0 0.2rem;
+			font-size: 0.5rem;
+			color: #2E3035;
+		}
+		.box-txt #redeemCode {
+			display: block;
+			width: 100%;
+			height: 0.8rem;
+			margin: 0 auto;
+			border: none;
+			resize:none;
+			font-size: 0.5rem;
+			color: #2F2A27;
+			text-align: center;
+		}
+		.box-txt .fuzhi {
+			display: inline-block;
+			font-size: 0.32rem;
+			padding: 0.1rem 0.4rem;
+			margin: 0 0 0.3rem;
+			border-radius: 50px;
+			border:1px solid #471CCB;
+			color: #471CCB;
+		}
+		.activation {
+			width: 80%;
+			height: 0.8rem;
+			margin: 0 auto;
+			font-size: 0.36rem;
+			color: #F9FBFE;
+			background: #333;
+			line-height: 0.8rem;
+		}
+		.close {
+			display: inline-block;
+			position: absolute;
+			top: -0.1333rem;
+			right: -0.1333rem;
+			width: 0.8rem;
+			height: 0.8rem;
+			font-size: 0.7rem;
+			text-align: center;
+			line-height: 0.7rem;
+			color: #342F26;
+			background: #D6D6D8;
+			border-radius: 12px;
+		}
+    </style>
+	</head>
+	<body>
+		<div id="package">
+			<img class="head" src="https://gw.alicdn.com/tfs/TB1Y0m.mPihSKJjy0FeXXbJtpXa-750-698.png" />
+			<div class="gg-coupon hide">
+				<ul>
+					<li v-for="item in items">
+						<a :href="item.shopLink">
+							<img class="coupon-img" :src="item.pic"  />
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="tb-coupon hide">
+				<ul>
+					<li class="free-single clearfix">
+						<div class="txt">
+							<h2>优 酷</h2>
+							<p> 双11 免单券</p>
+						</div>
+					</li>
+					<li class="clearfix" v-for="i in shuju" >
+						<div class="price">{{i.yuan}}</div>
+						<div class="txt">
+							<h2 :class="i.yangshi1">{{i.head}}</h2>
+							<p :class="i.yangshi2">{{i.txt}}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="footer hide">
+				<button class="download-btn" @click='downloadBtn()'>前往菜鸟裹裹领取</button>
+				<p class="footer-txt">阿里巴巴旗下菜鸟网络官方出品</p>
+			</div>
+			<p class="footer-tb hide">
+				进入菜鸟裹裹APP领取
+			</p>
+			<div class="box">
+				<!--<div class="box-bg"></div>-->
+				<div class="box-txt">
+					<h2>优酷兑换码</h2>
+					<p id="redeemCode">LGIF789012</p>
+					<span class="fuzhi"  @click="copyTxt()" >复制</span>
+					<div class="activation" @click="jumpUrl()">前往激活</div>
+					<span class="close" @click="close()">x</span>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+		<script>
+		    var vueOption = {
+				el:'#package',
+				data:{
+				    logger:'',
+				    shuju:[
+				 		{
+				 			yuan:'25',head:'优酷',txt:'月度VIP会员',yangshi1:' ',yangshi2:' '
+				 		},
+						{
+							yuan:'8',head:'虾 米',txt:'月度VIP会员',yangshi1:' ',yangshi2:' '
+						},
+						{
+							yuan:'50',head:'飞猪旅行红包',txt:'满499',yangshi1:' ',yangshi2:'txt-p'
+						},
+						{
+							yuan:'8',head:'淘票票新人观影劵',txt:'满40',yangshi1:'txt-h1',yangshi2:'txt-p'
+						},
+						{
+							yuan:'30',head:'大牌纸品个护',txt:'满99',yangshi1:'',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'大牌百货',txt:'满99',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'母婴用品',txt:'满99',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'个护家清',txt:'满99',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'休闲食品',txt:'满99',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'100',head:'日用百货',txt:'满199',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'粮油米面',txt:'满99',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'100',head:'酒水饮料',txt:'满199',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'45',head:'安乔厨房',txt:'满199',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'60',head:'globalgo海外旗舰店',txt:'满299',yangshi1:'txt-h3',yangshi2:'txt-p'
+						},
+						{
+							yuan:'100',head:'EMP海外旗舰店',txt:'满399',yangshi1:'txt-h4',yangshi2:'txt-p'
+						},
+						{
+							yuan:'50',head:'美味栈官方海外旗舰店',txt:'满399',yangshi1:'txt-h3',yangshi2:'txt-p'
+						},
+						{
+							yuan:'150',head:'刘嘉玲生活品味 海外旗舰店',txt:'满399',yangshi1:'txt-h5',yangshi2:'txt-p2'
+						},
+						{
+							yuan:'200',head:'博 朗',txt:'满1999',yangshi1:'txt-h2',yangshi2:'txt-p'
+						},
+						{
+							yuan:'100',head:'LINEFRIENDS 海外旗舰店',txt:'满999',yangshi1:'txt-h5',yangshi2:'txt-p2'
+						},
+					],
+					items:[
+						{	
+							shopLink:'https://acz.youku.com/wow/tvact/act/outStationCoupon?referrer=cainiao1',
+							pic:'https://gw.alicdn.com/tfs/TB16AVPq3MPMeJjy1XcXXXpppXa-663-195.png'
+						},
+				 		{	
+				 			shopLink:'javascript:;',
+				 			pic:'https://gw.alicdn.com/tfs/TB15vrwmPihSKJjy0FfXXbGzFXa-663-195.png'
+				 		},
+						{	
+							shopLink:'https://act.xiami.com/wow/xiami/act/guoguo20171018',
+							pic:'https://gw.alicdn.com/tfs/TB1hyZtqMMPMeJjy1XdXXasrXXa-663-195.png'
+						},
+						{	
+							shopLink:'https://market.m.taobao.com/tms/holiday2017/1111/index?wh_weex=true&ttid=12ali0000838&qd_from=cn',
+							pic:'https://gw.alicdn.com/tfs/TB10gDAmGagSKJjy0FhXXcrbFXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/t?e=m%3D2%26s%3D6b0MdEB%2BgWscQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMUoOb7du4AGo5x%2BIUlGKNpW4v3AWsMNmN3ae9Adi%2BL6VXRgkloWnP0B0fDf9gM5U8I4nZdlWtg%2FJuH1hWG3%2BVYTlSg55GVX5wRISvUSwasgDIStehaIsPpQW95D0t3aOio8fXWlEVmG1MPE8VdXZNIGFMUaQgju6TZyOYRiVVYF5HeGlemZG6MeSLnJkuySZYSmOvuElM%2FHXtlBBPb83Y%2Brghnj1NFUgn8v7NkPuV31iIiB2Ic3CBo%2Bm9xfqRYNPVU5U%2BEi82A4gzf8t%2Bx6cduEhhQs2DjqgEA%3D%3D?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1ZcoamGagSKJjy0FcXXcZeVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://market.m.taobao.com/markets/TaoBaoMovie/cainiao11huodong?wh_ttid=phone',
+							pic:'https://gw.alicdn.com/tfs/TB1KGbfmPihSKJjy0FeXXbJtpXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/t?e=m%3D2%26s%3DoJd0aTJyPkkcQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMVehvERtwKYI5x%2BIUlGKNpW4v3AWsMNmN3ae9Adi%2BL6VXRgkloWnP0AuRzSd37ywHY4nZdlWtg%2FJuH1hWG3%2BVYTlSg55GVX5wRISvUSwasgDIStehaIsPpQW95D0t3aOio8fXWlEVmG1MPE8VdXZNIGFMUaQgju6TZyOYRiVVYF5WAUezs4ieMfVCSWZdZCB%2BcTN6uiVU1BwHrVBA1%2BZ3RnHcvKPHVfFDMv7NkPuV31iIiB2Ic3CBo%2Bm9xfqRYNPVU5U%2BEi82A4gzf8t%2Bx6cduEhhQs2DjqgEA%3D%3D?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1HxRtq3oQMeJjy1XaXXcSsFXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/t?e=m%3D2%26s%3D5XB9n1g2tRAcQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMcOZCOcfCBtp5x%2BIUlGKNpW4v3AWsMNmN3ae9Adi%2BL6VXRgkloWnP0Dyfex%2FtWiHxY4nZdlWtg%2FJuH1hWG3%2BVYTlSg55GVX5wRISvUSwasgDIStehaIsPpQW95D0t3aOio8fXWlEVmG1MPE8VdXZNIGFMUaQgju6TZyOYRiVVYF5Zdk9QWVkXMI2zwr5dlY%2BNRozNhCGlmczYNZB3tN5%2F1w7s%2FzYtBMst8v7NkPuV31iIiB2Ic3CBo%2Bm9xfqRYNPVU5U%2BEi82A4gzf8t%2Bx6cduEhhQs2DjqgEA%3D%3D?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1XIsamGagSKJjy0FcXXcZeVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/Rovi8Zw?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1HyxTq3MPMeJjy1XcXXXpppXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/8lah8Zw?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1SXbtmGagSKJjy0FbXXa.mVXa-663-195.png'
+						},
+						{	
+							shopLink:'http://chaoshi.tmall.com/activity/hub.htm?t=fxzx',
+							pic:'https://gw.alicdn.com/tfs/TB14lfNmGagSKJjy0FgXXcRqFXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/kKBh8Zw?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB12JhDq3oQMeJjy0FpXXcTxpXa-663-195.png'
+						},
+						{	
+							shopLink:'https://s.click.taobao.com/uwBh8Zw?visa=fb1be56ee92c8a53',
+							pic:'https://gw.alicdn.com/tfs/TB1VXbtmGagSKJjy0FbXXa.mVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=2096569781&activityId=7b1aedf9d5b24aeb9590e8c0842bf9a0',
+							pic:'https://gw.alicdn.com/tfs/TB1_0lYmfBNTKJjy0FdXXcPpVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=2958596375&activityId=e28ef83e66c4494e803dd3463a1f8d3f&isCouponNew=1',
+							pic:'https://gw.alicdn.com/tfs/TB1xfvwmPihSKJjy0FfXXbGzFXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=2988864739&activityId=c857aeaf90854583b8df94134db322a7&isCouponNew=1',
+							pic:'https://gw.alicdn.com/tfs/TB1T64Hq3MPMeJjy1XbXXcwxVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=2727183396&activityId=6ab5010e5e6f4d6dbfec5d08c5213b81&isCouponNew=1',
+							pic:'https://gw.alicdn.com/tfs/TB1YTahq3oQMeJjy0FoXXcShVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=3300988417&activityId=224957ee74384638807b639cb89a1917&isCouponNew=1',
+							pic:'https://gw.alicdn.com/tfs/TB1zssamGagSKJjy0FcXXcZeVXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=3429658851&activityId=2ccf25b64b574944b051d6337717c6f6',
+							pic:'https://gw.alicdn.com/tfs/TB1CSbomGagSKJjy0FaXXb0dpXa-663-195.png'
+						},
+						{	
+							shopLink:'https://taoquan.taobao.com/coupon/unify_apply.htm?sellerId=2958030676&activityId=cb0920218e9644d596e92be5b9c53a1d',
+							pic:'https://gw.alicdn.com/tfs/TB1KmbomGagSKJjy0FaXXb0dpXa-663-195.png'
+						}
+					]
+				},
+				methods:{
+					getCityCode:function(CITYCODE, callBack) {
+						var params = {
+				              // 是否获取高精度的位置
+				              enableHighAcuracy: true,
+				              // 是否获取地址描述
+				              address: true
+				          };
+				          window.WindVane.call('WVLocation', 'getLocation', params, function(e) {
+				             var cityCode = e.address && e.address.cityCode;
+				            	
+				              callBack && callBack(CITYCODE.indexOf(cityCode)<=-1);
+				          }, function(e) {
+				              callBack && callBack(false);
+				          });
+					},
+					buriedPoint:function(){
+	    				this.logger = new cnact.logger({
+
+                        // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+                        business: 'thousand_package_20171024',
+                    
+                        // 页面名, 使用拼音/英文进行命名
+                        page: 'thousand_package'
+                    });
+	    			
+	    				
+	    			},
+	    			downloadBtn:function(){
+	    			    this.logger.log('thousand_package_btn');
+	    			    var i = cnact.utils.parseUrlQuery();
+						var j = i.source || "";
+						cnact.guoguo.download(j);
+						
+					},
+					close:function(){
+						$('.box').addClass('hide');
+					},
+					copyTxt:function() {
+						var Url2=document.getElementById("redeemCode");
+						 Url2.select(); // 选择对象
+						 document.execCommand("Copy"); // 执行浏览器复制命令
+//						 alert("已复制好，可贴粘。");
+						 $('.fuzhi').html('复制成功').css({
+						 	'color':'#209147',
+						 	'borderColor':'#209147'
+						 });
+						 $('.activation').css('background','#3F00FF').addClass('gourl');
+					},
+					jumpUrl:function(){
+						if($('.activation').hasClass('gourl')) {
+							window.location.href = 'https://h5.vip.youku.com/buy'
+						}
+					}
+				},
+				mounted : function(){
+				    this.buriedPoint();
+				    var query = cnact.utils.parseUrlQuery();
+					var CITYCODEall = ['330100'];
+				// 	var c = <!--TMS:/rgn/ems/cn-guoguo/cn-guoguo/tb-card,utf-8,1:TMS-->
+		            // var CITYCODE = ['110100', '310100','330100','440300','440100'];
+//		            var AndroidCITYCODE = ['330100'], iOSCITYCODE = ['310100'];
+                    // console.log(query.shoutao == 'yes')
+                    if(query.shoutao == 'yes') {
+                        $('.tb-coupon').removeClass('hide');
+						this.getCityCode(CITYCODEall, function(val){
+						  var v2 = val;
+    			         // alert(v2);
+    			          if(v2){
+    			              $('.footer').removeClass('hide');
+    			           
+    			          }else{
+    			            	$('.tb-coupon').css('padding-bottom','0')
+    			            	$('.footer-tb').removeClass('hide')
+    			          }
+						})
+                    }else {
+                        if (cnact.browser.isGUOGUO) {
+    					    $('.gg-coupon').removeClass('hide');
+    					}else {
+    						$('.tb-coupon').removeClass('hide');
+    						$('.footer').removeClass('hide');
+    					}
+                    }
+                    
+                    
+				 	$('.gg-coupon ul li:nth-child(2)').click(function(){
+				 		lib.mtop.loginRequest({
+		                    api: 'mtop.nbmarketcenter.lotteryService.doLottery',
+		                    v: '1.0',
+		                    data:{
+		                        activityKey:'activityKey_1508919550990'
+		                    },
+		                    ecode: 1
+		                    // timeout: 20000 // 非必须。接口超时设置，默认为20000 ms
+		                },function(res){
+		                    console.log(res.data);
+		                },function(err){
+		                    
+//		                    cnact.widgets.toast("升级失败")
+		                   
+		                });
+				 	    $('.box').removeClass('hide');
+				 	    
+				 	})
+					
+					
+				}
+			};
+			
+		 
+			$(function(){
+			    var vm = new Vue( vueOption );
+			   
+			});
+		</script>
+	</body>
+</html>

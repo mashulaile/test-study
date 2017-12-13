@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.box {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			border: 1px solid #333;
+		}
+		.hide {display: none;}
+	</style>
+	<body>
+		<p>fewfdwedwede</p>
+		<div class="box hide">
+			<button class="que">确定</button>
+			<button class="qux">取消</button>
+		</div>
+		<script src="../jquery.js"></script>
+		<script>
+			$(function() {
+				pushHistory();
+				window.addEventListener("popstate", function(e) {
+					pushHistory(); 
+					$('.box').removeClass('hide');
+//					alert("我监听到了浏览器的返回按钮事件啦"); //根据自己的需求实现自己的功能
+					$('.que').click(function(){
+						window.location.href = '乱写.html'
+					})
+					$('.qux').click(function(){
+						$('.box').addClass('hide');
+					})
+				}, false);
+
+				function pushHistory() {
+					
+					var state = {
+						title: "title",
+						url: '#'
+					};
+					console.log(window.history);
+					window.history.pushState(state, "title", '#');
+				}
+			});
+		</script>
+	</body>
+
+</html>

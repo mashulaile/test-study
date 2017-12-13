@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表渲染</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for='item in items'>
+					{{item.message}}
+				</li>
+			</ul>
+		</div>
+		<!--在 v-for 代码块中，我们可以完全地访问父级作用域下的属性。v-for 还支持可选的第二个参数，作为当前项的索引。-->
+		<div id="app2">
+			<ul>
+				<li v-for="(item,index) in items">
+					{{parentMessage}}-{{index}}-{{item.message}}
+				</li>
+			</ul>
+		</div>
+		
+		
+		<script>
+			var app = new Vue({
+				el:'#app',
+				data:{
+					items:[
+						{message:'Foo'},
+						{message:'Bar'}
+					]
+				}
+			});
+//			在 v-for 代码块中，我们可以完全地访问父级作用域下的属性。v-for 还支持可选的第二个参数，作为当前项的索引。
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					parentMessage:'Parent',
+					items:[
+						{message:'mashu'},
+						{message:'dahaha'}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

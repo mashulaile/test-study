@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>点标记</title>
+    <style>
+        body,#mapContainer{
+            margin:0;
+            height:100%;
+            width:100%;
+            font-size:12px;
+        }
+    </style>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0?v=1.0" />
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值&plugin=AMap.ToolBar"></script>
+    <script>
+        function init() {
+            map = new AMap.Map("mapContainer", {
+                zoom: 18,
+                center:[120.245117,30.237286]
+            });
+            marker = new AMap.Marker({
+                map:map,
+                position:[120.245117,30.237286]
+            })
+            marker.setLabel({
+                offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
+                content: "杭州国际博览中心3楼"
+            });
+            marker.on('click',function(e){
+                marker.markOnAMAP({
+                    name:'杭州国际博览中心3楼',
+                    position:marker.getPosition()
+                })
+            })
+            map.addControl(new AMap.ToolBar());
+            /*if(AMap.UA.mobile){
+                document.getElementById('button_group').style.display='none';
+            }*/
+        }
+    </script>
+</head>
+<style>
+	#btn {
+		position: relative;
+		z-index: 100;
+	}
+</style>
+<body >
+    <div id="mapContainer" ></div>
+    
+    <button id="btn">点击</button>
+    <script>
+    	window.onload= function(){
+    		var btn = document.getElementById('btn');
+    		btn.onclick = function(){
+    			init();
+    		}
+    	}
+    </script>
+</body>
+</html>

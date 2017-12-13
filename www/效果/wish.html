@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>许愿墙</title>
+		<style>
+			
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			body {background: #333;}
+			.wish_conter_btn,.tanc_btn,.close,.zdl,.wish_conter_modl .k_close {
+				cursor: pointer;
+			}
+			.wish {
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			.wish_header {
+				width: 100%;
+				height: 100px;
+				margin-bottom: 15px;
+				border-bottom: 1px dashed #fff;
+				text-align: left;
+				color: #fff;
+			}
+			.wish_header h1 {
+				margin-left: 20px;
+				font-size: 50px;
+			}
+			.wish_header p {
+				margin-left: 70px;
+			}
+			.wish_conter {
+				position: relative;
+				width: 100%;
+				height: 850px;
+				/*padding-left: 20px;*/
+				
+			}
+			.bbt{
+				text-align: center;
+			}
+			.wish_conter_btn,.tanc_btn {
+				padding: 0 20px;
+				line-height: 40px;
+				border-radius: 25px;
+				background: #333333;
+				color: #fff;
+				font-size: 25px;
+				border: none;
+				box-shadow: 4px 4px 6px #000;
+				outline: none;
+			}
+			.wish_conter_btn:active,.tanc_btn:active,.wish_conter_modl .k_close:active {
+				box-shadow: none;
+			}
+			.wish_conter_modl {
+				display: inline-block;
+				position: absolute;
+				/*left: 10px;
+				top: 50px;*/
+				width: 192px;
+				height: 300px;
+				padding: 0 8px;
+				margin: 20px 0 0 10px;
+				border: 1px dashed #333;
+				border-radius: 10px;
+				background: #fff;
+				text-align: left;
+				box-shadow: 5px 5px 5px #000;
+			}
+			.wish_conter_modl .k_close {
+				display: inline-block;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				width: 25px;
+				height: 25px;
+				border-radius: 100%;
+				background: #333;
+				color: #fff;
+				text-align: center;
+				box-shadow: 0px 2px 8px #000;
+			}
+			.wish_conter_modl h2 {
+				padding: 5px;
+				text-align: center;
+				cursor: move;
+			}
+			.wish_conter_modl p.txt {
+				text-indent: 15px;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 9;
+				overflow: hidden;
+			}
+			.wish_conter_modl p.name,.wish_conter_modl p.time {
+				padding: 5px 0;
+				text-align: right;
+			}
+			
+			
+			.tanc {
+				width: 100%;
+				height: 100%;
+			}
+			.tanc .zhez {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 950px;
+				background: #000;
+				opacity: 0.8;
+				
+			}
+			.tanc .luru {
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				width: 300px;
+				height: 400px;
+				padding: 0 10px;
+				margin: -200px 0 0 -150px;
+				background: #fff;
+				text-align: center;
+			}
+			.tanc .luru h2 {
+				padding: 10px 0;
+			}
+			.tanc .luru textarea {
+				width: 280px;
+				height: 250px;
+				resize: none;
+			}
+			.tanc_btn {
+				margin-top: 10px;
+			}
+			.luru .close {
+				display: inline-block;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				width: 25px;
+				height: 25px;
+				border-radius: 100%;
+				background: #000;
+				color: #fff;
+				
+			}
+			.luru .pd {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 150px;
+				height: 100px;
+				padding-top: 10px;
+				margin: -50px 0 0 -75px;
+				border-radius: 10px;
+				background: #000;
+				color: #fff;
+			}
+			.luru .pd span {
+				display: inline-block;
+				padding: 0 12px 0 15px;
+				margin-top: 40px;
+				border: 1px dashed #fff;
+				border-radius: 25px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wish">
+			<div class="wish_header">
+				<h1>留言板</h1>
+				<p>把你想说的话留下来~</p>
+			</div>
+			<div class="wish_conter">
+				<div class="bbt">
+					<button class="wish_conter_btn">我要留言</button>
+				</div>
+				
+				<div class="wish_conter_modl">
+					<span class="k_close">x</span>
+					<h2>许愿卡</h2>
+					<p class="txt">得分王的我的晚饭额外付费扼腕发发巍峨份额为分俄文份额为份额为违反阿晚饭俄文份额为分违反发阿晚饭ew</p>
+					<p class="name">许愿人：<span>张三</span></p>
+					<p class="time">时间：<span>2017-6-13</span></p>
+				</div>
+				<div class="wish_conter_modl">
+					<span class="k_close">x</span>
+					<h2>许愿卡</h2>
+					<p class="txt">得分王的我的晚饭额外付费扼腕发发巍峨份额为分俄文份额为份额为违反阿晚饭俄文份额为分违反发阿晚饭ew</p>
+					<p class="name">许愿人：<span>张三</span></p>
+					<p class="time">时间：<span>2017-6-14</span></p>
+				</div>
+				
+				
+			</div>
+			
+			
+			
+			<!--点击我要许愿出现弹窗-->
+		<div class="tanc hide">
+			<div class="zhez"></div>
+			<div class="luru">
+				<span class="close">x</span>
+				<h2>写下你想说的~</h2>
+				<textarea class="text" placeholder="留下你想说的,一百个字以内哦~"></textarea>
+				<p>您的名字：<input class="xming" type="text" name="" placeholder="留下您的大名~" /></p>
+				<button class="tanc_btn">确定</button>
+				
+				<!--判断弹窗-->
+				<div class="pd hide">
+					<p>都不能为空哦~</p>
+					<span class="zdl">知道了</span>
+				</div>
+			</div>
+			
+		</div>
+		</div>
+		
+		
+		
+		
+		<script src="js/jquery.js"></script>
+		<script>
+			var btn = $('.wish_conter_btn');
+			var tanc_btn = $('.tanc_btn');
+			//点击出现填写
+			btn.click(function(){
+				$('.tanc').removeClass('hide');
+				$('.wish_conter_modl').css('z-index',"");
+			})
+			//点击关闭填写
+			$('.close').click(function(){
+				$('.tanc').addClass('hide');
+			})
+			//点击关闭判断弹窗
+			$('.zdl').click(function(){
+				$('.pd').addClass('hide');
+			})
+			
+			
+			var fw = $(window).width();
+			var fh = $('.wish_conter').height();
+			for(var i=0;i<$('.wish_conter_modl').length;i++) {
+					var obj=$('.wish_conter_modl').eq(i);
+					var head = obj.find('h2');	
+//					console.log(i,head,obj);
+//					
+					//随机出现在一个地方，并且刚刚生成的卡片颜色为#a0fbb7
+					obj.css({
+						left:parseFloat(Math.random()*(fw-obj.width())) +'px',
+						top:parseFloat(Math.random()*(fh-obj.height())) +'px',
+//						background:"#a0fbb7"
+					})
+					obj.siblings('.wish_conter_modl').css('background','#fff');
+					drag(obj,head);
+//					//另一种写法
+//					drag(obj,$('h2',obj));
+
+					//点击删除卡片
+					$('.k_close').click(function(){
+						$(this).parent('.wish_conter_modl').remove();
+					})
+			}
+			
+			
+			
+			
+			
+			//点击确定判断和生成
+			tanc_btn.click(function(){
+				var wenb = $('.text').val();
+				var xming = $('.xming').val();
+				var myDate = new Date();
+				var year = myDate.getFullYear();
+				var month = myDate.getMonth()+1;
+				var day = myDate.getDate();
+				var time = year+'-'+month+'-'+day;
+				if(wenb=="" || xming==""){
+					$('.pd').removeClass('hide');
+				}else{
+					var div = "<div class='wish_conter_modl'>"+
+					  "<span class='k_close'>x</span>"+	
+					  "<h2>许愿卡</h2>"+
+					  "<p class='txt'></p>"+
+					  "<p class='name'>许愿人：<span></span></p>"+
+					  "<p class='time'>时间：<span></span></p>"+
+					  "</div>";
+					  
+					var mok = $('.wish_conter_modl');
+					var fw = $(window).width();
+					var fh = $('.wish_conter').height();
+					$('.wish_conter').append(div);
+					i = mok.length;//获取到当前的一个下标
+					console.log(i);
+					$('.time span').eq(i).html(time);//获取到当前的时间填写进去
+					$('.txt').eq(i).html(wenb);//获取到写的内容放到内容中
+					$('.name span').eq(i).html(xming);//获取到输入的名字放到内容中
+					//提交之后清空之前的写的
+					$('.text,.xming').val('');
+					//点击之后提交，填写弹框隐藏
+					$('.tanc').addClass('hide');
+					
+					//	获取相对应的对象传到拖动函数里
+					var obj=$('.wish_conter_modl').eq(i);
+					var head = obj.find('h2');
+					var fw = $(window).width();
+					var fh = $('.wish_conter').height();
+//					console.log(i,head,obj);
+//					
+					//随机出现在一个地方，并且刚刚生成的卡片颜色为#a0fbb7
+					obj.css({
+						left:parseFloat(Math.random()*(fw-obj.width())) +'px',
+						top:parseFloat(Math.random()*(fh-obj.height())) +'px',
+						background:"#a0fbb7"
+					})
+					obj.siblings('.wish_conter_modl').css('background','#fff');
+					drag(obj,head);
+//					//另一种写法
+//					drag(obj,$('h2',obj));
+
+					//点击删除卡片
+					$('.k_close').click(function(){
+						$(this).parent('.wish_conter_modl').remove();
+					})
+				}
+				
+			});
+			
+			
+			
+			//拖动许愿卡
+			function drag(obj,head){
+				var _move = false;//移动标记
+				var _x,_y;//鼠标离控制件左上角的相对位置
+				
+//					
+					head.click(function(){
+						////点击松开后触发，就是移动之后触发
+						//点击那个的时候让这个的层级最高
+						obj.css("z-index","10000").siblings('.wish_conter_modl').css("z-index","");
+//					
+					}).mousedown(function(e){
+						_move=true;
+						_x = e.pageX-parseInt(obj.css('left'));
+						_y = e.pageY-parseInt(obj.css('top'));
+						obj.fadeTo(20,0.5);//点击后开始拖动并透明显示
+					});
+					
+					$(document).mousemove(function(e){
+						
+						if(_move){
+								
+								var x = e.pageX-_x;//移动时根据鼠标位置计算控制左上角的绝对位置
+								var y = e.pageY-_y;
+								obj.css({
+									top:y,
+									left:x
+								});//控件的新位置
+							
+						}
+					}).mouseup(function(){
+						
+						_move=false;
+						obj.fadeTo('fast',1)//松开鼠标后停止移动并恢复成不透明
+					});
+
+				
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

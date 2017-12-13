@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象的扩展</title>
+	</head>
+	<body>
+		<script>
+			let birth = '2000-01-01';
+			const Person = {
+				name:'张三',
+				birth,
+				hello() {
+					console.log('我的名字是',this.name);
+				}
+			}
+			
+			//合并对象
+			const ob = {a:1},ob2 = {b:2},ob3 = {c:3};
+			Object.assign(ob,ob2,ob3);
+			console.log(ob);
+		</script>
+	</body>
+</html>

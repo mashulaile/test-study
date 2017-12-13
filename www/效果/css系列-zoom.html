@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>zoom 元素缩放比例</title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				float: left;
+			}
+			.box {
+				background: red;
+				zoom: 1.5;
+			}
+			.box1 {
+				background: pink;
+				zoom: 1;
+			}
+			.box2 {
+				background: #333333;
+				zoom: 0.5;
+			}
+		</style>
+	</head>
+	<body>
+		<!--zoom适用于所有元素，用于设置或检索对象的缩放比例，对应的脚本特性为zoom，原比例的值是1。
+		大小分别是100px的1.5倍，1倍，0.5倍。-->
+		<div class="box"></div>
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</body>
+</html>

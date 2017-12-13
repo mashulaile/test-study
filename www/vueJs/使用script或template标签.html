@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用script或template标签</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<!--正常的-->
+		<div id="app">
+			<dahaha></dahaha>
+		</div>
+		<script>
+//			全局的
+//			Vue.component('dahaha',{
+//				template:'<div>这是组件</div>'
+//			});
+//			new Vue({
+//				el:'#app'
+//			})
+			
+//			局部的
+			var aa = {
+				template:'<div>你好</div>'
+			}
+			new Vue({
+				el:'#app',
+				components:{
+					'dahaha':aa
+				}
+			})
+			
+		</script>
+		
+		<!--使用script标签-->
+		<div id="app1">
+			<mashu></mashu>
+		</div>
+		<script type="text/x-template" id="myComponent">
+			<div>This is a component!</div>
+		</script>
+		<script>
+			Vue.component('mashu',{
+				template:'#myComponent'
+			})
+			new Vue({
+				el:'#app1'
+			})
+		</script>
+		
+		
+		<!--使用template标签--> 
+		<div id="app2">
+			<xiaohaha></xiaohaha>
+		</div>
+		<template id="component_2">
+			<div>This is a component2</div>
+		</template>
+		<script>
+			Vue.component('xiaohaha',{
+				template:'#component_2'
+			});
+			new Vue({
+				el:'#app2'
+			})
+		</script>
+	</body>
+</html>

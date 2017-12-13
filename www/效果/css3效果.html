@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 100px;
+				background: yellow;
+				color: #000;
+				/*transform: rotate(30deg);
+				-ms-transform: rotate(30deg);
+				-webkit-transform: rotate(30deg);*/
+			}
+			.box:hover {
+				transform: rotate(30deg);
+				-ms-transform: rotate(30deg);
+				-webkit-transform: rotate(30deg);
+			}
+			#div2{
+				width: 100px;
+				height: 75px;
+				background: red;
+				border: 1px solid black;
+				transform: translate(50px,100px);
+				-ms-transform: translate(50px,100px);
+				-webkit-transform: translate(50px,100px);
+			}
+			.box2{
+				margin: 300px;
+				width: 300px;
+				height: 100px;
+				background: yellow;
+				border: 1px solid black;
+				transform: scale(2,3);
+				-ms-transform: scale(2,3);
+				-webkit-transform: scale(2,3);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">hello</div>
+		<div id="div2">Hello. This is a DIV element.</div>
+		
+		<div class="box2">
+			div元素的宽度是原始大小的两倍，高度是原始大小的3倍。
+		</div>
+	</body>
+</html>

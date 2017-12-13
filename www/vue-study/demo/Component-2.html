@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Component-props属性设置</title>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+	</head>
+	<body>
+		<h2>Component-props属性设置</h2>
+		<hr />
+		<div id="app">
+			<!--<mashu here="赤壁"></mashu>-->
+			<haha :here="message"></haha>
+			<br />
+			<input v-model="message" />
+		</div>
+		
+		
+		
+		<script>
+//			Vue.component("mashu",{
+//				template:"<span style='color: red;'>马叔的家乡在{{here}}</span>",
+//				props:['here']
+//			})
+			var app = new Vue({
+				el:"#app",
+				data:{
+					message:'湖北'
+				},
+				components:{
+					"haha":{
+						template:"<span style='color: #000000;'>哈哈来自于{{here}}</span>",
+						props:['here']
+					}
+					
+				}
+			
+			});
+			
+			
+		</script>
+	</body>
+</html>

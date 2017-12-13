@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>取件通知</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<!-- 禁用分享 -->
+        <meta id="WV.Meta.Share.Disabled" value="true" />
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+     <style>
+    		html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+    	html,body,fieldset,img,iframe,abbr{border:0;}
+    	/*img{display: block;width: 100%;}*/
+    	body {background: #FFFFFF;}
+    	.hide {display: none;}
+    	.upgrade-success,.immediately-upgrade {
+    		width: 100%;
+    		height: auto;
+    		text-align: center;
+    		font-family: PingFangSC-Regular;
+    	}
+    	.head_h2 {
+    		height: .98666rem;
+    		margin: .5rem auto .4rem;
+    		font-size: .48rem;
+			color: #008EFD;
+			line-height: .98666rem;
+    	}
+    	.head_h2::before {
+    		display: inline-block;
+    		content: ' ';
+    		vertical-align:middle;
+    		width: 1.12rem;
+    		height: .98666rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1.FtChwMPMeJjy1XdXXasrXXa-84-74.png') no-repeat center center;
+    		background-size: 1.12rem .98666rem;
+    	}
+    	
+    	.picture {
+    		width: 1.85333rem;
+    		height: 2rem;
+    		margin: 0 auto;
+    	}
+    	.immediately-upgrade .p1 {
+    		font-size: .4rem;
+			color: #4A4A4A;
+    	}
+    	/*.immediately-upgrade .discount {
+    		font-size: .4rem;
+			color: #FF923D;
+    	}*/
+    	.immediately-upgrade .btn {
+    		position: absolute;
+    		left: 0;
+    		bottom: 0.5rem;
+    		width: 100%;
+    		text-align: center;
+    	}
+    	.immediately-upgrade .btn>p {
+    		font-size: .32rem;
+			color: #999999;
+    	}
+    	.immediately {
+    		width: 9.2rem;
+    		height: 1.17333rem;
+    		margin-top: .4rem;
+    		border: none;
+    		background: #FF6800;
+			border-radius: 1.3333rem;
+			font-size: .42666rem;
+			color: #FFFFFF;
+    	}
+    	
+    	
+    	
+    	.title{
+            color: #008efc;
+            font-size: .5333rem;
+            text-align: right;
+            width: 4.5rem;
+            margin: .5rem auto;
+            height: 0.693rem;
+            line-height: 0.693rem;
+            
+        }
+        /*.by-page .content .suc{
+            background: url('https://gw.alicdn.com/tfs/TB1NbMHbUgQMeJjy0FjXXaExFXa-52-52.png') top left no-repeat;
+            background-size: 0.693rem 0.693rem;
+        }*/
+        .ticket{
+            /*display:none;*/
+        }
+        .ticket .ticket-title{
+            color:#b3b3b3;
+            font-size: 0.4rem;
+            text-align: center;
+            padding:.8rem 0 .4rem;
+            height:0.5rem;
+            line-height:0.5rem;
+            background:url('https://gw.alicdn.com/tfs/TB1kktSdgMPMeJjy1XdXXasrXXa-1500-72.png') center 0.8rem no-repeat;
+            background-size:10rem 0.5rem;
+        }
+        .ticket .ticket-content{
+            background: url('https://gw.alicdn.com/tfs/TB1r.QJbOERMeJjy0FcXXc7opXa-287-150.png') top center no-repeat;
+            width: 3.8266rem;
+            height: 2rem;
+            background-size: 100% 100%;
+            overflow: hidden;
+            margin: 0 auto .8rem;
+        }
+        .ticket .ticket-content-fail{
+            background: url('https://gw.alicdn.com/tfs/TB1UGVedMoQMeJjy1XaXXcSsFXa-574-300.png') top center no-repeat;
+            background-size: 100% 100%;
+            
+        }
+        .ticket .ticket-content .price{
+            color: #ff3333;
+            font-size: 0.45rem;
+            padding: 0.6667rem 0 0.03rem;
+            line-height:0.7rem;
+            text-align: center;
+        }
+        .money {
+        	font-size: .42666rem;
+			color: #FA6543;
+        }
+        .ticket .ticket-content .istake{
+        	color: #fff;
+            font-size: 0.2667rem;
+            line-height: 0.42667rem;
+            text-align: center;
+            background: #FF3333;
+            width: 1.6rem;
+            margin:0 auto;
+            height: 0.42667rem;
+            /*border: 1px solid #fa6543;*/
+            box-sizing: border-box;
+            border-radius: 0.2rem;
+			margin: 0.13rem auto 0;
+        }
+        
+        .rule{
+            width:8.56rem;
+            height:5.53rem;
+            background-color:#F7F7F7;
+            margin:0 auto;
+            border-radius:0.24rem;
+            /*display:none;*/
+        }
+        .rule .rule-title{
+            font-size: 0.34667rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+        .rule .rule-content{
+            width:7.66rem;
+            margin:0 auto;
+            font-size: 0.32rem;
+            color: #B2B2B2;
+            line-height: 0.5733rem;
+        }
+        .recovery {
+        	position: absolute;
+        	left: 0;
+        	bottom: 0.5rem;
+        	width: 100%;
+        	/*height: 0.5rem;
+        	line-height: 0.5rem;
+        	text-align: center;*/
+        }
+        .recovery .tishi {
+        	font-size: .32rem;
+			color: #666666;
+			padding-bottom: 3.5%;
+        }
+        .recovery_txt {
+        	width: 92%;
+        	height: 1.173rem;
+        	line-height: 1.173rem;
+        	border: none;
+        	border-radius: 25px;
+        	background: #FF6800;
+        	color: #FFFFFF;
+        	font-size: 0.4266rem;
+        }
+        .upgrade-success>p {
+    		text-align: left;
+    		padding:6% 7.3% 4.4%;
+    		color: #808080;
+			line-height: 0.56rem;
+			font-size: 0.3466rem;
+    	}
+    	.upgrade-success .newpic {
+    		width: 8.8rem;
+    		height: 8.8rem;
+    		margin: 0 auto;
+    	}
+    	.immediately-upgrade-h2 {
+    		padding: 8% 0 7.6%;
+    		font-size: 0.48rem;
+			color: #008EFD;
+			line-height: 0.53rem;
+    	}
+    	.immediately-upgrade-txt {
+    		width: 100%;
+    		
+    		font-size: 0.3466rem;
+			color: #808080;
+			line-height: 0.56rem;
+    	}
+    	.immediately-upgrade-txt>p {
+    		padding: 0 7.3% 0.6rem;
+    		text-align: left;
+    	}
+    	.immediately-upgrade-pic {
+    		width: 6.133rem;
+    		height: 6.133rem;
+    		margin: 0 auto;
+    	}
+    	.immediately-upgrade-footer {
+    		position: absolute;
+    		width: 100%;
+    		bottom: 0.5rem;
+    		left: 0;
+    	}
+    </style>
+	</head>
+	<body>
+		<!--已经升级过-->
+		<div class="upgrade-success hide">
+			<!--<h2 class="head_h2">通知升级成功！</h2>-->
+			<!--<p>菜鸟驿站取件码由淘宝通知替代短信</p>-->
+			<!--<div class="recovery">-->
+	  <!--      	<p class="recovery_txt">我要恢复短信通知</p>-->
+	  <!--      </div>-->
+	        <p class="newtxt">包裹进入菜鸟驿站后，您可在淘宝物流详情/菜鸟驿站官方号查看包裹取件码。如下图</p>
+	        <img class="newpic" src="https://gw.alicdn.com/tfs/TB1kxZFcRfH8KJjy1XbXXbLdXXa-660-660.png" />
+	        <div class="recovery">
+	        	<p class="tishi">如需恢复短信通知，请点击确认</p>
+	        	<button class="recovery_txt">确定</button>
+	        </div>
+	    </div>
+	    
+		<!--没有升级过-->
+		<div class="immediately-upgrade ">
+			<!--<img class="picture" src="" />
+			<p class="p1">取消取件码短信通知</p>
+			<span class="discount"></span>
+			<div class="btn">
+				<p>取件通知升级后，</p>
+				<p>菜鸟驿站取件码将由淘宝通知替代短信</p>
+				<button class="immediately">立即升级</button>
+			</div>-->
+			<h2 class="immediately-upgrade-h2">取件通知升级</h2>
+			<div class="immediately-upgrade-txt">
+				<p>尊敬的用户，为防止短信骚扰及诈骗风险，提升您的体验，我们为您退出取件通知升级服务。</p>
+				<p>“取件通知升级”后，当包裹进入菜鸟驿站，您可直接于淘宝物流详情/菜鸟驿站官方号查看取件码取件。菜鸟驿站将不再短信发送取件码。如下图：</p>
+			</div>
+			<img class="immediately-upgrade-pic" src="https://gw.alicdn.com/tfs/TB1kxZFcRfH8KJjy1XbXXbLdXXa-660-660.png" />
+			<div class="immediately-upgrade-footer">
+				<img class="picture " src="https://gw.alicdn.com/tfs/TB1RHCQc8fH8KJjy1XbXXbLdXXa-209-225.png" />
+				<button class="immediately discount"></button>
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+	    <script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script>
+	    	
+	    	// 创建一个打点器实例, 此时库函数会自动发送一个名为showpage的action来记录页面的pv, uv
+            var logger = new cnact.logger({
+            
+                // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+                business: 'pickup_notice_upgrade_20171017',
+            
+                // 页面名, 使用拼音/英文进行命名
+                page: 'pickup_notice_upgrade'
+            });
+	    	
+	    	var endTime = new Date('2017/11/11 00:00:01');
+	    	
+	    	lib.mtop.loginRequest({
+				api: 'mtop.cainiao.wireless.touch.setting.query',
+				v: '1.0',
+				data: {
+					refer:'20'
+					},
+				ecode: 0
+				}, function(res) {
+						var ggState = res.data.ggCancelSMS;
+						var stState = res.data.stCancelSMS;
+						if(ggState === '1' || stState === '1') {
+						    logger.log('upgrade_success')
+							$('.upgrade-success').removeClass('hide');
+							$('.recovery_txt').on('click',function(){
+							    logger.log('message_btn');
+					    		lib.mtop.request({
+					    			api:'mtop.cainiao.wireless.touch.setting.upgrade',
+					    			v:'1.0',
+					    			data:{
+					    				refer:'20',
+					    				cancel:0
+					    			},
+					    			ecode: 1
+					    		},function(res){
+					    			cnact.widgets.toast("恢复短信通知成功");
+					    			setTimeout(function(){
+					    				//返回上一层页面
+					    				window.WindVane.call('WVNative', 'nativeBack', {}, function(e) {
+									        }, function(e) {
+//									            alert('failure: ' + JSON.stringify(e));
+									        });
+					    			},1500)
+					    		},function(err){
+					    			
+					    		})
+					    	})
+						}else {
+						    logger.log('immediately_upgrade');
+						    
+						    
+							$('.immediately-upgrade').removeClass('hide');
+							lib.mtop.request({
+	                        api: 'mtop.cainiao.nbpushcenter.pubaccount.tip',
+	                        v: '1.0',
+	                        data: {
+	                          status:'upgrade'
+	                        },
+	                        
+	                        
+	                        },function(res){
+	                            if(res.data.showRedPackage == 'true') {
+	                                var redPackageIcon = res.data.redPackageIcon;
+    	                            var redPackageText = res.data.redPackageText;
+    	                            $('.picture').attr('src',redPackageIcon).removeClass('hide');
+    	                            $('.discount').html(redPackageText);
+	                            }else if(res.data.showRedPackage == 'false'){
+//	                                var tipIcon = res.data.tipIcon;
+//  	                            var tipText = res.data.tipText;
+//  	                            $('.picture').attr('src','');
+    	                            $('.discount').html('立即升级');
+	                            }
+	                           
+	                        },function(err){
+	                            
+	                        });
+							 
+                            $('.immediately').on('click',function(){
+                            	document.location.replace('https://h5.m.taobao.com/guoguoact/Issuingcards_two.html');
+//                              var nowTime = new Date().getTime()
+//                              logger.log('pickup_upgrade_btn');
+//                              if(endTime<=nowTime) {
+//              					
+//              				}else {
+//              					document.location.replace('https://h5.m.taobao.com/guoguoact/pickup_notice_upgrade_success.html');
+//              				}
+                                
+    				    
+				    	    })
+					    	
+					    	
+						}
+				}, function(err) {
+					
+					                        
+			});
+	    </script>
+	</body>
+</html>

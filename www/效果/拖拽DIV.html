@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽DIV</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			.drag{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				border: 1px solid #ddd;
+				background: yellow;
+				text-align: center;
+				padding: 5px;
+				top: 100px;
+				left: 20px;
+				cursor: move;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="drag"></div>
+		<div class="drag" style="position: absolute;left: 150px;top: 150px;width: 50px;height: 50px;background: red;"></div>
+		<div class="drag" style="position: absolute;left: 350px;top: 150px;width: 50px;height: 50px;background: red;"></div>
+		<script src="js/jquery.js"></script>
+		<script>
+			
+			for(var i=0;i<$('.drag').length;i++){
+				var obj=$('.drag').eq(i);
+				console.log(obj);
+				drag(obj);
+			}
+			
+			
+			
+			
+			function drag(obj){
+				var _move = false;//移动标记
+				var _x,_y;//鼠标离控制件左上角的相对位置
+				
+//					
+					obj.click(function(){
+//					console.log(123);//点击松开后触发，就是移动之后触发
+					}).mousedown(function(e){
+						_move=true;
+						_x = e.pageX-parseInt(obj.css('left'));
+						_y = e.pageY-parseInt(obj.css('top'));
+						obj.fadeTo(20,0.5);//点击后开始拖动并透明显示
+					});
+					
+					$(document).mousemove(function(e){
+						
+						if(_move){
+								
+								var x = e.pageX-_x;//移动时根据鼠标位置计算控制左上角的绝对位置
+								var y = e.pageY-_y;
+								obj.css({
+									top:y,
+									left:x
+								});//控件的新位置
+							
+						}
+					}).mouseup(function(){
+						
+						_move=false;
+						obj.fadeTo('fast',1)//松开鼠标后停止移动并恢复成不透明
+					});
+
+				
+			}
+		</script>
+	</body>
+</html>

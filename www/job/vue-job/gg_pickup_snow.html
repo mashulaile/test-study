@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+            var fun = function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+
+                        //这里是假设在750px宽度设计稿的情况下，1rem = 75px；
+                        //可以根据实际需要修改
+                        docEl.style.fontSize = 75 * (clientWidth / 750) + 'px';
+                    };
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            }
+            fun(document, window);
+        </script>
+        <style type="text/css">
+            html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+            html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+            html,body{font-family:sans-serif}
+            body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,
+            input,textarea,p,blockquote,th,td,hr,button,article,aside,details,
+            figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+            input,select,textarea{font-size:100%}
+            table{border-collapse:collapse;border-spacing:0}
+            fieldset,img{border:0}
+            abbr,acronym{border:0;font-variant:normal}
+            del{text-decoration:line-through}
+            address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}
+            ol,ul{list-style:none}
+            caption,th{text-align:left}
+            h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}
+            q:before,q:after{content:''}
+            sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+            sup{top:-.5em}
+            sub{bottom:-.25em}
+            a:hover{text-decoration:underline}
+            ins,a{text-decoration:none}
+			.container {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				/*height: 100%;*/
+				background: #fee7d1;
+			}
+			.container .head {
+				position: relative;
+				width: 100%;
+				height: 8.8933rem;
+				background: url("https://gw.alicdn.com/tfs/TB1zZRah26H8KJjy0FjXXaXepXa-750-667.png") no-repeat center center;
+				background-size: 100%;
+			}
+			#snowflake {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.snowRoll {
+				position: absolute;
+				opacity: 0;
+				height: 1rem;
+				-webkit-animation-name: mysnow;
+				-webkit-animation-duration: 20s;
+				-moz-animation-name: mysnow;
+				-moz-animation-duration: 20s;
+			}
+			.container .head .all-dingw {
+				position: absolute;				
+				left: 50%;
+			}
+			.container .head .gg-log {
+				top: 0.4rem;
+				width: 7.5466rem;
+				height: 5.3733rem;
+				margin: 0 0 0 -3.7733rem;
+			}
+			.container .head .pickup {
+				display: inline-block;
+				bottom: 0;
+				width: 5.3067rem;
+				height: 2rem;
+				margin: 0 0 0 -2.6533rem;
+				border: none;
+				background: url("https://gw.alicdn.com/tfs/TB14EBzh_vI8KJjSspjXXcgjXXa-398-150.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.container .head .btn-share {
+				display: inline-block;
+				position: absolute;
+				right: 2px;
+				top: 0;
+				width: 1.24rem;
+				height: 1.9333rem;
+				margin: 0 0 0 -0.62rem;
+				border: none;
+				background: url("https://gw.alicdn.com/tfs/TB1FFlWhZLJ8KJjy0FnXXcFDpXa-93-145.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.container .head .run_box {
+				width: 100%;
+				padding-top: 0.4rem;
+				/*background: #fff;*/
+	        }
+	        .container .head .run_box #run {
+				position: relative;
+				width: 38%;
+				height: 0.6rem;
+				margin: 0 29% 0 33%;
+	            overflow: hidden;
+	        }
+	        .container .head .run_box #run .run_list {
+				text-align: center;
+				line-height: 0.7333333333333333rem;
+				position: absolute;
+				left: 0;
+				top: 0;
+	        }
+	        .container .head .run_box #run .run_list .run_item {
+				width: 6rem;
+				height: 0.73333333rem;
+				color: #0ce395;
+				font-size: 0.32rem;
+				float: left;
+	        }
+			.container .red_text {
+				width: 88%;
+				padding: 0 6%;
+				margin: 0.3rem 0 0 0;
+			}
+			.container .red_text .red-text_title {
+				position: relative;
+				width: 3.68rem;
+				height: 0.7067rem;
+				margin: 0 auto 0.4rem;
+				text-align: center;
+				line-height: 0.7067rem;
+				font-size: 0.4266rem;
+				color: #fff;
+				font-weight: bold;
+				background: url("https://gw.alicdn.com/tfs/TB13hK6h8TH8KJjy0FiXXcRsXXa-276-53.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.container .red_text .red-text_title:before,.container .red_text .red-text_title:after {
+				display: inline-block;
+				position: absolute;
+				top: 0.3rem;
+				content:' ';
+				width: 2.6rem;
+				height: 1px;
+				background: #f4947f;
+			}
+			.container .red_text .left-line:before {
+				left: -2.6rem;
+			}
+			.container .red_text .right-line:after {
+				right: -2.6rem;
+			}
+			.container .red_text .txt {
+				font-size: 0.3733rem;
+				color: #bb3c36;
+				font-weight: bold;
+			}
+			.container .red_text .txt .txt-key {
+				color: #970700;
+			}
+			.container .red_text .txt .txt-key span {
+				border-bottom: 1px solid #970700;
+			}
+			.container .red_text .txt .txt-n {
+				padding-left: 14%;
+			}
+			.container .voucher {
+				margin: 0.9333rem 0 0 0;
+			}
+			.container .voucher .voucher-circle {
+				position: relative;
+				width: 9.12rem;
+				height: 3.3333rem;
+				margin: 0 auto;
+				background: url("https://gw.alicdn.com/tfs/TB1ghyZh8fH8KJjy1XbXXbLdXXa-684-250.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.container .voucher .voucher-circle .voucher-circle-h2 {
+				position: absolute;
+				top: -0.3133rem;
+				left: 50%;
+				width: 3.68rem;
+				height: 0.7067rem;
+				margin: 0 0 0 -1.84rem;
+				text-align: center;
+				line-height: 0.7067rem;
+				font-size: 0.4266rem;
+				color: #fff;
+				font-weight: bold;
+				background: url("https://gw.alicdn.com/tfs/TB13hK6h8TH8KJjy0FiXXcRsXXa-276-53.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.voucher-circle-ul {
+				padding-top: 0.8667rem;
+				font-size: 0;
+			}
+			.voucher-circle-li {
+				display: inline-block;
+				width: 33.3333%;
+				text-align: center;
+				font-size: 0.32rem;
+				color: #bb3c36;
+			}
+			.voucher-circle-li .juan-all {
+				display: inline-block;
+				width: 2.08rem;
+				height: 1.04rem;
+				font-size: 0.5867rem;
+				text-align: center;
+				line-height: 1.04rem;
+				color: #fff;
+				
+			}
+			.voucher-circle-p {
+				padding-top: 0.1rem;
+			}
+			.yiz {
+				background: url("https://gw.alicdn.com/tfs/TB1tMvVh2DH8KJjy1XcXXcpdXXa-156-78.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.taobao {
+				background: url("https://gw.alicdn.com/tfs/TB1Arv8h_nI8KJjy0FfXXcdoVXa-156-78.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.tianmao {
+				background: url("https://gw.alicdn.com/tfs/TB1TszNh26H8KJjy0FjXXaXepXa-156-78.png") no-repeat center center;
+				background-size: 100%;
+			}
+			.container .footer {
+				width: 100%;
+				text-align: center;
+			}
+			.container .logo_gg {
+				display: inline-block;
+				width: 2.1467rem;
+				height: 0.4533rem;
+				margin: 0.6666rem auto 0.3333rem;
+			}
+			@-webkit-keyframes mysnow {
+				0% {
+					bottom: 100%;
+				}
+				50% {
+					-webkit-transform: rotate(1080deg);
+				}
+				100% {
+					-webkit-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+				}
+			}
+			
+			@-moz-keyframes mysnow {
+				0% {
+					bottom: 100%;
+				}
+				50% {
+					-moz-transform: rotate(1080deg);
+				}
+				100% {
+					-moz-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container">
+			<div class="head">
+				<!--雪花飘落-->
+				<div id="snowflake">
+					
+				</div>
+				<img class="gg-log all-dingw" src="https://gw.alicdn.com/tfs/TB10wgwfyqAXuNjy1XdXXaYcVXa-566-394.png" />
+				<!--点击取件-->
+				<a class="pickup all-dingw" @click="btnUrl()"></a>
+				<!--点击分享-->
+				<a class="btn-share" @click="sharefun()"></a>
+				<!--跑马灯-->
+				<div class="run_box app_Floating">
+	                <div id="run">
+	                    <ul class="run_list">
+	                        
+	                    </ul>
+	                </div>
+	            </div>
+			</div>
+			<div class="red_text">
+				<h2 class="red-text_title right-line left-line">领红包划重点</h2>
+				<div class="txt">
+					<p class="txt-key">重点1：<span @click="btnUrl()">裹裹取件赢红包</span></p>
+					<p class="txt-n">包裹到达菜鸟驿站或自提柜，使用一键取、扫码取、我已取件、身份证码取件以及取件码取件；</p>
+				</div>
+				<div class="txt">
+					<p class="txt-key">重点2：<span @click="sharefun()">分享活动赢红包</span></p>
+					<p class="txt-n">取件后分享该活动，赢红包；</p>
+				</div>
+			</div>
+			<div class="voucher">
+				<div class="voucher-circle">
+					<h2 class="voucher-circle-h2">福利券内容</h2>
+					<ul class="voucher-circle-ul">
+						<li class="voucher-circle-li" v-for="volume in volumes">
+							<span class="juan-all" :class="volume.classname" v-text="volume.price"></span>
+							<p class="voucher-circle-p" v-text="volume.txt1"></p>
+							<p v-text="volume.txt2"></p>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="footer">
+				<img class="logo_gg" src="https://gw.alicdn.com/tfs/TB1w4Qah46I8KJjy0FgXXXXzVXa-161-34.png" />
+			</div>
+			
+		</div>
+		
+		
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script>
+	    	var vueOption = {
+	    		el:'.container',
+	    		data:{
+	    			volumes:[
+	    				{price:7, txt1:"7元", txt2:"驿站寄件券", classname:"yiz" },
+	    				{price:2, txt1:"最高2元", txt2:"淘宝红包", classname:"taobao" },
+	    				{price:50, txt1:"50-100元", txt2:"天猫超市代金券", classname:"tianmao" }
+	    			],
+	    			logger:'',
+	    		},
+	    		methods:{
+	    			sharefun:function() { //点击分享
+	    		    	this.logger.log('gg_pickup_snow_share');
+	    				var test = window.location.href;
+				    	var shareParam = {
+							type: 'multimedia', //纯图、纯文字、多媒体消息    根据需求的不同来实现分享的东西不同
+							text: '拿快递就送红包？剁手党福利！',
+							imageURL: '', //纯图片分享的url
+							multimedia: {
+								title: '菜鸟裹裹年末礼物季',
+								subTitle: '1-7 元裹裹寄件券，等你来抢!',
+								thumbnail: 'https://gw.alicdn.com/tfs/TB1zy5nib_I8KJjy1XaXXbsxpXa-164-164.jpg', // 注意！需要传png格式链接（android）！！！多媒体分享的缩略图链接
+								url: test
+							}
+						};
+	
+						// 调用分享组件
+						lib.windvane.call('CNHybridGGShareBoard', 'share', {
+							shareData: [{
+									name: 'QQ',
+									param: shareParam
+								},
+								{
+									name: 'Qzone', //qq空间分享，param数据结构跟QQ一样
+									param: shareParam
+								},
+								{
+									name: 'Weixin', //微信好友，param数据结构跟QQ一样, 括号中为专用参数
+									param: shareParam //默认false，微信分享好友的时候，如果缩略图太长，会被替换成微信图标，这时候我们把缩略图压缩成方的
+	
+								},
+								{
+									name: 'WeixinMoments', //param微信朋友圈，数据结构跟QQ一样
+									param: shareParam
+								},
+								{
+									name: 'DingTalk', //param钉钉，数据结构跟QQ一样
+									param: shareParam
+								},
+								{
+									name: 'Weibo',
+									param: shareParam //param微博，数据结构跟QQ一样,括号中为专用参数
+								}
+							]
+						}, function onSuccess(res) {
+	
+						}, function onError(err) {
+	
+						});
+
+	    			},
+	    			btnUrl:function() {//点击立即取件
+	    			    this.logger.log('gg_pickup_snow_btn');
+	    				lib.windvane.call('CNHybridNavigator', 'openURL', {
+		                    "url": "guoguo://go/take_express"
+		                }, function () {});
+	    			},
+	    			buriedPoint:function(){
+	    				this.logger = new cnact.logger({
+
+                            // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+                            business: 'gg_pickup_snow_20171213',
+                        
+                            // 页面名, 使用拼音/英文进行命名
+                            page: 'gg_pickup_snow'
+                        });
+	    			
+	    				
+	    			},
+	    		},
+	    		mounted:function() {
+	    		    this.buriedPoint();
+	    			var snowflakeURl = [
+						'https://gw.alicdn.com/tfs/TB1LsIHhNTI8KJjSspiXXbM4FXa-8-8.png',
+						'https://gw.alicdn.com/tfs/TB1tAZ4hS_I8KJjy0FoXXaFnVXa-10-11.png',
+						'https://gw.alicdn.com/tfs/TB1l.wYhRHH8KJjy0FbXXcqlpXa-29-27.png',
+						'https://gw.alicdn.com/tfs/TB1LsIHhNTI8KJjSspiXXbM4FXa-8-8.png',
+						'https://gw.alicdn.com/tfs/TB1tAZ4hS_I8KJjy0FoXXaFnVXa-10-11.png',
+						'https://gw.alicdn.com/tfs/TB1l.wYhRHH8KJjy0FbXXcqlpXa-29-27.png',
+						'https://gw.alicdn.com/tfs/TB1LsIHhNTI8KJjSspiXXbM4FXa-8-8.png',
+						'https://gw.alicdn.com/tfs/TB1tAZ4hS_I8KJjy0FoXXaFnVXa-10-11.png',
+						'https://gw.alicdn.com/tfs/TB1l.wYhRHH8KJjy0FbXXcqlpXa-29-27.png',
+					] //js设置数组存储6张图片
+					　　
+					var container = $(".head");
+					visualWidth = container.width();
+					visualHeight = container.height();　　 //获取content的宽高
+					
+					//随机产生一个min-max之间的数字     floor向下取整
+			        function randomSnow(min,max) {
+				        var num = Math.floor(Math.random()*(max-min)) + min;
+				        return num;
+			        }
+					　　
+					///////
+					//飘雪花 //
+					///////
+					function snowflake() {
+						// 雪花容器
+						var $flakeContainer = $('#snowflake');　　　　　　
+						// 随机六张图
+						function getImagesName() {
+							return snowflakeURl[[Math.floor(Math.random() * 12)]];
+						}
+						// 创建一个图片元素
+						function createSnowBox() {
+							var url = getImagesName();
+							return $('<div class="snowbox" />').css({
+								'width': randomSnow(10,12),
+								'height': randomSnow(10,12),
+								'position': 'absolute',
+								'backgroundSize': 'cover',
+								'zIndex': 1,
+								'top': '-41px',
+								'backgroundImage': 'url(' + url + ')'
+							}).addClass('snowRoll');
+						}
+						// 开始飘花
+						setInterval(function() {
+							// 运动的轨迹
+							var startPositionLeft = Math.random() * visualWidth - 100,
+								startOpacity = 1,
+								endPositionTop = visualHeight - 40,
+								endPositionLeft = startPositionLeft - 100 + Math.random() * 500,
+								duration = visualHeight * 10 + Math.random() * 5000;
+	
+							// 随机透明度，不小于0.8
+							var randomStart = Math.random();
+							randomStart = randomStart < 0.8 ? startOpacity : randomStart;
+	
+							// 创建一个图片
+							var $flake = createSnowBox();
+	
+							// 设计起点位置
+							$flake.css({
+								left: startPositionLeft,
+								opacity: randomStart
+							});
+	
+							// 加入到容器
+							$flakeContainer.append($flake);
+	
+							// 开始执行动画
+							$flake.animate({
+								top: endPositionTop,
+								left: endPositionLeft,
+								opacity: 0.8
+							}, duration, function() {
+								$(this).remove() //结束后删除
+							});
+	
+						}, 150);
+					}
+	
+					　　
+					snowflake()　　　 //执行函数
+					
+//					跑马灯
+					lib.mtop.request({
+                        api: 'mtop.nbmarketcenter.lotteryservice.queryRecentWinnerUser',
+                        v: '1.0',
+                        data: {
+                            activityKeys:"activityKey_1504684475227,activityKey_1504694844469,activityKey_1504670968944,activityKey_1504699006039,activityKey_1504699866386"
+                        },
+                        ecode: 0
+                        },function(res){
+                            var items = res.data.result ;
+                            console.table(items)
+                            var list = [] ;
+                            var rUl=document.getElementsByClassName('run_list')[0];
+                            for(var i = 0 ; i < items.length ; i++){
+                                list.push(items[i].userNick + ' ' + '获得' + ' ' + items[i].winValue);
+                            }
+                            for(var j = 0 ; j < list.length ; j++){
+                              var nli = document.createElement("li");
+                              nli.setAttribute("class", "run_item");
+                              nli.innerHTML = list[j] ;
+                              rUl.appendChild(nli);
+                            };
+                            
+                            var lis=rUl.getElementsByClassName('run_item');
+                            rUl.innerHTML+=rUl.innerHTML;
+                            rUl.style.width=lis.length*lis[0].offsetWidth+'px';
+                            var left=null;
+                            var timer=setInterval(function(){
+                                left-=1;
+                                if(left<-rUl.offsetWidth/2){
+                                    left=0;
+                                }
+                                rUl.style.left=left+'px'
+                            },20);
+                          
+                        },function(err){
+                    });
+					
+					
+	    		}
+	    	}
+	    	$(function(){
+				var vm = new Vue(vueOption)
+			})
+	    </script>
+	</body>
+</html>

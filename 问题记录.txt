@@ -1,0 +1,89 @@
+关于分享
+
+
+
+var shareParam = {
+						type: 'image\text\multimedia', //纯图、纯文字、多媒体消息    根据需求的不同来实现分享的东西不同
+						text: '拿快递就送红包？剁手党福利！',
+						imageURL: '', //纯图片分享的url
+						multimedia: {
+							title: '拿快递就送红包？剁手党福利！',
+							subTitle: '用菜鸟裹裹取件，赢激爽好礼，炎炎夏日的一股清流啊~',
+							thumbnail: 'https://gw.alicdn.com/tfs/TB1ba.mSFXXXXXaXpXXXXXXXXXX-100-100.png', // 注意！需要传png格式链接（android）！！！多媒体分享的缩略图链接
+							url: 'https://newconnection.cainiao.com/act/qlyx-share.html'
+						}
+					};
+
+					// 调用分享组件
+					lib.windvane.call('CNHybridGGShareBoard', 'share', {
+						shareData: [{
+								name: 'QQ',
+								param: shareParam
+							},
+							{
+								name: 'Qzone', //qq空间分享，param数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'Weixin', //微信好友，param数据结构跟QQ一样, 括号中为专用参数
+								param: shareParam //默认false，微信分享好友的时候，如果缩略图太长，会被替换成微信图标，这时候我们把缩略图压缩成方的
+
+							},
+							{
+								name: 'WeixinMoments', //param微信朋友圈，数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'DingTalk', //param钉钉，数据结构跟QQ一样
+								param: shareParam
+							},
+							{
+								name: 'Weibo',
+								param: shareParam //param微博，数据结构跟QQ一样,括号中为专用参数
+							}
+						]
+					}, function onSuccess(res) {
+
+					}, function onError(err) {
+
+					});
+
+
+
+
+
+ <!-- 下拉禁用 -->
+  
+<meta id="WV.Meta.DisableRefresh" value="true" />
+  手淘
+<meta name="stopUsePullRefresh" content="value" id="stopUsePullRefresh" value="true" />
+  裹裹
+<!-- 禁用分享 -->
+  
+<meta id="WV.Meta.Share.Disabled" value="true" />手淘
+
+
+
+裹裹右上角显示分享字体
+// 设置右上角按钮  导航右上角规则文案
+				lib.windvane.call('CNHybridNavigationBar', 'setRightBarButton', {
+					showButton: true,
+					buttonText: "分享"
+				})
+				// 监听右上角按钮点击事件
+				document.addEventListener('cnOptionMenuPressed', function(evt) {
+					
+				})
+
+
+裹裹go链接跳转
+lib.windvane.call('CNHybridNavigator', 'openURL', {
+		                    "url": "guoguo://go/take_express"
+		                }, function () {});
+
+
+强行返回到上一级
+window.WindVane.call('WVNative', 'nativeBack', {}, function(e) {
+        }, function(e) {
+            alert('failure: ' + JSON.stringify(e));
+        });

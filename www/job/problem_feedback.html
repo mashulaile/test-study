@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html style="font-size:100%;">
+<head>
+    <title>问题反馈</title>
+    <link rel="icon" type="image/x-icon" href="/favicon/taobao.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon/taobao.ico">
+    <link href="//g.alicdn.com/platform/knode/aps/css/m_feedback.css?t=20141231" rel="stylesheet">
+    <link href="//g.alicdn.com/platform/knode/apsopen/css/emoji.css?t=20141231" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="revisit-after" content="1 days">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="//g.alicdn.com/platform/knode/lib/jquery-1.11.0.min.js"></script>
+    <style>
+        .question-list dd p {
+            margin: 5px 0;
+        }
+        .question-list img{
+            max-width: 100%;
+        }
+        .upimg {
+				position: relative;
+				width: 100%;
+				margin-bottom: 50px;
+			}
+			.upimg .upfile {
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: 2px;
+				width: 41px;
+				height: 41px;
+				opacity: 0;
+				z-index: 10;
+			}
+			.upimg img {
+				display: inline-block;
+				position: absolute;
+				top: 2px;
+				left: 0;
+				width: 41px;
+				height: 41px;
+			}
+			.upimg .txt_p {
+				display: inline-block;
+				padding: 0 20px 0 51px;
+				
+			}
+    </style>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
+    <!--<script>-->
+        <!--var init = function (fn) {-->
+            <!--var sys = {-->
+                <!--productId: "326",-->
+                <!--source: "Wireless",-->
+                <!--appKey: ""-->
+            <!--};-->
+            <!--TOP.mobile.invoke("userinfo", {}, function (result) {-->
+                <!--sys.userId = result.user_id;-->
+                <!--if (result.sub_user_nick != undefined && result.sub_user_nick != '') {-->
+                    <!--sys.nick = result.sub_user_nick;-->
+                <!--} else {-->
+                    <!--sys.nick = result.user_nick;-->
+                <!--}-->
+
+                <!--var system = TOP.mobile.sys;-->
+                <!--var InformationOption = system.InformationOption;-->
+                <!--system.information([-->
+                    <!--InformationOption.NETWORK,-->
+                    <!--InformationOption.QN_VERSION,-->
+                    <!--InformationOption.SYS_VERSION,-->
+                    <!--InformationOption.SYS_NAME,-->
+                    <!--'deviceName',-->
+                    <!--'deviceModel',-->
+                    <!--'sdkVersion',-->
+                    <!--'jailBroke'-->
+                <!--], function (info) {-->
+                    <!--sys.sysName = (info.sysName ? info.sysName : "");-->
+                    <!--sys.osVersion = (info.sysVersion ? info.sysVersion : "");-->
+                    <!--sys.network = (info.network ? info.network : "");-->
+                    <!--sys.deviceModel = (info.deviceName ? info.deviceName : "") + " " + (info.deviceModel ? info.deviceModel : "");-->
+                    <!--sys.version = (info.clientVersion ? info.clientVersion : "");-->
+                    <!--fn(sys)-->
+                <!--});-->
+            <!--});-->
+        <!--};-->
+    <!--</script>-->
+    <script>
+        var showMessage = function (msg) {
+            $("#msg").remove();
+            var html = "<div id='msg' style='display:none;position: fixed;top:100px;width: 220px;left:50%;margin-left:-110px;box-sizing:border-box;background: rgba(0,0,0,0.8);color:#FFF;border-radius:5px;padding:10px;'>" +
+                    msg +
+                    "</div>"
+            $(html).appendTo("body").fadeIn(100);
+            setTimeout(function () {
+                $("#msg").remove()
+            }, 2000)
+        };
+    </script>
+</head>
+<body><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=2839074885&aplus&yunid=&f51787ef8e335&trid=0a67bc9a15035648493447089e3f04&asid=AUXYOKkxlJ5ZSiVwDgAAAAA5ekOT+kYHFQ==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+<div class="m-feedback-wrap" style="padding-top: 52px;">
+    
+<div style="margin: 20px 0;text-align: center">
+    <img src="//gw.alicdn.com/tps/i2/TB1IaJKHXXXXXbtaXXXEF8NOFXX-401-150.jpg" width="200">
+</div>
+<div class="h5-title color9 bg-gray" style="border-top:1px solid #cccccc;">
+    继续反馈
+</div>
+
+<div style="margin: 15px">
+    <form action="/m/saveFeedback" method="post" id="feedback-form" onsubmit="return false">
+        <textarea name="content" placeholder="没有你想找的信息？提交一个吧。"></textarea>
+		
+		
+		<!--<div class="upimg">
+			<input class="upfile" type="file" name="imageAddrs" accept="image/*" >
+			<img id="pic" src="https://gw.alicdn.com/tfs/TB15Bh9agMPMeJjy1XbXXcwxVXa-41-41.png" />
+			<p class="txt_p">为了更好地帮您解决问题，您可以上传对应图片</p>
+		</div>
+		
+		<script>
+//			//获取对象input file 的图片地址，放进img
+//		　　$(".upfile").change(function () {//input的id
+//		　　var objUrl = getObjectURL(this.files[0]);//调用函数调取图片地址
+//		　　obUrl = objUrl;
+//		　　console.log("objUrl = " + objUrl);
+//		　　if (objUrl) {
+//		　　$("#pic").attr("src", objUrl).show();//选择img的ID，给src赋值
+//		　　}
+//		　　});
+//		
+//		　　//获取input file的文件地址
+//		　　function getObjectURL(file) {
+//		　　var url = null;
+//		　　if (window.createObjectURL != undefined) {//basic
+//		　　url = window.createObjectURL(file);
+//		　　} else if (window.URL != undefined) {//mozilla(firefox)兼容火狐
+//		　　url = window.URL.createObjectURL(file);
+//		　　} else if (window.webkitURL != undefined) {//webkit or chrome
+//		　　url = window.webkitURL.createObjectURL(file);
+//		　　}
+//		　　return url;
+//		　　}
+		</script>-->
+		
+        <input type="file" name="file" accept="image/*" style="position: absolute;left: -100000px;">
+        
+        
+
+
+        <a class="submit-button">没找到答案，点此提交</a>
+    </form>
+</div>
+
+<script src="//g.alicdn.com/platform/kelude-static/2-ajaxUpload/jquery.ajaxfileupload.js"></script>
+
+
+
+<script src="//g.alicdn.com/mtb/lib-windvane/2.0.2/windvane.js"></script>
+
+
+
+<script>
+    var networkType = null;
+    
+
+    window.WindVane.call("WVNetwork", "getNetworkType", {}, function (e) {
+        networkType = e.type;
+    });
+
+    
+    $("#feedback-form a.submit-button").on("click", function () {
+        var content = $.trim($("[name='content']").val());
+        var attachments = [];
+
+        $(".attachments .attachment").each(function () {
+            var $target = $(this);
+            var file = $target.data('file');
+            if (file) {
+                attachments.push(file);
+            }
+        });
+        if (attachments.length) {
+            var cfs = {};
+            cfs['cfs_' + '101148'] = JSON.stringify(attachments);
+
+        }
+
+
+        if (content.length < 5) {
+            showMessage("亲，请详细描述您的问题");
+        } else {
+            var d = {
+                productId: "326",
+                appKey: "",
+                source: "Wireless",
+                _csrf: "IadZ7ajC-rzBsPDkVhWXr9T_5ouNPtvLrcEs",
+                content: content,
+                cfs: cfs,
+                networkType:networkType
+            };
+
+            var classifyId = $(".question-list dl").first().data("classifyid"),
+                    kbmKnowledgeId = $(".question-list dl").first().data("kbmknowledgeid");
+            if (classifyId) {
+                d.kbmClassifyId = classifyId;
+            }
+            if(kbmKnowledgeId){
+                d.kbmKnowledgeId = kbmKnowledgeId;
+            }
+
+            $.post("/m/saveFeedback", d, function (res) {
+                if (res.success) {
+                    $("[name='content']").val("");
+                    $(".attachments .attachment").remove();
+                    
+                    showMessage("保存成功");
+                } else {
+                    showMessage(res.messages.join(";"));
+                }
+            })
+        }
+    });
+
+    // 没有上传［菜鸟］
+    
+
+</script>
+
+
+</div>
+<div class="fix-top">
+    <form id="feedback-form" onsubmit="return false;">
+        <div class="fix-top-inner bg-gray">
+            <div class="feedback-form-content">
+                <input value="" class="search-input J-search" name="content"
+                       placeholder="遇到问题先搜一搜"
+                       id="search-keyword"/>
+                <a href="javascript:void(0);" class="remove-qst J-clear-search"></a>
+            </div>
+            <a href="javascript:void(0);" type="button" class="submit-feedback">搜索</a>
+        </div>
+        <div class="search-result" style="position: fixed;top:53px;bottom:0;width:100%;overflow: auto">
+
+        </div>
+    </form>
+</div>
+<script>
+
+
+
+        var initSearch = function () {
+            var val = $(".J-search").val();
+            if (val == "") {
+                $(".fix-top").removeClass("onsearch");
+            } else {
+                $(".fix-top").addClass("onsearch")
+            }
+        };
+
+        var valTmp = "";
+
+        var checkValChange = function () {
+            initSearch();
+            var val = $(".J-search").val();
+            if (val != "" && val != valTmp) {
+                var args = {
+                    productId: "326",
+                    content: val,
+                    _: new Date().getTime()
+                };
+                $.get("/m/mSearchKnowledge", args, function (data) {
+                    valTmp = val;
+                    $(".search-result").html(data).show();
+                    $(".m-feedback-wrap").hide();
+                })
+            }
+        }, timer;
+
+
+        $(".J-search")
+                .focus(function () {
+                    timer = setInterval(checkValChange, 300)
+                })
+                .blur(function () {
+                    clearInterval(timer)
+                });
+
+
+        $(".J-clear-search").click(function () {
+            $("#search-keyword").val("");
+            $(".m-feedback-wrap").show();
+            $(".search-result").hide();
+            initSearch();
+        });
+        $(document).on("click.submit-feedback", ".submit-feedback", function () {
+            $(this).attr('href', function () {
+                var url = "/m/feedbackResult?" +
+                        "productId=326" +
+                        "&content=" + encodeURIComponent($("#search-keyword").val()) +
+                        "&appKey=" +
+                        "&source=Wireless";
+                return url;
+            });
+        });
+</script>
+<script>
+    var page, pathname = window.location.pathname;
+    if (pathname === "/m/feedback") page = 1; // 首页
+    if (pathname === "/m/knowledge") page = 2; // 知识分类
+    if (pathname === "/m/feedbackResult") page = 3; // 提交反馈
+    if (pathname === "/m/myFeedback") page = 4; // 我的反馈
+
+    $(document).on("click", ".question-list dt", function () {
+        var parent = $(this).parent("dl");
+        var type = $(this).attr("data-value"),
+                id = $(this).attr("data-id"),
+                classifyId = $(this).attr("data-classifyId");
+
+        var pos;
+        if ($(this).closest(".search-result").length) {
+            switch (page) {
+                case 1:
+                    pos = 5;
+                    break;
+                case 2:
+                    pos = 6;
+                    break;
+                case 3:
+                    pos = 7;
+                    break;
+                case 4:
+                    pos = 8;
+                    break;
+            }
+        } else {
+            pos = page;
+        }
+
+        if (!parent.hasClass("open")) {
+            $(".question-list dl").removeClass("open");
+            $.post("/m/useful", {
+                _csrf: "IadZ7ajC-rzBsPDkVhWXr9T_5ouNPtvLrcEs",
+                classifyId: classifyId,
+                productId: "326",
+                id: id,
+                type: type,
+                pos: pos
+            }, function (data) {
+
+            });
+            parent.addClass("open");
+        } else {
+            parent.removeClass("open");
+        }
+    });
+
+    // 是否有用
+    $(document).on("click.J-useful", ".J-useful", function () {
+        var $this = $(this);
+        if ($this.hasClass("disabled")) {
+            return false;
+        }
+        var type = $(this).attr("data-value"),
+                id = $(this).attr("data-id"),
+                classifyId = $(this).attr("data-classifyId");
+
+        var pos;
+        if ($(this).closest(".search-result").length) {
+            switch (page) {
+                case 1:
+                    pos = 5;
+                    break;
+                case 2:
+                    pos = 6;
+                    break;
+                case 3:
+                    pos = 7;
+                    break;
+                case 4:
+                    pos = 8;
+                    break;
+            }
+        } else {
+            pos = page;
+        }
+
+        $.post("/m/useful", {
+            _csrf: "IadZ7ajC-rzBsPDkVhWXr9T_5ouNPtvLrcEs",
+            classifyId: classifyId,
+            productId: "326",
+            id: id,
+            type: type,
+            pos: pos
+        }, function (data) {
+            if (data.success) {
+                $this.addClass("active");
+                $this.parent().find(".J-useful").addClass("disabled");
+            } else {
+                alert("数据保存失败!");
+            }
+        })
+    });
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1253614264'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1253614264%26l%3D3' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</body>
+</html>

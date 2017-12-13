@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/animate.css" />
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="show = !show">Toggle render</button>
+			<transition 
+				 
+				name="custom-classes-transition"
+				enter-active-class="animated tada"
+				leave-active-class="animated bounceOut"
+				>
+				<p v-if="show">hello</p>
+			</transition>
+		</div>
+		
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					show:true
+				}
+			})
+		</script>
+	</body>
+</html>

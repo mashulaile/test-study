@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组的扩展</title>
+	</head>
+	<body>
+		<script>
+			console.log(...[1,2,3]);
+			console.log(1,...[2,3,4],5);
+			
+			// ES5 的写法
+			var abc = Math.max.apply(null,[14,3,77]);
+			console.log(abc);
+			//ES6 的写法
+			var abc2 = Math.max(...[14,3,100]);
+			console.log(abc2);
+			
+			// ES5的 写法
+			var arr1 = [0,1,2],arr2 = [3,4,5];
+			Array.prototype.push.apply(arr1,arr2);
+			console.log(arr1);
+			// ES6 的写法
+			let arr3 = [7,8,9],arr4 = [10,11,12];
+			arr3.push(...arr4);
+			console.log(arr3);
+			
+			console.log(new Date(...[2015,1,1]));
+			console.log(new Date(2015/1/1));
+			
+//			复制数组
+			const a1 = [1,2];
+			const a2 = a1;
+			a2[0] = 2;
+			console.log(a1);
+			//ES6用法
+			const a3 = [1,2];
+			const a4 = [...a1];
+			a4[0] = 2
+			console.log(a3);
+			console.log(a4);
+			
+			//合并数组
+//			
+			let s = [1,2],s2 = [3], s3 = [4,5];
+//			ES5用法
+			let newS = s.concat(s2,s3);
+			console.log(newS);
+//			ES6用法
+			let newES6s = [...s,...s2,...s3];
+			console.log(newES6s);
+			
+//			检查数组中是否有给定的值
+			console.log([1,2,3].includes(2));
+		</script>
+	</body>
+</html>

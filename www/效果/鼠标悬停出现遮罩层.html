@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			img{width: 100%;display: block;height: 100%;}
+			.box{
+				position: relative;
+				width: 1200px;
+				margin: 100px auto 0;
+				overflow: hidden;
+			}
+			ul{
+				overflow: hidden;
+				font-size: 0;
+			}
+			ul li{
+				display: inline-block;
+				width: 300px;
+				height: 300px;
+			}
+			ul li .zhezhao{
+				display: block;
+				position: absolute;
+				top: -300px;
+				width: 300px;
+				height: 300px;
+				opacity: 0;
+			}
+			ul li .zhezhao h1{
+				color: #fff;
+				font-size: 50px;
+				background: #000;
+				line-height: 300px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="img/01.jpg" />
+					</a>
+					<div class="zhezhao">
+						<h1>海贼王</h1>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/02.jpg" />
+					</a>
+					<div class="zhezhao">
+						<h1>海贼王</h1>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/03.jpg" />
+					</a>
+					<div class="zhezhao">
+						<h1>海贼王</h1>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/04.jpg" />
+					</a>
+					<div class="zhezhao">
+						<h1>海贼王</h1>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<script src="js/jquery.js"></script>
+		<script>
+			var $li = $(".box ul li");
+			$li.hover(function(){
+				$(this).find('.zhezhao').stop().delay(100).animate({
+					top:0,
+					opacity:0.8
+				},500)
+			},function(){
+				$(this).find('.zhezhao').stop().animate({
+					top:-200,
+					opacity:0
+				},500)
+			})
+		</script>
+	</body>
+</html>

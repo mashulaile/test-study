@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单控件绑定</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<!--<div id="app">
+			<input type="checkbox" id="jack" value="mashu" v-model='checkbox' />
+			<label for="jack">Jack</label>
+			<input type="checkbox" id="John" value="dahaha" v-model='checkbox' />
+			<label for="John">John</label>
+			<input type="checkbox" id="Mike" value="xiaohaha" v-model='checkbox' />
+			<label for="Mike">Mike</label>
+			<span>选择的是：{{checkbox}}</span>
+		</div>
+		
+		<div id="app2">
+			<input type="radio" id="one" value="马叔" V-model='radio' />
+			<label for="one">One</label>
+			<input type="radio" id="two" value="小哈哈" v-model='radio' />
+			<label for="two">Two</label>
+			<span>选择的是：{{radio}}</span>
+		</div>
+		
+		<div id="app3">
+			<select v-model='select'>
+				<option disabled value="">please select one</option>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<span>选择的是：{{select}}</span>
+		</div>
+		
+		<div id="app4">
+			<select v-model='selected' multiple="multiple">
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<span>选择的是{{selected}}</span>
+		</div>
+		
+		<div id="app5">
+			<select v-model='selected'>
+				<option v-for='option in options' v-bind:value='option.value'>
+					{{option.text}}
+				</option>
+			</select>
+			<span>选择的是：{{selected}}</span>
+		</div>-->
+		
+		<div id="app6">
+			<input type="checkbox" v-model='toggle' v-bind:true-value="a"
+  v-bind:false-value="b"  />
+			<!--<span>选择：{{toggle}}</span>-->
+		</div>
+		
+		<script>
+//			var app = new Vue({
+//				el:'#app',
+//				data:{
+//					checkbox:[]
+//				}
+//			});
+//			var app2 = new Vue({
+//				el:'#app2',
+//				data:{
+//					radio:''
+//				}
+//			});
+//			var app3 = new Vue({
+//				el:'#app3',
+//				data:{
+//					select:''
+//				}
+//			});
+//			var app4 = new Vue({
+//				el:'#app4',
+//				data:{
+//					selected:[]
+//				}
+//			});
+//			var app5 = new Vue({
+//				el:'#app5',
+//				data:{
+//					selected:'A',
+//					options:[
+//						{text:'One',value:'A'},
+//						{text:'Two',value:'B'},
+//						{text:'Three',value:'C'}
+//					]
+//				}
+//			});
+			var app6 = new Vue({
+				el:'#app6',
+				data:{
+					
+				}
+			});
+		</script>
+	</body>
+</html>

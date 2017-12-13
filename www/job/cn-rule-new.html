@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>帮助</title>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit" />
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="format-detection" content="email=no"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+
+
+
+
+	</head>
+	
+
+
+<style>
+	html, body {
+		font-family: "PingFangSC-Regular", "Hiragino Sans GB","Helvetica Neue","Microsoft YaHei",Helvetica,Arial,sans-serif;
+		padding: 0;
+		margin: 0;
+		font-weight: normal;
+		width: 100%;
+		overflow-x: hidden;
+		min-height: 100%;
+		-webkit-font-smoothing: antialiased;
+		-webkit-touch-callout: none;
+		-webkit-text-size-adjust: none;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-user-select: none;
+	}
+	img {
+		border: none;
+		display: inline-block;
+	}
+	@media screen and (min-width: 100px) {
+		/*  iPhone 4,5 */
+		html {
+			font-size: 20px;
+		}
+	}
+
+	@media screen and (min-width: 320px) {
+		/*  iPhone 4,5 */
+		html {
+			font-size: 20px;
+		}
+	}
+
+	@media screen and (min-width: 375px) {
+		/*  iPhone 6 */
+		html {
+			font-size: 22px;
+		}
+	}
+
+	@media screen and (min-width: 414px) {
+		/*  iPhone 6 plus */
+		html {
+			font-size: 22px;
+		}
+	}
+
+	@media screen and (min-width: 600px) {
+		html {
+			font-size: 24px;
+		}
+	}
+	body{
+		background-color: #eee;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.list{
+		
+		margin: 0.2rem 0.2rem 0;
+	}
+	.list-item{
+		position: relative;
+		/*height: 2rem;*/
+		font-size: 0.68rem;
+		color: #000;
+		line-height: 2rem;
+		padding: 0  0.7rem;
+		margin-bottom: 0.1rem;
+		border-bottom: 1px solid #eee;
+		/*display: -webkit-flex;  display: flex;
+		-webkit-align-items: center; align-items: center;
+		-webkit-justify-content: space-between; justify-content: space-between;
+		flex-direction: row;*/
+		background-color: #fff;
+		list-style: none;
+	}
+	.list-item img{
+		width: 0.7rem;
+	}
+	.txt {
+		padding: 0 0 0.2rem 0.2rem;
+		color: #666;
+		line-height: 1rem;
+		font-size: 0.6rem;
+	}
+	.arrow {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+</style>
+
+
+
+
+
+
+
+<div id="app"></div>
+
+<script type="text/html" id="tpl-app">
+	<div class="list">
+		<!--<div class="list-item" v-for="i in list" @click="go(i)">
+			
+				<div>{{i.name}}</div>
+				<div class="arrow"><img src="https://gw.alicdn.com/tfs/TB1YeSvRFXXXXbwXFXXXXXXXXXX-200-200.png" /></div>
+				
+			
+		</div>-->
+		<ul>
+			<li class="list-item" v-for="i in list" @click="go($index)" >
+				<div>
+					<div>{{i.name}}</div>
+					<div class="txt" v-show="i.content" v-html="i.txt"></div>
+				</div>
+				
+				
+			</li>
+		</ul>
+		
+	</div>
+</script>
+
+
+<script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.0/login.js,mtb/lib-mtop/2.0.10/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+<script src="https://g.alicdn.com/mcn/lib-cn/1.0.0/??zepto-1.1.3.js,fastclick-1.0.6.js,vue-1.0.26.js"></script>
+<script>
+	var G={openUrl:function(url){if(!url){return false}lib.windvane.call(G.hybird("cnNavigator"),"openURL",{url:url},function(e){})},getUrlParams:function(name){var reg=new RegExp("(^|&)"+name+"=([^&]*)(&|$)","i");var r=window.location.search.substr(1).match(reg);if(r!=null){if(r[2].indexOf("%")>-1){var decode=decodeURIComponent(r[2]);if(decode.indexOf("%")>-1){return decodeURIComponent(decode)}return decode}else{return decodeURIComponent(r[2])}}return null},versionCompare:function(a,b){var A=a.split("."),B=b.split("."),ret=0,base,sig,x,y;for(var i=0,n=Math.max(A.length,B.length);i<n;i++){x="undefined"==typeof A[i]?0:parseInt(A[i]);y="undefined"==typeof B[i]?0:parseInt(B[i]);base=Math.pow(10,n-i-1);sig=0;if(x<y){sig=-1}else{if(x>y){sig=1}}ret+=sig*base}return ret==0?0:ret/Math.abs(ret)},version:(function(){var ua=window.navigator.userAgent,versions=ua.match(/AliApp\(CN\/([\d\.]+)\)/i)||["","3.6.0"];return versions[1]})(),hybird:function(name){var lists={cnNavigationBar:"CNHybridNavigationBar",cnAlertView:"CNHybridAlertView",cnToast:"CNHybridToast",cnActionsheet:"CNHybridActionsheet",cnPicker:"CNHybridPickerView",cnLoading:"CNHybridLoading",cnCityPicker:"CNHybridCityPicker",cnrequest:"CNHybridNetRequest",cnACCS:"CNHybridACCS",cnKeyValueStorage:"CNHybridKeyValueStorage",cnNativeDetector:"CNHybridNativeDetector",login:"CNHybridLogin",cnNavigator:"CNHybridNavigator",cnAlipay:"CNHybridAliPay",cnLocator:"CNHybridLocationService",phoneCapability:"CNHybridPhoneService",cnAddressBook:"CNHybridGGAddressBook"},out="";if(this.versionCompare(this.version,"3.6.0")>=1){out=lists[name]||name}return out?out:name}};if(!window.UA_Opt){var UA_Opt=new Object;UA_Opt.SendMethod=9;UA_Opt.LogVal="ua";window[UA_Opt.LogVal]="";UA_Opt.Token=new Date().getTime()+":"+Math.random();UA_Opt.MaxMCLog=50;UA_Opt.MaxKSLog=50;UA_Opt.MaxMPLog=50;UA_Opt.Sync=true;UA_Opt.MaxTCLog=50;UA_Opt.MaxFocusLog=50;UA_Opt.isSendError=0;UA_Opt.Flag=1670350}var browser=function(){var ua=navigator.userAgent.toLowerCase();return{isIOS:/iPad|iPhone|iPod/i.test(ua),isIPhone:/iPhone/i.test(ua),isIPad:/iPad/i.test(ua),isAndroid:/Android|Linux/i.test(ua),isWebApp:/Safari/i.test(ua),isTencent:/QQ|MicroMessenger/i.test(ua),isWeiChart:/MicroMessenger/i.test(ua),isQQ:/QQ/i.test(ua),isAliApp:/Aliapp/i.test(ua),isWeibo:/WeiBo/i.test(ua),isBlackBerry:/BlackBerry/i.test(ua)}}();function getUA(){var tmp_ua=window[UA_Opt.LogVal];UA_Opt.Token=new Date().getTime()+":"+Math.random();UA_Opt.reload&&UA_Opt.reload();return tmp_ua};
+</script>
+
+
+
+<script>
+
+
+
+
+	var vm = new Vue({
+		el: '#app',
+		template: document.getElementById('tpl-app').text,
+		data:{
+			
+			list:[
+				{
+				    name: '如何向快递员支付感谢费？',
+				    txt:'（1）优选快递员开始派送后，进入物流详情页-点击服务卡“感谢TA” 或 进入聊天界面-点击“更多”-“感谢TA” 或 进入该小件员主页-点击“感谢TA”;<br/>（2）输入“金额”后点击确认；<br/>（3）使用绑定的支付宝账号进行支付。',
+				    content:false
+				},
+				{
+					name: '感谢费有支付限额吗？',
+					txt:'每次派送可支付一次感谢费，每次感谢费金额上限为200元。',
+				    content:false
+				},
+				{
+					name: '如何绑定支付宝账号？',
+					txt:'方法一<br/>第一次在裹裹内使用感谢费功能时，裹裹将提示绑定支付宝账号。<br/>方法二<br/>（1）进入裹裹客户端；<br/>（2）进入“我的”页面；<br/>（3）点击“感谢费记录”；<br/>（4）点击“开始绑定”<br/><br/>温馨提示：</br>（1）绑定的支付宝账号需要已通过支付宝实名认证；<br/>（2）目前一位用户仅支持绑定一个支付宝账号。',
+				    content:false
+				},
+				{
+					name: '如何更换／解绑绑定的支付宝账号？',
+					txt:'（1）进入裹裹客户端；<br/>（2）进入“我的”页面；<br/>（3）点击“感谢费记录”；<br/>（4）点击“更换或解绑”，进行对应操作即可。',
+				    content:false
+				},
+				{
+					name: '如何查看感谢费支付记录？',
+					txt:'（1）进入裹裹客户端；<br/>（2）进入“我的”页面；<br/>（3）点击“感谢费记录”，即可查看记录',
+				    content:false
+				},
+				{
+					name: '感谢费能撤回吗？',
+					txt:'感谢费一经支付将无法撤回。<br/><br/>温馨提示：<br/>（1）若感谢费在48小时内未被领取，将会失效，钱款将于2个工作日内退回您的支付宝账号中，请耐心关注。<br/>（2）若感谢费已被领取，将无法退回。建议您查看感谢费记录，尝试联系领取对方进行协商退款。',
+				    content:false
+				}
+			]
+		},
+		methods:{
+		    go: function (i) {
+		    	
+		        if(this.list[i].content==false) {
+		        	return this.list[i].content = true;
+		        }else {
+		        	return this.list[i].content = false;
+		        }
+				
+			}
+		}
+	});
+	</script>
+
+
+
+
+
+
+	</body>
+</html>

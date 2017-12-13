@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale = 1,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+		<title></title>
+	</head>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			
+		}
+	</style>
+
+	<body>
+		<div id="box" class="box" >
+			
+		</div>
+		
+		<script>
+//			\n=>看源代码相当于按了回车;
+//			\t=>看源代码相当于按了tab建缩进;
+			
+			
+			
+			var box = document.getElementById("box");
+			var string1 = "我这是在\n测试,看下\t能不能用";
+			box.innerHTML = string1;
+		</script>
+	</body>
+
+</html>

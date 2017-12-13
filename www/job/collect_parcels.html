@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+    <style>
+    	*, :after, :before {
+    		box-sizing: inherit;
+    	}
+    	.center {
+    		width: 100%;
+    		height: 100%;
+    		text-align: center;
+    		background: #f7dbbc;
+    	}
+    	.head {
+    		position: relative;
+    		width: 10rem;
+    		height: 9.9333rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1Q.gMgjihSKJjy0FfXXbGzFXa-750-745.png') no-repeat center center;
+    		background-size: 100% 100%;
+    	}
+    	.txt-box {
+    		position: absolute;
+    		left: 0;
+    		bottom: 0;
+    		width: 8.553333rem;
+    		height: 2.333rem;
+    		margin-left: .57335rem;
+    		color: #fff;
+    		font-size: .3777rem;
+    		text-align: center;
+    	}
+    	.day-time {
+    		/*padding: .45rem 0 .55rem;*/
+    		position: relative;
+    		line-height: 1rem;
+    		font-size: .4rem;
+    	}
+    	.day-time::before {
+    		content: '.';
+    		position: absolute;
+    		left: 1.9rem;
+    		top: -0.3rem;
+    		font-size: 1rem;
+    		color: #fff;
+    		/*vertical-align: middle;*/
+    	}
+    	.day-time::after {
+    		content: '.';
+    		position: absolute;
+    		right: 1.9rem;
+    		top: -0.345rem;
+    		font-size: 1rem;
+    		color: #fff;
+    	}
+    	.txt-center {
+    		position: relative;
+    		width: 8.853333rem;
+    		height: auto;
+    		margin: -0.8rem 0.555rem;
+    		padding: 0 0 .8rem;
+    		background-color:#fb4f41;
+    		border-bottom-left-radius:.4rem;
+    		border-bottom-right-radius: .4rem;
+    		color: #FDE754;
+    		font-size: .3777rem;
+    		text-align: center;
+    		z-index: 10;
+    	}
+    	.chat {
+    		margin-top: .5333rem;
+    	}
+    	.chat .time-n {
+    		background:#f2cb93;
+    		font-size: .146667rem;
+    		height: .426667rem;
+    		line-height: .426667rem;
+    		width: 1.573333rem;
+    		border-radius: .106667rem;
+    		margin: 1rem auto 0;
+    		text-align: center;
+    		color: #ffedd4;
+    	}
+    	.chat .chat-item {
+    		margin: .213333rem .533333rem;
+    	}
+    	.chat-bar[_v-5bc9084a] {
+    		display: -webkit-box;
+    		display: -ms-flexbox;
+    		display: flex;
+    	}
+    	.chat-bar .avatar[_v-5bc9084a] {
+    		background: url(https://gw.alicdn.com/tfs/TB13wvAiwMPMeJjy1XcXXXpppXa-108-106.png) no-repeat center center;
+    		width: 0.72rem;
+    		height: 0.70666667rem;
+    		background-size:100% ;
+    	}
+    	.chat-bar .bubble[_v-5bc9084a] {
+    		position: relative;
+    		margin-left: 0.26666667rem;
+    		background: #fff;
+    		font-size: 12px;
+    		color: #993205;
+    		padding: 0.10666667rem 0.16rem;
+    		border-radius: 4px;
+    	}
+    	.chat-bar.left .bubble[_v-5bc9084a]:after {
+    		content: '';
+    		position: absolute;
+    		left: 0;
+    		top: 50%;
+    		width: 0;
+    		height: 0;
+    		border: 0.13333333rem solid transparent;
+    		border-right-color: #fff;
+    		border-left: 0;
+    		margin: -0.13333333rem 0 0 -0.13333333rem;
+    	}
+    	.chat-bar .avatar.b[_v-5bc9084a] {
+    		display: none;
+    	}
+    	.chat-bar.right[_v-5bc9084a] {
+    		-webkit-box-pack: end;
+    		-ms-flex-pack: end;
+    		justify-content: flex-end;
+    	}
+    	.chat-bar.right .bubble[_v-5bc9084a] {
+    		background: #FFB669;
+    	}
+    	.chat-bar.right .bubble[_v-5bc9084a]:before {
+    		content: '';
+    		position: absolute;
+    		right: -0.10666667rem;
+    		top: 50%;
+    		width: 0;
+    		height: 0;
+    		border: 0.13333333rem solid transparent;
+    		border-left-color: #FFB669;
+    		border-right: 0;
+    		margin: -0.13333333rem 0 0 -0.13333333rem;
+    	}
+    	.chat-bar.right .avatar.b[_v-5bc9084a] {
+    		background: url(https://gw.alicdn.com/tfs/TB1_nYIiwoQMeJjy0FoXXcShVXa-108-102.png) no-repeat center center;
+    		width: 0.72rem;
+    		height: 0.70666667rem;
+    		background-size: 100%;
+    		margin-left: .2rem;
+    	}
+    	.chat-bar.right .avatar.b[_v-5bc9084a] {
+    		display: block;
+    	}
+    	.chat-bar.right .avatar.a[_v-5bc9084a] {
+    		display: none;
+    	}
+    	.logo-ali {
+    		width: 100%;
+    		height: 1.09333rem;
+    		margin: .5rem auto;
+    		padding-bottom: 2.2rem;
+    		text-align: center;
+    		
+    	}
+    	.logo-pic {
+    		width: 3.54666rem;
+    		height: 1.09333rem;
+    		margin: 0 auto;
+    	}
+    	.footer {
+    		position: fixed;
+    		bottom: 0;
+    		width: 98.1%;
+    		height: 2.2rem;
+    		background: #0096FF;
+    		border: 3px solid #2EB0FD;
+    	}
+    	.footer-txt {
+    		padding: 0.2rem 0;
+    		color: #fff;
+    	}
+    	.download-btn {
+    		width: 9.2rem;
+    		height: 1.2rem;
+    		margin: 0 auto;
+    		border: none;
+    		background: url('https://gw.alicdn.com/tfs/TB1wHAVdzihSKJjy0FiXXcuiFXa-690-90.png') no-repeat center center;
+    		background-size: 100% 100%;
+    		text-align: center;
+    		line-height: 1.2rem;
+    		color: #fff;
+    		font-size: .4rem;
+    	}
+    </style>
+	</head>
+	<body>
+		<div id="box">
+			<collect></collect>
+		</div>
+		
+		<script type="text/x-template" id="parcels">
+			<div class="center">
+				<div class="head">
+					<div class="txt-box">
+						<p class="day-time">11月8号 ~ 11月16号</p>
+						<p class="txt-p">用菜鸟裹裹APP查收包裹,</p>
+					</div>
+				</div>
+				<div class="txt-center">
+					<p class="txt-p2">现金回血卡红包随你摇，</p>
+					<p class="txt-p3">1111英镑等你赢！</p>
+				</div>
+				<div class="chat">
+					<p class="time-n">晚上11:11</p>
+					<div class="chat-bar chat-item left" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							喂～ 快领回血卡
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item right" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							嗯，么么哒❤️
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item right" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							双11包裹太多，怎么查
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item left" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							菜鸟裹裹呀，一下查所有包裹
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item right" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							我不在家，怎么收包裹？
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item left" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							放驿站、自提柜都行，轻松取
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item left" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							退换货也方便，小哥很快上门收
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+					
+					<div class="chat-bar chat-item right" _v-5bc9084a>
+						<div class="avatar a" _v-5bc9084a></div>
+						<div class="bubble" _v-5bc9084a>
+							菜鸟裹裹，我来啦～
+						</div>
+						<div class="avatar b" _v-5bc9084a></div>
+					</div>
+				</div>
+				<div class="logo-ali">
+					<img class="logo-pic" src="https://gw.alicdn.com/tfs/TB17xMGdjihSKJjy0FlXXadEXXa-532-164.png" />
+				</div>
+				<div class="footer">
+					<p class="footer-txt">一大波回血卡红包和包裹功能以为你准备好</p>
+					<button class="download-btn" @click="download">立即赢红包</button>
+				</div>
+			</div>
+		</script>
+		
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+	    <script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script>
+	    	Vue.component('collect',{
+	    		template:'#parcels',
+	    		data:function(){
+	    			return {
+	    			    logger:''
+	    			}
+	    		},
+	    		methods:{
+	    		    func:function(){
+	    				this.logger = new cnact.logger({
+
+                        // 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+                        business: 'collect_parcels_20171012',
+                    
+                        // 页面名, 使用拼音/英文进行命名
+                        page: 'collect_parcels'
+                    });
+	    			// 	return logger
+	    				
+	    			},
+	    			download:function(){
+	    			    this.logger.log('collect_parcels_btn');
+	    			    var i = cnact.utils.parseUrlQuery();
+						var j = i.source || "";
+						cnact.guoguo.download(j);
+						
+					}
+					
+	    		},
+	    		
+	    		mounted(){
+	    			this.func();
+					
+	    		}
+	    	})
+	    	var vm = new Vue({
+	    		el:'#box'
+	    	})
+	    </script>
+	</body>
+</html>

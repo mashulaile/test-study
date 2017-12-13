@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新城市活动</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script>
+			! function() {
+				var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+					d = document.createElement("style");
+				if(document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+					d.styleSheet.disabled || (d.styleSheet.cssText = e)
+				} else {
+					try {
+						d.innerHTML = e
+					} catch(f) {
+						d.innerText = e
+					}
+				}
+			}();
+
+			! function(N, M) {
+				function L() {
+					var a = I.getBoundingClientRect().width;
+					a / F > 800 && (a = 800 * F);
+					var d = a / 10;
+					I.style.fontSize = d + "px", D.rem = N.rem = d
+				}
+				var K, J = N.document,
+					I = J.documentElement,
+					H = J.querySelector('meta[name="viewport"]'),
+					G = J.querySelector('meta[name="flexible"]'),
+					F = 0,
+					E = 0,
+					D = M.flexible || (M.flexible = {});
+				if(H) {
+					console.warn("将根据已有的meta标签来设置缩放比例");
+					var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+					C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+				} else {
+					if(G) {
+						var B = G.getAttribute("content");
+						if(B) {
+							var A = B.match(/initial\-dpr=([\d\.]+)/),
+								z = B.match(/maximum\-dpr=([\d\.]+)/);
+							A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+						}
+					}
+				}
+				if(!F && !E) {
+					var y = N.navigator.userAgent,
+						x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+						w = x && !!y.match(/OS 9_3/),
+						v = N.devicePixelRatio;
+					F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+				}
+				if(I.setAttribute("data-dpr", F), !H) {
+					if(H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+						I.firstElementChild.appendChild(H)
+					} else {
+						var u = J.createElement("div");
+						u.appendChild(H), J.write(u.innerHTML)
+					}
+				}
+				N.addEventListener("resize", function() {
+					clearTimeout(K), K = setTimeout(L, 300)
+				}, !1), N.addEventListener("pageshow", function(b) {
+					b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+				}, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function() {
+					J.body.style.fontSize = 12 * F + "px"
+				}, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function(d) {
+					var c = parseFloat(d) * this.rem;
+					return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+				}, D.px2rem = function(d) {
+					var c = parseFloat(d) / this.rem;
+					return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+				}
+			}(window, window.lib || (window.lib = {}));
+		</script>
+		<style>
+			html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+			header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+			table{border-collapse:collapse;border-spacing:0;}
+			caption,th{text-align:left;font-weight:normal;}
+			html,body,fieldset,img,iframe,abbr{border:0;}
+			i,cite,em,var,address,dfn{font-style:normal;}
+			li{list-style:none;}
+			h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+			sup,sub{font-size:83%;}
+			textarea{overflow:auto;resize:none;}
+			label,summary{cursor:default;}
+			a,button{cursor:pointer;}
+			h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+			del,ins,u,s,a,a:hover{text-decoration:none;}
+			body{background:#0094EB;}
+			a,a:hover{color:#333;}
+			img {display: block;width: 100%;}
+			.header {
+				position: relative;
+			}
+			.activity_rules {
+				position: absolute;
+				top: 1.025rem;
+				right: 0;
+				width: 1.875rem;
+				height: 0.6rem;
+				font-size: 0.35rem;
+				color:#4893eb;
+				line-height: 0.6rem;
+				text-align: center;
+				background: url('https://gw.alicdn.com/tfs/TB1j8BcegMPMeJjy1XcXXXpppXa-150-48.png') no-repeat center center;
+				background-size: cover;
+			}
+			.center{
+				text-align: center;
+			}
+			.center p {
+				font-family:PingFangSC-Regular;
+				font-size:0.325rem;
+				color:#ffffff;
+				line-height:0.5rem;
+				text-shadow:0 0 4px #1049ba;
+				text-align:center;
+			}
+			.center .tbname {
+				width:6.25rem;
+				height:1rem;
+				margin: 0.5rem 0 0.375rem 0;
+				background:#ffffff;
+				box-shadow:0 1px 3px 0 rgba(192,21,75,0.50);
+				border-radius:10px;
+				border: none;
+				text-align: center;
+			}
+			input::-ms-input-placeholder{text-align: center;} 
+			input::-webkit-input-placeholder{text-align: center;} 
+			.receive_immediately,.popup_win .lookBtn {
+				width:6.25rem;
+				height:1.125rem;
+				border: none;
+				border-radius:20px;
+				background: url('https://gw.alicdn.com/tfs/TB1.3TMX6ihSKJjy0FiXXcuiFXa-506-86.png') no-repeat center center;
+				background-size: cover;
+				font-size: 0.375rem;
+				text-align: center;
+				line-height: 1.125rem;
+				color: #fff;
+			}
+			.footer {
+				width: 100%;
+				height: 4rem;
+				margin-top: 0.375rem;
+				background: url('https://gw.alicdn.com/tfs/TB1.0hgegoQMeJjy0FnXXb8gFXa-750-320.png') no-repeat center center;
+				background-size: cover;
+				text-align: center;
+			}
+			.footer .downloadGG {
+				width:6.25rem;
+				height:1rem;
+				margin: 2.075rem 0 0.25rem 0;
+				border: none;
+				background: url('https://gw.alicdn.com/tfs/TB1mQLTXWagSKJjy0FcXXcZeVXa-500-80.png') no-repeat center center;
+				background-size: cover;
+				font-family:PingFangSC-Regular;
+				font-size:0.375rem;
+				color:#ffffff;
+				line-height:0.375rem;
+				text-align:center;
+			}
+			.footer .footer_txt {
+			    padding-top:4rem;
+				opacity:0.5;
+				font-family:PingFangSC-Light;
+				font-size:0.3rem;
+				color:#ffffff;
+				line-height:0.3rem;
+				text-align:center;
+			}
+			.fill {
+				width: 100%;
+				height: 1.5rem;
+				background: #0079F0;
+			}
+			.pop_bottom {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.8);
+				text-align: center;
+			}
+			.pop_bottom .popup_win {
+				position: relative;
+				width:7.875rem;
+				height:6.5rem;
+				margin: 5.375rem auto 0;
+				background:#ffffff;
+				box-shadow:0 2px 4px 0 rgba(0,0,0,0.50);
+				border-radius:8px;
+				
+			}
+			.popup_win .coupon {
+				position: absolute;
+				left: 50%;
+				top: -1.7rem;
+				width: 4.5333rem;
+				height: 2.7333rem;
+				margin-left: -2.2665rem;
+			}
+			.popup_win h3 {
+				padding: 1.7rem 0 0.225rem;
+				font-family:PingFangSC-Regular;
+				font-size:0.4rem;
+				color:#333333;
+				letter-spacing:0;
+				
+			}
+			.popup_win span {
+				display: block;
+				margin-bottom: 0.75rem;
+				font-family:PingFangSC-Regular;
+				font-size:0.3rem;
+				color:#bbbbbb;
+				
+			}
+			.popup_win p {
+				font-family:PingFangSC-Regular;
+				font-size:0.3rem;
+				color:#666666;
+				
+			}
+			.popup_win .lookBtn {
+				margin: 0.3875rem 0 0.375rem 0;
+			}
+			.popup_win .close {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				width: 0.325rem;
+				height: 0.325rem;
+			}
+			.popup_win h2 {
+				padding: 1.125rem 0 0.5rem 0;
+				font-family:PingFangSC-Regular;
+				font-size:0.4rem;
+				color:#333333;
+				
+			}
+			.popup_win ul{
+				height: 4rem;
+				padding-right: 0.5rem;
+				overflow: hidden;
+				overflow-y: auto;
+			}
+			.popup_win ul li {
+				padding-left: 0.5rem;
+				font-family:PingFangSC-Regular;
+				font-size:0.3rem;
+				color:#666666;
+				text-align:justify;
+			}
+			.popup_win h4 {
+				padding: 2rem 0 1.25rem 0;
+				font-family:PingFangSC-Regular;
+				font-size:0.4rem;
+				color:#333333;
+				
+			}
+			.hide {
+			    display:none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="https://gw.alicdn.com/tfs/TB1Sac8f6ihSKJjy0FlXXadEXXa-750-550.png" />
+			<span class="activity_rules">活动规则</span>
+		</div>
+		<div class="center">
+			<p class="p1">一键预约快递员   5分钟内接单   免上门费</p>
+			<p class="p2">预约时间上门   免写快递单   全链路寄件服务保障</p>
+			<input class="tbname hide" type="text" placeholder="请输入淘宝账号" />
+			<button class="receive_immediately">立即领取</button>
+		</div>
+		<div class="footer">
+			<!--<button class="downloadGG">-->
+			<!--	下载菜鸟裹裹-->
+			<!--</button>-->
+			<p class="footer_txt">阿里巴巴旗下菜鸟网络官方出品</p>
+		</div>
+		<div class="fill"></div>
+		<!--弹窗 -->
+		<div class="tanc"></div>
+		
+		
+
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+		<script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+		<script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.0.10/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+		<script>
+			(function() {
+			    lib.mtop.config.prefix = 'apim';
+                lib.mtop.config.subDomain = '';
+                lib.mtop.config.mainDomain = 'cainiao.com';
+			    
+			    
+			    
+				// 创建一个打点器实例, 此时库函数会自动发送一个名为showpage的action来记录页面的pv, uv
+				var logger = new cnact.logger({
+
+					// 为提高辨识度和避免命名冲突，buesiness命名请遵循规范: 英文/拼音描述_业务owner_项目开始年月日
+					business: 'new_city_activity_20170918',
+
+					// 页面名, 使用拼音/英文进行命名
+					page: 'new_city_activity'
+				});
+			     var i = cnact.utils.parseUrlQuery();
+    			 var j = i.soue || '';
+				 logger.log('new_city_activity_read'+j);
+				 if(cnact.browser.isWechat){
+				     logger.log('new_city_activity_weixin'+j);
+				 }else if(cnact.browser.isWeibo){
+				     logger.log('new_city_activity_weibo'+j);
+				 }
+				    var starttime1 = new Date("2017/09/19");
+                    var starttime2 = new Date("2017/09/21");
+                    var starttime3 = new Date("2017/09/24");
+                    var starttime4 = new Date("2017/09/27");
+                    var starttime5 = new Date("2017/10/10");
+                    var starttime6 = new Date("2017/10/17");
+				 $('.activity_rules').on('click',function(){
+				        var nowtime = new Date();
+                  		if(nowtime>=starttime1 && nowtime<starttime2) {
+                  		    var time = '2017.09.19-2017.09.20',
+                  		        ares = '昆明';
+                	  		activityRules(time,ares)
+                	  	}else if(nowtime>=starttime2 && nowtime<starttime3){
+                	  	    var time = '2017.09.21-2017.09.23',ares = '昆明、厦门、福州、泉州';
+                	  		activityRules(time,ares)
+                	  	}else if(nowtime>=starttime3 && nowtime<starttime4){
+                	  	    var time = '2017.09.24-2017.09.25',ares = '厦门、福州、泉州';
+                	  		activityRules(time,ares)
+                	  	}else if(nowtime>=starttime4 && nowtime<starttime5){
+                	  	    var time = '2017.09.27-2017.10.01',ares = '温州、金华、苏州、宁波、无锡、常州、嘉兴、台州、扬州、南通、绍兴、南宁';
+                	  		activityRules(time,ares)
+                	  	}else if(nowtime>=starttime5 && nowtime<starttime6){
+                	  	    var time = '2017.10.10-2017.10.14',ares = '哈尔滨、大连、沈阳、长春';
+                	  		activityRules(time,ares)
+                	  	}else if(nowtime>=starttime6){
+                	  	    var time = '2017.10.17-2017.10.21',ares = '东莞、中山、佛山、惠州、珠海、汕头';
+                	  		activityRules(time,ares)
+                	  	}
+				        
+				})
+				if(cnact.browser.isAliApp) {
+				    $('.receive_immediately').css('margin-top','2rem');
+				    
+    				$('.receive_immediately').on('click',function(){
+    				    logger.log('new_city_activity_btn');
+    				    lib.mtop.loginRequest({
+    						api: 'mtop.nbmarketcenter.lotteryService.doLottery',
+    						v: '1.0',
+    						data: {
+    							activityKey:'activityKey_1505459067392'
+    						},
+    						ecode: 0
+    					}, function(res) {
+    						winning()
+    					}, function(err) {
+    	                        var state1 = err.ret[0];
+    	                        var arr = [];
+    	                        arr = state1.split('::');
+    	                        var state = arr[0];
+    	                        if(state == "USER_NICK_INVALID") {
+    	                            statePopup('亲，请输入正确的淘宝账号哦！');
+    	                        }else if (state == "ACTIVITY_IS_NOT_START"){
+    	                            statePopup('亲，活动已结束啦！');
+    	                        }else if (state == "NOT_SPECIFY_CROWD") {
+    	                            statePopup('亲，您不在活动城市哦 ！');
+    	                        }else if(state == "AWARD_NOT_ENOUGH") {
+    	                            statePopup('寄件券已被领完啦！');
+    	                        }else if(state == "DAY_WIN_TIMES_RUN_OUT" || state =='WEEK_WIN_TIMES_RUN_OUT' || state =='MONTH_WIN_TIMES_RUN_OUT' || state =='TOTAL_WIN_TIMES_RUN_OUT') {
+    	                            statePopup('亲，您已领取过啦！');
+    	                        }
+    	                        
+    					});
+    				})
+				    
+				    
+				}else{
+				    $('.tbname').removeClass('hide');
+				    // $('.activity_rules').on('click',function(){
+    				// 	activityRules()
+    				// })
+				    $('.receive_immediately').on('click',function(){
+				        logger.log('new_city_activity_btn');
+    					var tbname = $('.tbname').val();
+    					if(tbname == ''){
+    						statePopup('亲，请输入正确的淘宝账号哦！');
+    					}else {
+    						console.log(tbname)
+    						allPop(tbname)
+    					}
+				    })
+				};
+				
+				function allPop(tbname) {
+				    lib.mtop.loginRequest({
+						api: 'mtop.cnwireless.cnlotteryservice.dolotterybyusernick',
+						v: '1.0',
+						data: {
+							userNick:tbname,
+							activityKey:'activityKey_1505459067392'
+						},
+						ecode: 0
+					}, function(res) {
+						winning()
+					}, function(err) {
+	                        var state1 = err.ret[0];
+	                        var arr = [];
+	                        arr = state1.split('::');
+	                        var state = arr[0];
+	                        if(state == "USER_NICK_INVALID") {
+	                            statePopup('亲，请输入正确的淘宝账号哦！');
+	                        }else if (state == "ACTIVITY_IS_NOT_START"){
+	                            statePopup('亲，活动已结束啦！');
+	                        }else if (state == "NOT_SPECIFY_CROWD") {
+	                            statePopup('亲，您不在活动城市哦 ！');
+	                        }else if(state == "AWARD_NOT_ENOUGH") {
+	                            statePopup('寄件券已被领完啦！');
+	                        }else if(state == "DAY_WIN_TIMES_RUN_OUT" || state =='WEEK_WIN_TIMES_RUN_OUT' || state =='MONTH_WIN_TIMES_RUN_OUT' || state =='TOTAL_WIN_TIMES_RUN_OUT') {
+	                            statePopup('亲，您已领取过啦！');
+	                        }
+	                        
+					});
+				};
+                
+                function statePopup(txt){
+					var structure = '<div class="pop_bottom">'+
+								'<div class="popup_win">'+
+								'<h4>'+txt+'</h4>'+
+								'<button class="lookBtn">查看天猫淘宝上门取件姿势</button>'+
+								'<p>奖品可在菜鸟裹裹APP-我的卡券中查看</p>'+
+								'<img src="https://gw.alicdn.com/tfs/TB1YzdRegMPMeJjy1XdXXasrXXa-26-26.png" class="close" />'+
+								'</div>'+
+								'</div>'
+					$('.tanc').prepend(structure);
+					closeAndUrl()
+				
+				};
+				
+				function activityRules(time,ares) {
+					var structure = '<div class="pop_bottom">'+
+										'<div class="popup_win">'+
+											'<h2>活动规则</h2>'+
+											'<ul>'+
+												'<li>1、活动时间：'+time+'</li>'+
+												'<li>2、活动对象：淘宝的默认收货地址设置在'+ares+'的用户</li>'+
+												'<li>3、活动城市：'+ares+'</li>'+
+												'<li>4、领券方式：用户通过扫描二维码进入活动页面，填写正确的淘宝账号后一键领取免首重上门取件寄件优惠券；</li>'+
+												'<li>5、使用范围：仅限用户在天猫、淘宝、闲鱼、菜鸟裹裹、支付宝选择上门取件寄件服务时使用，抵扣1kg内的寄件费用。</li>'+
+												'<li>6、特别提示：</li>'+
+												'<li>• 每个参加活动的用户在活动时间内限领1张；</li>'+
+												'<li>• 每个活动城市在活动时间内每日限量，先到先得；</li>'+
+												'<li>• 优惠券有效期3天，自领取之日起算</li>'+
+												'<li>• 天猫运费险垫付与优惠券不得同时使用</li>'+
+												'<li>7、用户领取成功后，可登陆菜鸟裹裹APP在“我的卡券”中查看。</li>'+
+												'<li>8、用户应理解并同意：本活动规则由菜鸟裹裹负责解释；菜鸟裹裹有权根据实际情况对本活动规则进行修改，并有权通过单方通知提前终止本活动；修改后的规则或活动终止的通知将通过本活动页面进行公示。</li>'+
+											'</ul>'+
+											'<img src="https://gw.alicdn.com/tfs/TB1YzdRegMPMeJjy1XdXXasrXXa-26-26.png" class="close" />'+
+										'</div>'+
+									'</div>';
+					$('.tanc').prepend(structure);
+					closeAndUrl()
+				};
+		
+				function winning() {
+					var structure = '<div class="pop_bottom">'+
+										'<div class="popup_win">'+
+											'<img class="coupon" src="https://gw.alicdn.com/tfs/TB11IhYkgMPMeJjy1XdXXasrXXa-340-208.png" />'+
+											'<h3>恭喜获得5元上门取件寄件券</h3>'+
+											'<span>自领取日起3日有效</span>'+
+											'<p>可在天猫、淘宝、支付宝、裹裹、闲鱼渠道使用哦</p>'+
+											'<button class="lookBtn">查看天猫淘宝上门取件姿势</button>'+
+											'<p>奖品可在菜鸟裹裹APP-我的卡券中查看</p>'+
+											'<img src="https://gw.alicdn.com/tfs/TB1YzdRegMPMeJjy1XdXXasrXXa-26-26.png" class="close" />'+
+										'</div>'+	
+									'</div>';
+					$('.tanc').prepend(structure);
+					closeAndUrl()
+				
+				};
+				
+
+				function closeAndUrl() {
+					$('.close').click(function(){
+						$('.tanc').empty();
+					});
+					$('.lookBtn').click(function(){
+					    window.location.href='https://newconnection.cainiao.com/act/newer-guide-h5.html'
+					})
+				};
+				
+				
+
+			})();
+		</script>
+	</body>
+
+</html>

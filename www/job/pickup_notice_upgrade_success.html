@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection">
+		<script>
+        ! function () {
+            var e = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
+                d = document.createElement("style");
+            if (document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try {
+                    d.innerHTML = e
+                } catch (f) {
+                    d.innerText = e
+                }
+            }
+        }();
+
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () {
+                J.body.style.fontSize = 12 * F + "px"
+            }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
+    </script>
+     <style>
+    		html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+    	html,body,fieldset,img,iframe,abbr{border:0;}
+    	.clearfix {zoom: 1;}
+			
+		.clearfix:after {clear: both;}
+		.clearfix:after {
+			content: '.';
+			display: block;
+			overflow: hidden;
+			visibility: hidden;
+			font-size: 0;
+			line-height: 0;
+			width: 0;
+			height: 0;
+		}
+    	/*img{display: block;width: 100%;}*/
+    	body {background: #FFFFFF;}
+    	.hide {display: none;}
+    	.upgrade-success,.immediately-upgrade {
+    		width: 100%;
+    		height: auto;
+    		text-align: center;
+    		font-family: PingFangSC-Regular;
+    	}
+    	.head_h2 {
+    		height: .98666rem;
+    		margin: .5rem auto .4rem;
+    		font-size: .48rem;
+			color: #008EFD;
+			line-height: .98666rem;
+    	}
+    	.head_h2::before {
+    		display: inline-block;
+    		content: ' ';
+    		vertical-align:middle;
+    		width: 1.12rem;
+    		height: .98666rem;
+    		background: url('https://gw.alicdn.com/tfs/TB1.FtChwMPMeJjy1XdXXasrXXa-84-74.png') no-repeat center center;
+    		background-size: 1.12rem .98666rem;
+    	}
+    	.upgrade-success>p {
+    		font-size: .37333rem;
+			color: #808080;
+			text-align:left;
+			padding:0 0 0 14%;
+    	}
+    	.upgrade-success>p>span {
+    	    color: #000000;
+    	    font-weight:bold;
+    	}
+    	.upgrade-success>p>a {
+    		color: #008EFD;
+    	}
+    	.upgrade-success .txt {
+    		margin-top: 0.35rem;
+    	}
+    	.picture {
+    		margin: 55% auto .8rem;
+    	}
+    	.immediately-upgrade .p1 {
+    		font-size: .4rem;
+			color: #4A4A4A;
+    	}
+    	.immediately-upgrade .discount {
+    		font-size: .4rem;
+			color: #FF923D;
+    	}
+    	.immediately-upgrade .btn {
+    		position: absolute;
+    		left: 0;
+    		bottom: 0.5rem;
+    		width: 100%;
+    		text-align: center;
+    	}
+    	.immediately-upgrade .btn>p {
+    		font-size: .32rem;
+			color: #999999;
+    	}
+    	.immediately {
+    		width: 9.2rem;
+    		height: 1.17333rem;
+    		margin-top: .4rem;
+    		border: none;
+    		background: #FF6800;
+			border-radius: 1.3333rem;
+			font-size: .42666rem;
+			color: #FFFFFF;
+    	}
+    	
+    	
+    	
+    	.title{
+    	    
+            color: #008efc;
+            font-size: .5333rem;
+            text-align: right;
+            width: 4.5rem;
+            margin: .5rem auto;
+            height: 0.693rem;
+            line-height: 0.693rem;
+            
+        }
+        /*.by-page .content .suc{
+            background: url('https://gw.alicdn.com/tfs/TB1NbMHbUgQMeJjy0FjXXaExFXa-52-52.png') top left no-repeat;
+            background-size: 0.693rem 0.693rem;
+        }*/
+        .ticket{
+            display:none;
+        }
+        .ticket .ticket-title{
+            color:#b3b3b3;
+            font-size: 0.4rem;
+            text-align: center;
+            padding:.8rem 0 .4rem;
+            height:0.5rem;
+            line-height:0.5rem;
+            background:url('https://gw.alicdn.com/tfs/TB1kktSdgMPMeJjy1XdXXasrXXa-1500-72.png') center 0.8rem no-repeat;
+            background-size:10rem 0.5rem;
+        }
+        .ticket .ticket-content{
+            background: url('https://gw.alicdn.com/tfs/TB1r.QJbOERMeJjy0FcXXc7opXa-287-150.png') top center no-repeat;
+            width: 3.8266rem;
+            height: 2rem;
+            background-size: 100% 100%;
+            overflow: hidden;
+            margin: 0 auto .8rem;
+        }
+        .ticket .ticket-content-fail{
+            background: url('https://gw.alicdn.com/tfs/TB1UGVedMoQMeJjy1XaXXcSsFXa-574-300.png') top center no-repeat;
+            background-size: 100% 100%;
+            
+        }
+        .ticket .ticket-content .price{
+            color: #ff3333;
+            font-size: 0.45rem;
+            padding: 0.6667rem 0 0.03rem;
+            line-height:0.7rem;
+            text-align: center;
+        }
+        .ticket .ticket-content .btn {
+            color: #fa6543;
+            font-size: 0.2667rem;
+            line-height: 0.42667rem;
+            text-align: center;
+            width: 1.6rem;
+            margin:0 auto;
+            height: 0.42667rem;
+            border: 1px solid #fa6543;
+            box-sizing: border-box;
+            border-radius: 0.2rem;
+            display:none;
+        }
+        .ticket .ticket-content .istake{
+        	margin:0.3rem auto 0;
+        }
+        
+        .rule{
+            width:8.56rem;
+            height:5.53rem;
+            background-color:#F7F7F7;
+            margin:0 auto 0.5rem;
+            border-radius:0.24rem;
+            display:none;
+        }
+        .rule .rule-title{
+            font-size: 0.34667rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+        .rule .rule-content{
+            width:7.66rem;
+            margin:0 auto;
+            font-size: 0.32rem;
+            color: #B2B2B2;
+            line-height: 0.5733rem;
+            text-align: left;
+        }
+        .recovery {
+        	position: absolute;
+        	left: 0;
+        	bottom: 0.5rem;
+        	width: 100%;
+        	height: 0.5rem;
+        	line-height: 0.5rem;
+        	text-align: center;
+        }
+        .recovery_txt {
+        	font-size: .32rem;
+			color: #666666;
+        }
+        .pic-txt {
+        	padding: 0.5rem 0 0 14%;
+            text-align: left;
+        }
+        .pic-txt .tb-pic {
+            display:inline-block;
+            float: left;
+            width: 3.76rem;
+            height: 5.333rem;
+        }
+        .pic-txt>p {
+        	display: inline-block;
+        	width: 3.7333rem;
+        	height: auto;
+        	margin: 1.3rem 0 0 0.3rem;
+        	color: #808080;
+        	font-size: .37333rem;
+        }
+        .ps-txt {
+        	padding: 0 14%!important;
+        	color: #999999!important;
+        }
+    </style>
+	</head>
+	<body>
+		<!--已经升级过-->
+		<div class="upgrade-success hide">
+			<h2 class="head_h2">通知升级成功！</h2>
+			
+			<p>你已成功取消取件码短信，后续将由<span>淘宝发送取件码</span>。</p>
+			<p>用淘宝取件，有更多福利来袭，敬请期待。</p>
+			<div class='pic-txt clearfix'>
+			    <img src='https://gw.alicdn.com/tfs/TB1F4DwjqagSKJjy0FhXXcrbFXa-282-400.png' class='tb-pic' />
+			    <p>当包裹进入菜鸟驿站后,进入“手机淘宝物流详情页”或“手机淘宝－我的淘宝－物流卡片”查看取件码取件。</p>
+			</div>
+			<p class="ps-txt">(如需恢复，请至“查看物流－服务信息”／菜鸟驿站官方号进行操作。)</p>
+			
+			
+			<div class="ticket">
+                <div class="ticket-title"></div>
+                <div class="ticket-content">
+                    <p class="price"></p>
+                    <p class="btn go-check">马上查看</p>
+                    <p class="btn istake">已领过</p>
+                </div>
+            </div>
+	            
+            <div class="rule">
+	            <p class="rule-title">活动规则</p>
+	            <div class="rule-content">
+	                <p>1、同一个淘宝ID、手机号码及设备视为一个用户，单个用户仅有一次中奖机会；</p>
+	                <p>2、领取成功后可在手机淘宝-我的淘宝-卡券包查看；</p> 
+	                <p>3、红包在领取后30日内有效；</p> 
+	                <p>4、红包仅支持在淘宝、天猫上购物使用（仅限购买实物商品），且购买金额需大于红包金额，红包无法提现，购物时自动抵扣。</p>
+	            </div>
+	        </div>
+			
+		</div>
+	    
+		
+		
+		
+		
+		
+		<script src="https://g.alicdn.com/ccc/m-lib/1.0.2/zepto.js?v=1209445730_22654"></script>
+	    <script src="https://g.alicdn.com/mcn/cnact/2.1.0/cnact.js"></script>
+	    <script charset="utf-8" src="https://g.alicdn.com/??mtb/lib-promise/3.1.1/polyfillB.js,mtb/lib-login/1.5.2/login.js,mtb/lib-mtop/2.4.2/mtop.js,mtb/lib-windvane/2.1.8/windvane.js"></script>
+	    <script>
+            var G={openUrl:function(url){if(!url){return false}if(/guoguo:\/\/go/.test(url)){lib.windvane.call(G.hybird("cnNavigator"),"openURL",{url:url},function(e){})}else{window.location.href=url}},getUrlParams:function(name){var reg=new RegExp("(^|&)"+name+"=([^&]*)(&|$)","i");var r=window.location.search.substr(1).match(reg);if(r!=null){if(r[2].indexOf("%")>-1){var decode=decodeURIComponent(r[2]);if(decode.indexOf("%")>-1){return decodeURIComponent(decode)}return decode}else{return decodeURIComponent(r[2])}}return null},versionCompare:function(a,b){var A=a.split("."),B=b.split("."),ret=0,base,sig,x,y;for(var i=0,n=Math.max(A.length,B.length);i<n;i++){x="undefined"==typeof A[i]?0:parseInt(A[i]);y="undefined"==typeof B[i]?0:parseInt(B[i]);base=Math.pow(10,n-i-1);sig=0;if(x<y){sig=-1}else{if(x>y){sig=1}}ret+=sig*base}return ret==0?0:ret/Math.abs(ret)},version:(function(){var ua=window.navigator.userAgent,versions=ua.match(/AliApp\(CN\/([\d\.]+)\)/i)||["","3.6.0"];return versions[1]})(),hybird:function(name){var lists={cnNavigationBar:"CNHybridNavigationBar",cnAlertView:"CNHybridAlertView",cnToast:"CNHybridToast",cnActionsheet:"CNHybridActionsheet",cnPicker:"CNHybridPickerView",cnLoading:"CNHybridLoading",cnCityPicker:"CNHybridCityPicker",cnrequest:"CNHybridNetRequest",cnACCS:"CNHybridACCS",cnKeyValueStorage:"CNHybridKeyValueStorage",cnNativeDetector:"CNHybridNativeDetector",login:"CNHybridLogin",cnNavigator:"CNHybridNavigator",cnAlipay:"CNHybridAliPay",cnLocator:"CNHybridLocationService",phoneCapability:"CNHybridPhoneService",cnAddressBook:"CNHybridGGAddressBook"},out="";if(this.versionCompare(this.version,"3.6.0")>=1){out=lists[name]||name}return out?out:name}};if(!window.UA_Opt){var UA_Opt=new Object;UA_Opt.SendMethod=9;UA_Opt.LogVal="ua";window[UA_Opt.LogVal]="";UA_Opt.Token=new Date().getTime()+":"+Math.random();UA_Opt.MaxMCLog=50;UA_Opt.MaxKSLog=50;UA_Opt.MaxMPLog=50;UA_Opt.Sync=true;UA_Opt.MaxTCLog=50;UA_Opt.MaxFocusLog=50;UA_Opt.isSendError=0;UA_Opt.Flag=1670350}var browser=function(){var ua=navigator.userAgent.toLowerCase();return{isIOS:/iPad|iPhone|iPod/i.test(ua),isIPhone:/iPhone/i.test(ua),isIPad:/iPad/i.test(ua),isAndroid:/Android|Linux/i.test(ua),isWebApp:/Safari/i.test(ua),isTencent:/QQ|MicroMessenger/i.test(ua),isWeiChart:/MicroMessenger/i.test(ua),isQQ:/QQ/i.test(ua),isAliApp:/Aliapp/i.test(ua),isWeibo:/WeiBo/i.test(ua),isBlackBerry:/BlackBerry/i.test(ua)}}();function getUA(){var tmp_ua=window[UA_Opt.LogVal];UA_Opt.Token=new Date().getTime()+":"+Math.random();UA_Opt.reload&&UA_Opt.reload();return tmp_ua};
+        </script>
+	    <script>
+	       // $('body').on("touchstart",function(e){
+        //             event.preventDefault();
+        //         })
+	         $(".head_h2").html("通知升级成功！");
+                    $(".upgrade-success").removeClass('hide');
+	        //升级接口
+//              lib.mtop.loginRequest({
+//                  api: 'mtop.cainiao.wireless.touch.setting.upgrade',
+//                  v: '1.0',
+//                  data:{
+//                      'cancel': 1,
+//                      'refer': 20
+//                  },
+//                  ecode: 1
+//                  // timeout: 20000 // 非必须。接口超时设置，默认为20000 ms
+//              },function(res){
+//                  // alert(JSON.stringify(res),'2')
+//                  $(".head_h2").html("通知升级成功！");
+//                  $(".upgrade-success").removeClass('hide');
+//                  
+//                  //判断手淘和裹裹
+//          
+//                  if(cnact.browser.isGUOGUO){
+//                      // alert('guoguo');
+//                      redBox(1)
+//                  }else{
+//                      // alert('shoutao');
+//                     redBox(2) 
+//                  }
+//                      
+//                     
+//                  
+//              },function(err){
+//                  
+//                  cnact.widgets.toast("升级失败")
+//                 
+//              });
+//	        
+	        
+	      
+	        
+	        
+                //判断是否有红包
+                function redBox(num) {
+                    lib.mtop.loginRequest({
+        	            api: 'mtop.cainiao.marketcenter.sendhongbaowithsource',
+        	            v: '1.0',
+        	            data: {
+        	              source:num
+        	            },
+        	            type: 'GET',   // 必须。请求类型（GET/POST），默认是GET
+        	            dataType: 'jsonp', // 必须。数据类型（jsonp/json），默认jsonp,
+        	            ecode: 1, 
+        	            WindVaneRequest: true, //必须指定这个true才会走手淘的socket接口,注意指定之后不能再通过http代理抓包了,可以联系后端在服务端看请求日志或者wirshark抓包
+        	            isSec: 1
+        	            // timeout: 20000 // 非必须。接口超时设置，默认为20000 ms
+                    },function(res){
+                       // alert(JSON.stringify(res));
+                        var price=res.data.result/100 || "";
+                        $(".ticket .ticket-title").html("获得通知升级福利");
+                        $(".ticket .ticket-content .go-check").show();
+                        $(".ticket .ticket-content .price").html( price + "元");
+                        $(".ticket").show();
+                        $(".rule").show();
+                        
+                        
+                    },function(err){
+                        // alert(JSON.stringify(err));
+                       var errcode=err.ret[0].split("::")[0];
+                       if(errcode=="DAY_TIMES_RUN_OUT"){
+                            $(".ticket .ticket-title").html("已领过通知升级福利");
+                            $(".ticket .ticket-content .istake").show();
+                            $(".ticket").show();
+                            $(".rule").show();
+                        }else if(errcode=="NOT_ACTIVITY_TIME"){
+                            // $(".ticket .ticket-title").html("活动已结束");
+                            // $(".ticket .ticket-content").addClass("ticket-content-fail");
+                            // $(".ticket").show();
+                            // $(".rule").show();
+                        }else{
+                            // console.log(123)
+                            $(".ticket .ticket-title").html("来晚了，红包领完啦");
+                            $(".ticket .ticket-content").addClass("ticket-content-fail");
+                            $(".ticket").show();
+                            $(".rule").show();
+                        } 
+                   
+                    });
+                }
+	    	
+			
+            
+            $(".go-check,.istake").on("touchend",function(){
+                    
+                    
+                    
+                    if(cnact.browser.isGUOGUO){
+                        
+                        lib.windvane.call( 'CNHybridNavigator' , 'openURL', 
+                        {
+                            "url": 'http://h5.m.taobao.com/app/hongbao/www/index/index.html',//跳转的URL,Weex必须写navtype，H5和Native可以不传navtype，支持传统guoguo://go形式 ，注意要规避：native的scheme配置成http:cainiao.com/index.html形式暂不支持 
+                            "input":{},
+                        	"killSelf": true,
+                        }, function(e){},function(e){});
+                        
+                    }else{
+                        
+                        G.openUrl('http://h5.m.taobao.com/app/hongbao/www/index/index.html')
+                    
+                    }
+                    
+                })
+                
+                if(/AliApp\(CN/i.test(navigator.userAgent)){
+                    lib.windvane.call('CNHybridNavigator', 'registerNativeGoBackCatcher', {});
+
+                    document.addEventListener('cnBack', function(e) {
+                        lib.windvane.call( 'CNHybridNavigator','goBack', {
+                            "backData": {
+                                data:{
+
+                                },
+                            },
+                            "backLayersNumber": 1 //多层返回的层数，默认为1
+                        });
+                        
+                        
+                        
+                        
+                    })
+                }
+	    	
+	    	
+	    </script>
+	</body>
+</html>

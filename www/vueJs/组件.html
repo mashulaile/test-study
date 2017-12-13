@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<mashu></mashu>
+		</div>
+		<div id="app2">
+			<mashu></mashu>
+		</div>
+		<div id="app3">
+			<haha></haha>
+		</div>
+		<div id="app4">
+			
+			<!--<table>
+			  <yaode></yaode>
+			</table>-->
+			<!--这种写法自定义属性将当作无效内容，提升到 table 之外，从而导致最终渲染输出后的错误。解决方案是使用特殊的 is 属性：-->
+			<table>
+				<tr is='yaode'></tr>
+			</table>
+		</div>
+		
+		<div id="app5">
+			<dahaha></dahaha>
+			<dahaha></dahaha>
+			<dahaha></dahaha>
+		</div>
+		
+		
+		<script>
+			Vue.component('mashu', {
+				template: '<div>123</div>'
+			})
+			var vm = new Vue({
+				el:'#app'
+			});
+			var app2 = new Vue({
+				el:'#app2'
+			});
+			var Child = {
+				template:'<div>hello world!</div>'
+			}
+			var app3 = new Vue({
+				el:'#app3',
+				components:{
+					'haha' :Child
+				}
+			});
+			var app4 = new Vue({
+				el:'#app4',
+				components:{
+					'yaode':Child
+				}
+			});
+			
+			
+			
+//			var data = {
+//				counter:0
+//			};
+			Vue.component('dahaha',{
+				template:"<button v-on:click='counter+=1'>{{counter}}</button>",
+				data:function(){
+					return {
+						counter:0
+					}
+				}
+			});
+			var app5 = new Vue({
+				el:'#app5'
+			})
+		</script>
+	</body>
+</html>

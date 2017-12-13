@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件</title>
+		<script src="https://unpkg.com/vue"></script>
+		<style>
+			.app {
+				margin: 100px auto;
+				max-width: 600px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			<!--修改了父组件的数据，同时影响了子组件。-->
+			<!--prop默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会。这是为了防止子组件无意修改了父组件的状态-->
+			<table>
+				<tr>
+					<th colspan="3">父组件数据</th>
+				</tr>
+				<tr>
+					<td>name</td>
+					<td>{{name}}</td>
+					<td><input type="text" v-model="name" /></td>
+				</tr>
+				<tr>
+					<td>age</td>
+					<td>{{age}}</td>
+					<td><input type="text" v-model="age" /></td>
+				</tr>
+			</table>
+			<my-component :my-name = 'name' :my-age='age'></my-component>
+		</div>
+		
+		<template id="myComponent">
+			<!--修改了子组件的数据，没有影响父组件的数据。-->
+			<table>
+				<tr>
+					<th colspan="3">子组件数据</th>
+				</tr>
+				<tr>
+					<td>my-name</td>
+					<td>{{myName}}</td>
+					<td><input type="text" v-model="myName" /></td>
+				</tr>
+				<tr>
+					<td>my-age</td>
+					<td>{{myAge}}</td>
+					<td><input type="text" v-model="myAge" /></td>
+				</tr>
+			</table>
+		</template>
+		<script>
+//			Vue.component('my-component',{
+//				template:'#myComponent',
+//				
+//			})
+			new Vue({
+				el:'.app',
+				data:{
+					name:'mashu',
+					age:18
+				},
+				components:{
+					'my-component':{
+						template:'#myComponent',
+						props:['myName','myAge']
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

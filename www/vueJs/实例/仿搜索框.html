@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div class="box">
+			<input v-model="search" />
+			<ul>
+				<li v-for="item in filteredData">{{item.name}}-{{item.age}}-{{item.ares}}</li>
+			</ul>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el:'.box',
+				data:{
+					search:'',
+					items:[
+						{'name':'马叔','age':18,'ares':'湖北'},
+						{'name':'马叔叔','age':20,'ares':'赤壁'},
+						{'name':'大哈哈','age':30,'ares':'湖北'},
+						{'name':'saokai','age':20,'ares':'蒲圻'},
+					]
+				},
+				computed:{
+					filteredData:function() {
+						var self = this;
+						return this.items.filter(function(item) {
+							console.log(item.name.toLowerCase().indexOf(self.search.toLowerCase()) !== -1);
+							return item.name.toLowerCase().indexOf(self.search.toLowerCase()) !== -1;
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

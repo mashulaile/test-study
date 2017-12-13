@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		
+		<!--所谓的递归函数就是在函数体内调用本函数。
+		使用递归函数一定要注意，处理不当就会进入死循环。
+		递归函数只有在特定的情况下使用 ，
+		比如阶乘问题下面做一个10以内的阶乘试试看-->
+		
+		
+		<script>
+			window.onload=function(){
+				function f(num){
+					if(num<1){
+						return 1;
+					}else{
+						return f(num-1)*num;
+					}
+				}
+				console.log(f(1));console.log(f(2));
+				console.log(f(3));console.log(f(4));
+				console.log(f(5));console.log(f(6));console.log(f(7));
+				console.log(f(8));console.log(f(9));
+				console.log(f(10));
+			}
+		</script>
+	</body>
+</html>

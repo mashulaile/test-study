@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		*{padding: 0;margin: 0;}
+		ul li{list-style: none;}
+		.all{width: 990px;height: 500px;margin: 50px auto 0;text-align: center;}
+		.btn1{width: 400px;height: 400px;
+				line-height: 400px;margin: 0 auto;
+			}
+		.btn1 button{
+			position: relative;
+			display: inline-block;width: 80px;height: 80px;line-height: 80px;
+					border-radius: 100%;border: none;
+					font-size: 20px;cursor: pointer;
+					box-shadow: 4px 4px 5px #888888;
+					outline: none;
+					z-index: 50;
+		}
+		.btn1 button:hover{box-shadow: 8px 8px 9px #888888;}
+		.list{position: relative;}
+		.list ul li{
+			position: absolute;left: 475px;top: -225px;
+			width: 60px;height: 60px;background: #999;color: #fff;line-height: 60px;
+			text-align: center;border-radius: 100%;
+			box-shadow: 2px 2px 4px #888888;
+			
+		}
+		.list ul li:hover{box-shadow: 3px 3px 5px #888888;}
+		
+	</style>
+	<body>
+		<div class="all">
+			<div class="btn1">
+				<button class="btn2 on">
+					+
+				</button>
+			</div>
+			<div class="list">
+				<ul>
+					<li class="l1">1</li>
+					<li class="l2">2</li>
+					<li class="l3">3</li>
+					<li class="l4">4</li>
+					<li class="l5">5</li>
+					<li class="l6">6</li>
+					<li class="l7">7</li>
+					<li class="l8">8</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.btn2').click(function(){
+					if($(this).hasClass('on')){
+						$(this).removeClass('on');
+						$('.l1').stop().animate({"left":"682px"},450);
+						$('.l2').stop().animate({"left":"617px","top":"-83px"},500);
+						$('.l3').stop().animate({"left":"472px","top":"-22px"},550);
+						$('.l4').stop().animate({"left":"333px","top":"-83px"},600);
+						$('.l5').stop().animate({"left":"272px"},650);
+						$('.l6').stop().animate({"left":"333px","top":"-363px"},670);
+						$('.l7').stop().animate({"left":"472px","top":"-422px"},690);
+						$('.l8').stop().animate({"left":"617px","top":"-365px"},710);
+					}else{
+						$(this).addClass('on');
+						
+//						$('.l1').stop().animate({left:"475px"},500);
+//						$('.l2').stop().animate({"left":"475px","top":"-225px"},500);
+//						$('.l3').stop().animate({"left":"475px","top":"-225px"},600);
+//						$('.l4').stop().animate({"left":"475px","top":"-225px"},700);
+//						$('.l5').stop().animate({"left":"475px"},800);
+//						$('.l6').stop().animate({"left":"475px","top":"-225px"},900);
+//						$('.l7').stop().animate({"left":"475px","top":"-225px"},1000);
+//						$('.l8').stop().animate({"left":"475px","top":"-225px"},1100);
+						var w = $('.l1,.l2,.l3,.l4,.l5,.l6,.l7,.l8');
+						$(w).stop().animate({"left":"475px","top":"-225px"},500);
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

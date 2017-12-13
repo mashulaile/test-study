@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{padding: 0;margin: 0;}
+		ul li{list-style: none;}
+		a{	
+			display: inline-block;
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			color: #000000;
+			text-decoration: none;
+			cursor: pointer;
+			background: green;
+		}
+		
+		#box{position: relative;margin: 0 auto;width: 990px;}
+		#box div{font-size: 100px;line-height: 500px;text-align: center;}
+		/*#box2 li{
+			width: 990px;
+			height: 800px;
+			background:grey;
+			font-size: 100px;
+			margin: 20px auto 0;
+			line-height: 800px;
+			text-align: center;
+		}*/
+		#box3{position: fixed;top: 50%; left: 50%;margin-left: 505px;margin-top: -120px;}
+		#box3 li{
+			width: 80px;
+			height: 40px;
+			
+		}
+		.on{background: #000000;color: #FFFFFF;}
+	</style>
+	<body>
+		<div id="box">
+			<!--<div class="bbb" id="list1" style="width: 990px;height: 500px;background: #999;">0</div>-->
+			<div class="aaa" id="list1" style="width: 990px;height: 500px;background: green;">1</div>
+			<div class="aaa" id="list2" style="width: 990px;height: 500px;background: gold;">2</div>
+			<div class="aaa" id="list3" style="width: 990px;height: 500px;background: bisque;">3</div>
+			<div class="aaa" id="list4" style="width: 990px;height: 500px;background: black;">4</div>
+			<div class="aaa" id="list5" style="width: 990px;height: 500px;background: yellowgreen;">5</div>
+			<div class="aaa" id="list6" style="width: 990px;height: 500px;background: saddlebrown;">6</div>
+			
+			<ul id="box3">
+				<li><a href="#list1">1</a></li>
+				<li><a href="#list2">2</a></li>
+				<li><a href="#list3">3</a></li>
+				<li><a href="#list4">4</a></li>
+				<li><a href="#list5">5</a></li>
+				<li><a href="#list6">6</a></li>
+			</ul>
+		</div>
+		<!--<div id="aaa"></div>-->
+		<script src="js/jquery.js"></script>
+		<script>
+//			$(window).scroll(qwe);
+//			qwe();
+//			function qwe(){
+//				var len = $('#box3 li');
+//				
+//				var h = $(window).scrollTop();
+//				var box = $('#box .aaa');
+//				if(h<500){
+//					$("#box3").hide()
+//				}else{
+//					$("#box3").show();
+//				}
+//				$('.aaa').each(function(i,o){
+////					console.log(o.offsetTop);
+//					var ppp = o.offsetTop;
+//					console.log(ppp);
+//					if(h>o.offsetTop){
+//						len.find("a").removeClass("on");
+//						len.eq(i).find("a").addClass("on");
+//					}
+//				})
+//				var iii = box.eq(box.length-1).offset().top-500;
+////				console.log(1,iii);
+////				console.log(2,h);
+//				if(h>iii){
+//					len.find("a").removeClass("on").eq(box.length-1).addClass("on");
+//				}
+//				
+//			}
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			var box = $('#box .aaa');
+			var len = $('#box3 li');
+			
+			$(window).scroll(scrolls);
+			scrolls();
+			function scrolls(){
+				var s_top = $(window).scrollTop();
+//				console.log(s_top,"滚");
+				for(var i=0;i<len.length-1;i++){
+//					console.log(box.eq(i).offset().top)
+					console.log(i)
+					if(s_top>box.eq(i).offset().top-100 && s_top<box.eq(i+1).offset().top-100){
+						len.find("a").removeClass("on").eq(i).addClass("on");
+					}
+				}
+				var iii = box.eq(box.length-1).offset().top;
+				if(s_top>iii-500){
+					len.find("a").removeClass("on").eq(i).addClass("on");
+				}
+//			console.log(3,iii);
+//			console.log(2,s_top);
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

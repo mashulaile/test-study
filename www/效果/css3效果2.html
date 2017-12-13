@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 75px;
+				background: red;
+				border: 1px solid black;
+				transition: width 2s, height 2s, transform 2s;
+				-webkit-transition: width 2s,height 2s,-webkit-transform 2s;  
+			}
+			.box:hover{
+				width: 300px;
+				height: 200px;
+				transform: rotate(180deg);
+				-webkit-transform: rotate(180deg);
+			}
+			.box2{
+				position: relative;
+				width: 100px;
+				height: 100px;
+				background: red;
+				animation: aaa 4s ;
+				-webkit-animation: aaa 4s;
+				
+			}
+			.box3{
+				position: relative;
+				width: 100px;
+				height: 100px;
+				background: red;
+				color: #fff;
+				font-size: 40px;
+				text-align: center;
+				line-height: 100px;
+				/*bbb:规定 @keyframes 动画的名称;
+				4s:规定动画完成一个周期所花费的秒或毫秒。默认是 0;
+				linear:规定动画的速度曲线。默认是 "ease";
+				2s:animation-delay	规定动画何时开始。默认是 0;
+				infinite:无线循环,规定动画被播放的次数。默认是 1;
+				alternate:反复执行,规定动画是否在下一周期逆向地播放。默认是 "normal"*/
+				
+				animation: bbb 4s linear 2s infinite alternate;
+				-moz-animation: bbb 4s linear 2s infinite alternate;
+				-webkit-animation: bbb 4s linear 2s infinite alternate;
+				-o-animation: bbb 4s linear 2s infinite alternate;
+			}
+			.box4{
+				position: relative;
+				width: 100px;
+				height: 100px;
+				background: #ccc;
+				line-height: 100px;
+				text-align: center;
+				animation: ccc 0.5s infinite alternate;
+			}
+			
+			
+			
+			
+			@keyframes aaa{
+				0%   {background: red;left: 0;top: 0;}
+				25%  {background: yellow;left: 200px;top: 0;}
+				50%  {background: blue;left: 200px;top: 200px;}
+				75%  {background: green;left: 0px;top: 200px;}
+				100% {background: red;left: 0;top: 0;}
+			}
+			@-webkit-keyframes aaa{
+				0%   {background: red;left: 0;top: 0;}
+				25%  {background: yellow;left: 200px;top: 0;}
+				50%  {background: blue;left: 200px;top: 200px;}
+				75%  {background: green;left: 0px;top: 200px;}
+				100% {background: red;left: 0;top: 0;}
+			}
+			@-moz-keyframes aaa{
+				0%   {background: red;left: 0;top: 0;}
+				25%  {background: yellow;left: 200px;top: 0;}
+				50%  {background: blue;left: 200px;top: 200px;}
+				75%  {background: green;left: 0px;top: 200px;}
+				100% {background: red;left: 0;top: 0;}
+			}
+			@-o-keyframes aaa{
+				0%   {background: red;left: 0;top: 0;}
+				25%  {background: yellow;left: 200px;top: 0;}
+				50%  {background: blue;left: 200px;top: 200px;}
+				75%  {background: green;left: 0px;top: 200px;}
+				100% {background: red;left: 0;top: 0;}
+			}
+			
+			/*bbb的动画效果*/
+			@keyframes bbb{
+				0%   {background: red;left: 0;top: 0;transform: rotate(0);}
+				25%  {background: yellow;left: 200px;top: 0;transform: rotate(90deg);}
+				50%  {background: blue;left: 200px;top: 200px;transform: rotate(180deg);}
+				75%  {background: green;left: 0px;top: 200px;transform: rotate(270deg);}
+				100% {background: red;left: 0;top: 0;transform: rotate(360deg);}
+			}
+			@-webkit-keyframes bbb{
+				0%   {background: red;left: 0;top: 0;transform: rotate(0);}
+				25%  {background: yellow;left: 200px;top: 0;transform: rotate(90deg);}
+				50%  {background: blue;left: 200px;top: 200px;transform: rotate(180deg);}
+				75%  {background: green;left: 0px;top: 200px;transform: rotate(270deg);}
+				100% {background: red;left: 0;top: 0;transform: rotate(360deg);}
+			}
+			@-moz-keyframes bbb{
+				0%   {background: red;left: 0;top: 0;transform: rotate(0);}
+				25%  {background: yellow;left: 200px;top: 0;transform: rotate(90deg);}
+				50%  {background: blue;left: 200px;top: 200px;transform: rotate(180deg);}
+				75%  {background: green;left: 0px;top: 200px;transform: rotate(270deg);}
+				100% {background: red;left: 0;top: 0;transform: rotate(360deg);}
+			}
+			@-o-keyframes bbb{
+				0%   {background: red;left: 0;top: 0;transform: rotate(0);}
+				25%  {background: yellow;left: 200px;top: 0;transform: rotate(90deg);}
+				50%  {background: blue;left: 200px;top: 200px;transform: rotate(180deg);}
+				75%  {background: green;left: 0px;top: 200px;transform: rotate(270deg);}
+				100% {background: red;left: 0;top: 0;transform: rotate(360deg);}
+			}
+			/*ccc的动画效果*/
+			@keyframes ccc{
+				from{left: 0;top: 0;}
+				to{left: 50px;top: 50px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			你好，这是css3效果
+		</div>
+		<div class="box2"></div>
+		<div class="box3">大</div>
+		<div class="box4">斜移</div>
+		<div>
+			<img src="img/gif.gif" />
+		</div>
+	</body>
+</html>

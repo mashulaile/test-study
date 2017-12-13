@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name='apple-itunes-app' content='app-id=477927812'>-->
+		<title></title>
+		<style>
+			#openApp {
+				width: 100%;
+				height: 100px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a href="javascript:;" id="openApp">菜鸟客户端</a>
+		<script src="jquery.js"></script>
+		<script>
+			document.getElementById('openApp').onclick = function(e) {
+
+				if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+					window.location.href = "cainiao://"; //ios app协议
+					window.setTimeout(function() {
+						window.location.href = "https://itunes.apple.com/cn/app/id951610982";//获取到app上的ID就可以直接跳转了
+					}, 2000)
+				}
+				if(navigator.userAgent.match(/android/i)) {
+					window.location.href = "com.cainiao.wireless"; //android app协议
+					window.setTimeout(function() {
+						window.location.href = "http://coolapk.com/apk/com.cainiao.wireless"; //android 下载地址
+					}, 2000)
+				}
+			};
+		</script>
+	</body>
+
+</html>

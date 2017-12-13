@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<template v-if="loginType === 'username'">
+			  <label>Username</label>
+			  <input placeholder="Enter your username">
+			</template>
+			<template v-else>
+			  <label>Email</label>
+			  <input placeholder="Enter your email address">
+			</template>
+			<button @click="exchang()">换登陆方式</button>
+		</div>
+		<div id="app2">
+			<h1 v-show="ok">Hello!</h1>
+		</div>
+		
+		<script>
+			
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					loginType:"username"
+				},
+				methods:{
+					exchang:function(){
+						if(this.loginType=='username'){
+							return this.loginType="Email"
+						}else{
+							return this.loginType="username"
+						}
+						
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app2',
+				data:{
+					ok:false
+				}
+			})
+		</script>
+	</body>
+</html>

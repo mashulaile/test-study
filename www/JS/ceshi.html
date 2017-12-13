@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">  
+        body  
+        {  
+            font-size: 12px;  
+            color: #333;;  
+        }  
+  
+        ul li  
+        {  
+        	list-style: none;
+            line-height: 30px;  
+        }  
+  
+    </style>  
+	</head>
+	<body>
+		<ul>  
+		    <li id="1">张三：</li>  
+		    <li id="2">李四：</li>  
+		    <li id="3">王二：</li>  
+		</ul> 
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+		<script>
+			$(function(){
+				$("ul li").each(function() {
+					new PlaceFieldEditor($(this).attr('id'),"请输出成绩...",$(this));
+				});
+			})
+			
+			
+			function PlaceFieldEditor(id,value,parentEle) {
+				this.id = id;
+				this.value = value;
+				this.parentEle = parentEle;
+				this.initValue = value;
+				
+				this.initElements();
+				this.initEvents();
+			}
+			PlaceFieldEditor.prototype = {
+				constructor:PlaceFieldEditor,
+				/** 
+			     * 初始化所有元素 
+			     */
+			    initElements:function() {
+			    	this.txtEle = $("<span/>");
+			    	this.txtEle.text(this.value);
+			    	
+			    	this.textEle = $("<input type='text' />");
+			    	this.textEle.val(this.value);
+			    	
+			    	this.btnWapper = $("<div style='display: inline;'></div>");
+			    	this.saveBtn = $("<input type='button' value='保存' />");
+			    	this.cancelBtn = $("<input type='button' value='取消' />");
+			    	this.btnWapper.append(this.saveBtn).append(this.cancelBtn);
+			    	
+			    	this.parentEle.append(this.txtEle).append(this.textEle).append(this.btnWapper);
+			    	
+			    	this.convertToReadable();
+			    },
+			    /** 
+			     * 初始化所有事件 
+			     */ 
+			     initEvents:function() {
+			     	var that = this;
+			     	this.txtEle.on("click",function(event) {
+			     		that.convertToEditable();
+			     	});
+			     	
+			     	this.cancelBtn.on("click",function(event) {
+			     		that.cancel();
+			     	});
+			     	
+			     	this.saveBtn.on("click",function(event) {
+			     		that.sava();
+			     	})
+			     	
+			     },
+			      /** 
+			     * 切换到编辑模式 
+			     */
+			    convertToEditable:function() {
+			    	this.txtEle.hide();
+			    	this.textEle.show();
+			    	this.textEle.focus();
+			    	
+			    	if(this.getValue() == this.initValue) {
+			    		this.textEle.val("");
+			    	}
+			    	
+			    	this.btnWapper.show();
+			    },
+			    /** 
+			     * 点击保存 
+			     */  
+			     sava:function() {
+			     	this.setValue(this.textEle.val());
+			     	this.txtEle.html(this.getValue().replace(/\n/g,"<br/>"));
+			     	
+			     	var url = "id=" + this.id + "$value=" + this.value;
+			     	
+			     	console.log(url);
+			     	this.convertToReadable();
+			     },
+			     /** 
+			     * 点击取消 
+			     */  
+			     cancel:function() {
+			     	this.textEle.val(this.getValue());
+			     	this.convertToReadable();
+			     },
+			     /** 
+			     * 切换到查看模式 
+			     */  
+			     convertToReadable:function() {
+			     	this.txtEle.show();
+			     	this.textEle.hide();
+			     	this.btnWapper.hide();
+			     },
+			     setValue:function(value) {
+			     	this.value = value;
+			     },
+			     getValue:function() {
+			     	return this.value;
+			     }
+			}
+		</script>
+	</body>
+</html>

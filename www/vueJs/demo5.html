@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			{{ message | capitalize }}
+		</div>
+		
+		<div id="app2">
+			<p>初始message是："{{message}}"</p>
+			<p>计算后的翻转message是："{{reversedMessage}}"</p>
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: 'runoob'
+				},
+				filters: {
+					capitalize: function(value) {
+						if(!value) return ''
+						value = value.toString()
+						return value.charAt(0).toUpperCase() + value.slice(1)
+					}
+				}
+			});
+			
+			var vm = new Vue({
+				el:"#app2",
+				data:{
+					message:'hello',
+				},
+				computed: {
+					// 一个 computed 属性的 getter 函数
+					reversedMessage:function(){
+						// `this` 指向 vm 实例
+						return this.message.split('').reverse().join('');
+					}
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

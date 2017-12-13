@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>template</title>
+		<script src="https://g.alicdn.com/mcn/app-act-lib/??jquery-1.11.0.js,fastclick.js,vue-2.2.6.js"></script>
+	</head>
+	<body>
+		<h2>template三种写法</h2>
+		<hr />
+		<div id="app">
+			<!--第二种方法-->
+			<template id="dd2">
+				<h2 style="color:red">我是Template标签模板</h2>
+			</template>
+		</div>
+		<!--第三种方法-->
+		<script type="x-template" id="dd3">
+			<h2 style="color:red">我是Script标签模板</h2>
+		</script>
+		
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+//				第三种方法
+				template:"#dd3"
+//				第二种方法
+//				template:"#dd2"
+//				第一种方法
+//				template:`   //这个符号是tab键上面的符号
+//					<h2 style="color:red">我是选项模板</h2>
+//				`
+			
+			})
+			
+		</script>
+	</body>
+</html>
